@@ -47,6 +47,7 @@ def generate_tokens_from_non_display_math(text):
     starts_with_math = True if text[0] == '$' else False
     partition = text.split('$')
     partition = removeAllOccurrences('', partition)
+    partition = removeAllOccurrences('<br>', partition)
     for i in range(len(partition)):
         if starts_with_math and i % 2 == 0 or not starts_with_math and i % 2 == 1:
             tokens.append((partition[i], 1))
@@ -56,10 +57,9 @@ def generate_tokens_from_non_display_math(text):
 
 def generate_tokens(front, back):
     tokens = []
-    if front[0] == '$':
-        tokens.append((front, 1))
-    else:
-        tokens.append((front, 0))
+    # generate tokens from front
+    tokens = tokens + generate_tokens_from_non_display_math(front)
+    # generate tokens from back
     starts_with_display_math = True if back[0:2] == "$$" else False
     display_math_partition = back.split("$$")
     display_math_partition = removeAllOccurrences('', display_math_partition)
@@ -70,11 +70,38 @@ def generate_tokens(front, back):
             tokens = tokens + generate_tokens_from_non_display_math(display_math_partition[i])
     return tokens
 
-def toManimTexObject(text, math):
-    if math:
-        return mn.MathTex(text)
-    else:
-        return mn.Tex(text)
+def generate_tex_objects(tokens):
+    tex_objects = []
+    for token in tokens:
+        if token[1] == 0:
+            tex_objects.append(mn.Tex(token[0]))
+        elif token[1] == 1:
+            tex_objects.append(mn.MathTex(token[0]))
+        elif token[1] == 2:
+            # TODO: handle display math to be actual display math
+            tex_objects.append(mn.MathTex(token[0]))
+    return tex_objects
+
+def total_width(tex_objects):
+    return sum([obj.width for obj in tex_objects])
+
+def generate_groupings(tokens, tex_objects):
+    groupings = []
+    current_grouping = []
+    for i in range(len(tokens)): 
+        if tokens[i][1] != 2 and total_width(current_grouping) + tex_objects[i].width < 8:
+            current_grouping.append(tex_objects[i])
+        elif tokens[i][1] != 2 and total_width(current_grouping) + tex_objects[i].width >= 8:
+            groupings.append(current_grouping)
+            current_grouping = [tex_objects[i]]
+        elif tokens[i][1] == 2:
+            # relevant if two tokens of type 2 in succession occur
+            if current_grouping != []:
+                groupings.append(current_grouping)
+            groupings.append([tex_objects[i]])
+    if current_grouping != []:
+        groupings.append(current_grouping)
+    return groupings
 
 class AnkiCard(mn.Scene):
     """
@@ -86,17 +113,25 @@ class AnkiCard(mn.Scene):
     I assume that anki correctly puts a tab character
     between fields (so front and back exist always).
 
-    TODO: Any occurence of '$$$' will break the code.
+    Any occurence of '$$$' will break the code.
     generate_tokens("token1", "$token2$$$token3$$")
-    """
+    May be resolved because of the wonderful <br> (which is later removed).
 
+    Automatic linebreaking.
+    Tokens are grouping according to their type and width of their tex object.
+    TODO: Improve the tokenizer to tokenize every word instead of transitions 
+    from/to math mode. Even tokenize math mode objects further?
+
+    TODO: Center display math vgroups using setx
+    """
     def construct(self):
         line = r"Markov chain	$\mathbb{P}(X_n \in B | \mathcal{F}_m) = \mathbb{P}(X_n \in B | X_m)$"
         if "paste" not in line:
-            line.replace("&nbsp;", '')
+            line = line.replace("&nbsp;", '')
             # Seperate heading (card front) from body (card back)
             fields = line.split('\t')
             fields = removeAllOccurrences('', fields)
+            fields.append('')
             front = fields[0]
             back = fields[1]
 
@@ -108,11 +143,11 @@ class AnkiCard(mn.Scene):
             2: display math
             """
             tokens = generate_tokens(front, back)
-
-            tex1 = mn.Tex(r'Markov chain')
-            tex2 = mn.MathTex(r'\mathbb{P}(X_n \in B | \mathcal{F}_m) = \mathbb{P}(X_n \in B | X_m)')
+            tex_objects = generate_tex_objects(tokens)
+            groupings = generate_groupings(tokens, tex_objects)
+            vgroups = [mn.VGroup(*grouping).arrange(mn.RIGHT, buff=0.4) for grouping in groupings]
             # The * operator unpacks the list
-            group = mn.VGroup(*[tex1, tex2]).arrange(
+            group = mn.VGroup(*vgroups).arrange(
                     mn.DOWN,
                     aligned_edge=mn.LEFT,
                     buff=0.4
