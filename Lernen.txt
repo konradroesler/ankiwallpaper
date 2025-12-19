@@ -1,0 +1,498 @@
+#separator:tab
+#html:true
+\(\sigma\)-Algebra, Ereignismenge, Ereignis, messbarer Raum	"<img src=""paste-cf1de45406127c40eb8eb88e9d6629273bbb5808.jpg"">"			
+Borelsche \(\sigma\)-Algebra, \(\sigma (\mathcal{C})\)	"<img src=""paste-fe5c4961b4b919c9f2a95e204dd9e7aa4dec30fa.jpg"">"			
+Wahrscheinlichkeitsmaß	"<img src=""paste-27eefb8fe247ec0fe91193c61a4e5c4c05675f65.jpg"">"			
+Wahrscheinlichkeitsraum	"<img src=""paste-0b2aff83310bbc10f05e9682b120fbd8c06edf81.jpg"">"	\(\Omega\)&nbsp;ist nichtleer		
+diskreter Wahrscheinlichkeitsraum, Zähldichte	"<img src=""paste-0e49675b8a0cce5a884f813c92d0be6ef080a7b0.jpg"">"	\(p : \Omega \rightarrow [0, 1]\)		
+Laplacescher Wahrscheinlichkeitsraum, Gleichverteilung	"<img src=""paste-d1cd5ee7bb024baa8a13ddcfa428042071e7e65e.jpg"">"			
+Ausgewählte Verteilungen	"<img src=""paste-8731d04f5dbc2a7d11d055e32d77f82e1fad73ec.jpg"">"	auf&nbsp;\(\mathcal{P}(\Omega)\)!<br><br><b>diskreter</b> Wahrscheinlichkeitsraum<br><br>a) das Dirac-Maß heißt auch <b>ausgewertete Verteilung<br></b><br>c) \(\Omega = \{0, 1, ..., n\}\), von 0<br><br>e) \(R, M \in \mathbb{N}, M &gt; R, 1 &lt;= m &lt;= M\), \(\Omega = \{0, ..., m\}, 0 &lt;= k &lt;= m\)		
+Gleichverteilung auf \(\mathbb{R}^d\)	"<img src=""paste-bcf69c63434d08e7534cb4317999643e4a488dff.jpg"">"	man nennt es Gleichverteilung <b>auf</b>&nbsp;\((\Omega, \mathcal{F})\)		
+Verteilungsfunktion auf \(\mathbb{R}\)	"<img src=""paste-7c863edcf66730c4cc446a871cf8f9aa9f2c6059.jpg"">"			
+Charakterisierung der Verteilungsfunktion auf \(\mathbb{R}\)	"<img src=""paste-6d11a3ccb09ad38d42146be64ef21e52d7ff8c18.jpg"">"	\(F\) bildet nach \(\mathbb{R}\) ab		
+Verteilungsfunktion auf \(\mathbb{R}^n\)	"<img src=""paste-deccfc05e08a1dfd3680a3553fa830b75ba255c3.jpg"">"	man nennt es Verteilungsfunktion <b>von</b> \(\mathbb{P}\)		
+\(k\)-dimensionale Randverteilung von \(\mathbb{Q}\)	"<img src=""paste-620ec979f9c3c572e367302738c82dc0f4a64909.jpg""><br><img src=""paste-baf7918468ff31f43ff2ce25aff7c9183ae405e4.jpg"">"			
+Dichte des Wahrscheinlichkeitsmaßes auf \(\mathbb{R}\)	"<img src=""paste-015e305816c0b190e3089e455dc5677ca729a687.jpg"">"	Existenz nicht gegeben<br><br>\(f\) auf \(\mathbb{R}\)		
+Dichte auf \(\mathbb{R}\)	"<img src=""paste-c5ec6c5214540b5147b2f6f87f2a747f94f00f58.jpg"">"			
+Dichte des Wahrscheinlichkeitsmaßes auf \(\mathbb{R}^n\)	"<img src=""paste-d63bd82f2c5696cbb4cc2177e23f0800e9758808.jpg""><div><br></div><div>Existenz von \(f\) nicht gegeben</div>"			
+Dichte auf \(\mathbb{R}^n\)	"<img src=""paste-2115595a7024e353e43c86395048801deb0f91e0.jpg"">"			
+\(n\)-dimensionale Normalverteilung	"<img src=""paste-0def9f6b26dce7c77389903c9a0fd9518d175d65.jpg"">"			
+bedingte Wahrscheinlichkeit von \(B\) gegeben \(A\)	"<img src=""paste-640e33a45e107c3322fdd7a0635e70bb6ea8c0ae.jpg"">"	\(\mathbb{P}(A) &gt; 0\)<br><br>\(A, B\) sind Ereignisse, also \(A, B \in \mathcal{F}\), nicht nur \(A, B \subset \Omega\)		
+Zerlegung	"<img src=""paste-b20ac1e7ef3e4b0c7ec86c38ddf53fad2c52c9b3.jpg"">"			
+(stochastisch) unabhängig	"<img src=""paste-38c4e54cb6e438488ee0cdfbd723fa52e4989ca5.jpg"">"	\(I\) ist eine allgemeine Indexmenge, \(J\) endlich		
+unabhängige Familie (von Mengen)	"<img src=""paste-568caa1489ffee36b0b791e4e04ba075ac153b12.jpg"">"	Indexmenge!		
+Produkt \(\sigma\)-Algebra, Produktraum	"<img src=""paste-c7b0dcdead4990d2141c5a0260ce345349ad49c0.jpg""><br>\((\Omega, \mathcal{F})\)&nbsp;heißt dann Produktraum"			
+unabhängige Experimente, Produktmaß	"<img src=""paste-eb2f30dea389dd31090a0d0fbccc668eb8247fa7.jpg"">"			
+Zufallsvariable&nbsp;	"<img src=""paste-752d0ddb0db50867995c84a713c5740805462f3f.jpg"">"			
+Verteilung einer ZV, diskrete ZV, reellwertige ZV, Verteilungsfunktion einer ZV, Dichte einer ZV, absolutstetige ZV	"<img src=""paste-be2045181cff2ee470501be596525d38198ab6a1.jpg"">"	"""besitzt \(\mathbb{P}_{X}\) eine dichte \(f_{X}\)"""		
+Von \(X\) erzeugte \(\sigma\)-Algebra	"<img src=""paste-bd77b1d02f074a194ea040b7ed6a99d761c9fd49.jpg"">"	\(X\) ist im Allgemeinen keine ZV!		
+unabhängige ZV	"<img src=""paste-0d729a3600af6dee147b2aa799b714c6a9998979.jpg"">"			
+unabhängige Familie von ZV	"<img src=""paste-d5c04fb534459e92421ee1f72574c2e1634c5b1a.jpg"">"	Indexmenge \(I\)!<br><br>Für jedes \(J \subset I\)!		
+terminale \(\sigma\)-Algebra, terminales Ereignis	"<img src=""paste-7aa96aa99f8c0210a8bc16eb591edc67282cdc9f.jpg"">"			
+Erwartungswert einfacher ZV	"<img src=""paste-d93c27020ce6cfdf49d663e6f3b744addbd14139.jpg"">"			
+Erwartungswert einer durch eine Folge einfacher ZV approximierter ZV	"<img src=""paste-2ad12f55ceae445d2e496f207c5dd33f58b794d6.jpg"">"			
+Erwartungswert reeller ZV	"<img src=""paste-89b11e85ee66b5ad2d101d4ca31d11cf9fb9d153.jpg"">"			
+äquivalente ZV, \(p\)-te Moment, \(\mathcal{L}^p\)- und \(L^p\)-Räume	"<img src=""paste-8dc21f227931ca033bc11541edd2efa56e407ea3.jpg"">"			
+konvergiert \(\mathbb{P}\)-fast sicher	"<img src=""paste-24879cb8a33cb91d9088eefd9d8a9480e481ce77.jpg"">"			
+Varianz, Standardabweichung	"<img src=""paste-56ac578fbd850fa4f32952f087339a17a6c1eac4.jpg"">"			
+Erwartungsvektor,&nbsp; Kovarianz, Kovarianzmatrix	"<img src=""paste-37962ed7903c86957441ad58d38fcc763c2224f1.jpg"">"			
+unkorreliert, Korrelation	"<img src=""paste-d65162b0e95a5457af55dbf2b3598d4163d5d3f3.jpg"">"			
+Faltung	"<img src=""paste-96c2ba090709bfc5cb63bc50adcf5df69a3b6c42.jpg"">"	\(X, Y\) sind unabhängig		
+faltungsstabil	"<img src=""paste-2ab40b8afcc08587cc27475e3c034d8039c38c13.jpg"">"			
+charakteristische Funktion	"<img src=""paste-22a94b5e5a8dd9991b614d66c21926e96651ef83.jpg"">"			
+konvergiert stochastisch	"<img src=""paste-e3f6f6dfa0ec7f347f87e87571da32a47cfd97f9.jpg"">"			
+konvergiert schwach, konvergiert in Verteilung	"<img src=""paste-156f21b797a745d7db06e104dde9ec05dcacffb4.jpg"">"			
+straff	"<img src=""paste-12c4c755dc635ab0d0d8c2fd9f5e36d219d7e359.jpg"">"			
+Lindeberg-Bedingung	"<img src=""paste-b11ed126bb8422c2daafdf00e79a29d608137ca5.jpg"">"			
+empirische Verteilung, empirische Verteilungsfunktion	"<img src=""paste-2384ccf57597c8e6615be789d132b278b14f0e60.jpg"">"			
+statistisches Modell	"<img src=""paste-84e46c1f55389f988da015c49461cc9bd792c8bb.jpg"">"			
+Aufbau eines Testverfahrens	"<img src=""paste-bd4e1bd28880126459fe06226893d4f128da5fbf.jpg""><br><img src=""paste-fd1d9f63f6f27038e5eff0e95fa226584d2ede96.jpg""><br><img src=""paste-8c17c90380bc18d8791d927e9fd19f28845373dd.jpg"">"			
+randomisierter Test, Ablehnungsbereich, Test zum (Irrtums-)niveau \(\alpha\), Gütefunktion, Macht	"<img src=""paste-1675f35f0be9b50b7928e8edea21fa6ef58450d8.jpg"">"			
+gleichmäßig bester Test	"<img src=""paste-42158a5bf302cd82a7fb39f5cb6cf832090e6b9e.jpg"">"			
+Likelihood-Quotient	"<img src=""paste-773cda9b82de33bfe6fafd7808c3d80f37a8aca1.jpg"">"			
+Neyman-Pearson-Test	"<img src=""paste-d47782a37cbeb71049c071b63f8f18c21eaa012d.jpg"">"			
+abgeleiteter Parameter, Schätzer, Schätzwert	"<img src=""paste-e14dc26c58f336132672f9294c81caf4cb0df2b2.jpg"">"			
+MSE, Verzerrung, erwartungstreuer Schätzer	"<img src=""paste-3787d6fb54cd8129fb88943719be44272c7689f6.jpg"">"			
+Likelihood-Funktion, Log-Likelihood-Funktion	"<img src=""paste-527d0f20278d3fcdc5df310923e51dcf37511196.jpg"">"			
+reguläres Modell, Fisher-Information	"<img src=""paste-0391c413ebbd5159f7b0284ea452b5bf18f907f6.jpg""><br><img src=""paste-381966291b743e200268bfa2df0be8da748dfaad.jpg"">"			
+<b>regulärer</b> erwartungstreuer Schätzer	"<img src=""paste-456423a0e24ff7770f7972ec85f7576271cb4598.jpg"">"			
+MLE	"<img src=""paste-3cfd230fea818adab66913d267d11a2139949863.jpg"">"			
+"<img src=""paste-da643b74a73025f39bd8bfd72100c87e5f6af39d.jpg"">"				
+"<img src=""paste-2c20ef605d19e499d65e2a5c7a0671829d795f60.jpg"">"				
+\(\sigma\)-Stetigkeit	"<img src=""paste-47552418a7adb4fadbb93a5f9d7160664a5ba313.jpg"">"			
+1. Borel-Cantelli-Lemma	"<img src=""paste-ed2ad80c8f2566b43c17c5f13f2aa4128a77667c.jpg"">"			
+Urnenmodelle	"<img src=""paste-018f2461ec14b86744f6c7481969b401632eb6a0.jpg"">"			
+Binomialapproximation, Poissonapproximation	"<img src=""paste-846bd629eb38fd51168f14421503b6307357eb70.jpg"">"			
+"<img src=""paste-839ece3e310496d62d3e43d5326c9f04fde50fc1.jpg"">"				
+Fortsetzungssatz von Caratheodori	"<img src=""paste-a3e648899d1d6222a24c701655dab5603c12b67b.jpg"">"			
+Eindeutigkeitssatz endlicher Maße	"<img src=""paste-e9e14f96199fce2d82627b5b95fc74411aca588c.jpg"">"			
+"<img src=""paste-bae1acb1510b69fc2d7b642b826b46768d3e2b39.jpg"">"				
+"<img src=""paste-57e14a2d000ddd0211fbca9be3d98a2456b82bb2.jpg"">"				
+"<img src=""paste-488e3b9e520240005ad10e8fc612ce3cb68325cc.jpg"">"				
+"<img src=""paste-d0410c329bf55cd12af69272ae03ca853e2f416c.jpg"">"				
+"<img src=""paste-f6b80500f0250990e3f1428d55b969b7b8e48837.jpg"">"				
+"<img src=""paste-3afa951211be526005e8f96e94093c04d5ce7587.jpg"">"				
+"<img src=""paste-f1153dd3fac58c1801f8cc4a403ae93c2a444317.jpg"">"				
+"<img src=""paste-70c7c5dc64421c6780fdddfd8de4b054e29e5a9d.jpg"">"				
+"<img src=""paste-53afce859ff749c6b5da23b6e096cb970bc05c04.jpg"">"				
+"<img src=""paste-7cb39349711c870bd0514c043ebc518f9b51f78d.jpg"">"				
+"<img src=""paste-a218593e190e03b698273de2a85f5fcc9d317b27.jpg"">"				
+"<img src=""paste-268dd7caf5d0bb2967dab3ec502218e09d19561d.jpg"">"				
+Multiplikationsformel/Pfadregel	"<img src=""paste-b16306173a7eadd8913404bf30b1be0061ba820a.jpg"">"			
+Satz von der totalen Wahrscheinlichkeit	"<img src=""paste-28a624d0712c06156e83baac2ab7d0e493a959b7.jpg"">"			
+Formel von Bayes	"<img src=""paste-e0026bed5506db81d95220114ba9f6b94a0fb9c9.jpg"">"			
+"<img src=""paste-7b967eaa6f6b84388ceec6678fae902c51bfea74.jpg"">"				
+2. Lemma von Borel-Cantelli	"<img src=""paste-454e23d1d1211db7861a646c96f415ad970999aa.jpg"">"			
+"<img src=""paste-5276abba9bd12ba9164e159ced4d3a8f86ab9868.jpg"">"				
+"<img src=""paste-9f655ba99297ed63e7f230efda570b1f7105175e.jpg"">"				
+"<img src=""paste-0b2f9890d2212151d59ab08b441821a8e9ec2985.jpg"">"				
+"<img src=""paste-4e5fa41dcc18be533533d11c86bb8423138f47a6.jpg"">"				
+"<img src=""paste-2e4755bbfa82d039d2a3810c5789df28642b090f.jpg"">"				
+Dichtetransformationsformel im \(\mathbb{R}^n\)	"<img src=""paste-a007b0b4df7bc83de2e9eb8790b4ad64b2032ba1.jpg"">"			
+"<img src=""paste-22fe4318c44e332b076e17167c757c9390c22a0c.jpg"">"				
+0-1-Gesetz von Kolmogorov	"<img src=""paste-5fe79e8a1298937104c2eed2bc60228ccd472af0.jpg"">"			
+"<img src=""paste-64f6f8baf957909470d9841429938d259f0846e3.jpg"">"				
+"<img src=""paste-372af1ecfb9e3b75d06bbc6d07131186af95312b.jpg"">"				
+"<img src=""paste-9a7bfcca874efcff90c196cf78c0baf7483742ea.jpg"">"				
+"<img src=""paste-c328874b112ff771c40afef6ebbd5cbe75780a1d.jpg"">"				
+Vertauschung von Erwartungswert und Grenzwert	"<img src=""paste-ce0e169e6269e92a67df3402a6e0bcc479e7cc8b.jpg"">"			
+Substitutionsformel	"<img src=""paste-956056fb52f2f22c6a584333985646ddc928a9de.jpg"">"			
+"<img src=""paste-403fadd84881ddfbb1359076b5321dd371a23133.jpg"">"				
+Ungleichung von Cauchy-Schwarz	"<img src=""paste-04eac40ee55e48665f9f3cc5d774cef93c648067.jpg"">"			
+Jensen'sche Ungleichung	"<img src=""paste-9bace295f02314da42e4dcabf88e5d1d4c394dcf.jpg"">"			
+Markov'sche Ungleichung	"<img src=""paste-9d74374f0dd83ed0d7bf9d717f4c10a33b20246a.jpg"">"			
+Tschebyschef'sche Ungleichung	"<img src=""paste-49c6cb899820ed57fbfe9418754a63ce3346f0e7.jpg"">"			
+"<img src=""paste-1056e4a88e4d06d7357ebbd078957f1519def8d9.jpg"">"				
+Lineare Regression	"<img src=""paste-37b96f2308c2a24da7dce1c01c08fc204bede0f2.jpg"">"			
+"<img src=""paste-416543d4d1bab8c9d68aaa24f902110f87cbd7f7.jpg"">"				
+"<img src=""paste-96949030e91bcd6dd7a75b66eca0a64ad35133d2.jpg"">"				
+Satz von Fubini, Satz von Tonelli-Hobson	"<img src=""paste-320b68fa7685018f005a542e6bdf4ca938ae2bd7.jpg"">"			
+"<img src=""paste-bb555bf8e5896ad629ea3c62562f3019f0ce580f.jpg"">"				
+"<img src=""paste-7328c71e87804510d183b356e2de6aaed6774bdc.jpg"">"				
+"<img src=""paste-80b956eecf49deb9c8c712dd400e3563e9acf04f.jpg"">"				
+"<img src=""paste-45ca1a85533b00e9b0c37976dea2e180906cf8b6.jpg"">"				
+Stone-Weierstrass	"<img src=""paste-48833965adaeabc361163c461f46f7bbee19a3a7.jpg"">"			
+"<img src=""paste-0a8aa3760083a4c42e08b6434e62976f91a0a9d6.jpg"">"				
+"<img src=""paste-e944951f60ea1e93d7b6417cf8f4a40eb368446f.jpg"">"				
+"<img src=""paste-b498bac4c68c7bdb5999f9671f9992954b46979d.jpg"">"				
+"<img src=""paste-7b0c5bb00306977ffab6b9313c3124e42aee1858.jpg"">"				
+Satz von Prohorov	"<img src=""paste-9b0806f2bebe6cde56f3789a85e718c3bc7f0bd5.jpg"">"			
+Stetigkeitssatz von Levy	"<img src=""paste-c0a9d7fc2ebb4aaf05d7d85d307efb63a33dfa05.jpg"">"			
+1. Schwaches Gesetz der großen Zahlen	"<img src=""paste-05eedfe4310420e2253472a175ba8f8702f932b4.jpg"">"			
+"<img src=""paste-0aba18e769187bc272ac0dcc3cf75647b5cb86b0.jpg"">"				
+2. Schwaches Gesetz der großen Zahlen	"<img src=""paste-359dbcf92f75bf739c56fa20fbc546f211225a34.jpg"">"			
+Starkes Gesetz der großen Zahlen	"<img src=""paste-75713ac4d224029b3027e503659b091c575a3800.jpg"">"			
+Zentraler Grenzwertsatz I	"<img src=""paste-5e2e07b4d625e4f8e8d982b0b78de1194e260f82.jpg""><br><img src=""paste-3de47ab336540a760053e4a6421a569ec1fe23fe.jpg"">"			
+Satz von Moivre-Laplace	"<img src=""paste-5aa937bb82d5417b328183f782c238fa198d4b5c.jpg"">"			
+Zentraler Grenzwertsatz nach Lindeberg	"<img src=""paste-3999397be4c912cbc4f6fb7a2659be2f433aca0e.jpg"">"			
+Satz von Gilvenko-Cantelli, Hauptsatz der mathematischen Statistik	"<img src=""paste-c111e71af419f9be4c4c626fae6fdafa3f677a56.jpg"">"			
+"<img src=""paste-e74e48260089d375e2553ae37b3e594082098b2f.jpg"">"				
+Neyman-Pearson-Lemma	"<img src=""paste-ceb618e3bace8240d035068a6a9e8fb0b0ae99ed.jpg"">"			
+Bias-Varianz-Zerlegung	"<img src=""paste-5e2fb7e737108d48bd8e0bdc9a0d583b67ad15a9.jpg"">"			
+Cramer-Rao-Ungleichung	"<img src=""paste-88d2222e2911d11032ca737ea1a7f98dbec19e19.jpg"">"			
+"<img src=""paste-d84317d2f654b222bf9ce91131e5fbae92032daf.jpg"">"				
+Anwendung des ZGWS	"<img src=""paste-d52c32383063a5c7882b9c8036db1e1588b90ccd.jpg"">"			
+Ausgewählte Dichten	"<img src=""paste-06ef9e7ecf28180a57b649f823c90ab229408a3d.jpg""><br><img src=""paste-6da91c8d6cb533df268fcf2116751d407252f9c7.jpg""><br><img src=""paste-a740bcb8f90e525c28fb7c653135689aaeb7c835.jpg""><br>"			
+"PÜ 4<br><br><img src=""paste-013f0b6fec542bebc53575b39e01ea2a4b6173a1.jpg"">"	a) falsch<br>b) falsch<br>c) wahr<br>d) wahr<br>			
+"PÜ 3<br><br><img src=""paste-746e69b389a6963d6b12daf64cde26effab25938.jpg"">"	a) wahr<br>b) wahr			
+"PÜ 2<br><br><img src=""paste-c781aee0eb29ef07303c51fd8b18be65269ea890.jpg"">"	a) wahr<br>b) wahr<br>c) falsch<br>d) falsch			
+"PÜ 1<br><br><img src=""paste-a975be21ea8c9ecbf56acd644d008b5f86a1768a.jpg"">"	a) falsch<br>b) falsch<br>c) falsch&nbsp;<br>d) falsch<br>e) wahr&nbsp;<br>f) wahr&nbsp;<br>g) wahr			
+"PÜ 5<br><br><img src=""paste-72efbf6b10a40dc329b9f4b90ef9668b389e26e4.jpg"">"	a) wahr<br>b) wahr&nbsp;<br>c) falsch<br>d) falsch<br>e) falsch			
+PÜ 6	"<img src=""paste-3ce7481aab092a7f6a78fb138cb048e116542253.jpg"">"			
+"PÜ 7<br><br><img src=""paste-e3b6d6a33c38f23902c2427b657a618209d66530.jpg"">"	a) wahr&nbsp;<br>b) falsch ?<br>c) wahr			
+"PÜ 7<br><br><img src=""paste-a50db7efd25ab71bb3add9ee3714b9c0c9a2bc82.jpg"">"	a) Substitutionsformel und einfach ausrechnen<br>b) same<br>c) \(\mathbb{1}_{\{2 X &gt; Y\}}\) in Integraldarstellung einwerfen			
+Raileigh-Ritzsches Variationsprinzip	$$\mathcal{E}_0 \leq \frac{\langle \Psi | \hat{H} | \Psi \rangle}{\langle \Psi | \Psi \rangle}$$			
+Convergence in $L^p$	$X_n, X \in L^p$ and $$\lVert X_n \rVert_{L^p} \to \lVert X \rVert_{L^p}$$			(Stochastik II)
+$X_n \stackrel{L^p}{\to} X \implies \dots$	$$X_n \stackrel{p}{\to} X$$			
+Orthogonal projection of $Y$ onto $K$	$K \subset L^2 (\Omega, \mathcal{F}, \mathbb{P})$ closed, $Y \in L^2 (\Omega, \mathcal{F}, \mathbb{P})$. There exists a $\mathbb{P}$-a.s. unique $\hat{Y} \in K$, s.t. <br>\begin{enumerate}[label=(\roman*)]<br>&nbsp; &nbsp; \item $\left\| Y - \hat{Y} \right\| = d(Y, K) = \inf \{\left\| Y - X\right\|_2 : X \in K\}$<br>&nbsp; &nbsp; \item $Y - \hat{Y} \perp X$ for all $X \in K$, i.e. $Y - \hat{Y} \in K^\perp$ <br>\end{enumerate}<br>$\hat{Y}$ is called the orthogonal projection of $Y$ onto $K$.			
+Conditional expectation of $X$ given $\mathcal{G}$	$\mathcal{G}$ sub-$\sigma$-field, $X \geq 0$ or $X \in L^1$. Then $Y \geq 0$ or $Y \in L^1$ with<br>\begin{enumerate}[label=(\roman*)]<br>&nbsp; &nbsp; \item $Y$ is $\mathcal{G}$-measurable<br>&nbsp; &nbsp; \item $\mathbb{E}(Y \mathbb{1}_G) = \mathbb{E}(X \mathbb{1}_G) \ \forall G \in \mathcal{G}$<br>\end{enumerate}<br>is called (a version of) the conditional expectation of $X$ given $\mathcal{G}$. \\ \\ Notation: $\mathbb{E}(X | \mathcal{G}) := Y$			
+Factorization Lemma	Let $Z$ be an $(E, \mathcal{E})$-valued r.v. and $Y$ a real valued random variable. Then $Y$ is $\sigma(Z)$-m.b. iff there is a $\mathcal{E}$-$\mathcal{B}(\mathbb{R})$-m.b. function $h$ s.t. $Y=h(Z)$.			
+Existence of $\mathbb{E}(X|\mathcal{G})$	$\mathcal{G} \subset \mathcal{F}$ sub-$\sigma$-field, $X \geq 0$ or $X \in L^1(\Omega, \mathcal{F}, \mathbb{P})$			
+$\mathbb{E}(X|Z)$	$$\mathbb{E}(X|\sigma(Z))$$			
+We can write $h$ satisfying $\mathbb{E}(X | Z) = h(Z)$ in open form, if ...	\begin{enumerate}[label=(\roman*)]<br>\item $Z$ is discrete;<br>\item $(X, Z)$ has a joint density;<br>\item $X$ is of the form $X = g(Y, Z)$ and $Y, Z$ are independent.<br>\end{enumerate}			
+$Y, Z$ independent, then: $\mathbb{E}(g(Y, Z) | Z) =&nbsp;\dots$	$$\mathbb{E}(g(Y, z)) \rvert_{z = Z}$$			
+Properties of the conditional expectance	$\mathcal{G} \subset \mathcal{F}$, $X, Y \geq 0$ or $X, Y \in L^1$. Then<br>\begin{enumerate}<br>\item $\mathbb{E}(\mathbb{E}(X | \mathcal{G})) = \mathbb{E}(X)$<br>\item $X, Y \in L^1 \implies \mathbb{E}(a X + b Y | \mathcal{G}) = a \mathbb{E}(X | \mathcal{G}) + b \mathbb{E}(X | \mathcal{G})$<br>\item $X \leq Y$ a.s. $\implies \mathbb{E}(X | \mathcal{G}) \leq \mathbb{E}(Y | \mathcal{G})$ a.s.<br>\item $Y$ $\mathcal{G}$-m.b. and either $X, Y \geq 0$ a.s. or $X, Y, XY \in L^1$, then $\mathbb{E}(XY | \mathcal{G}) = Y \cdot \mathbb{E}(X | \mathcal{G})$ a.s.<br>\item $\mathbb{E}(X | \mathcal{G}) = X$ a.s. $\iff X$ is $\mathcal{G}$-m.b.<br>\item $X$ independent of $\mathcal{G} \implies \mathbb{E}(X | \mathcal{G}) = \mathbb{E}(X)$<br>\item Tower property: $\mathcal{H} \subset \mathcal{G} \subset \mathcal{F}$, then $\mathbb{E}(\mathbb{E}(X | \mathcal{G}) | \mathcal{H}) = \mathbb{E}(X | \mathcal{H})$ a.s.<br>\end{enumerate}			
+$H \leq G$	\begin{enumerate}[label=\alph*)]<br>\item $e \in H$<br>\item $g \circ h \in H$ und $h^{-1} \in H \ \forall g, h \in H$<br>\end{enumerate}<br>oder&nbsp;<br>\begin{enumerate}[label=\alph*)]<br>\item $H \neq \varnothing$<br>\item $g \circ h^{-1} \in H \ \forall g, h \in H$<br>\end{enumerate}			
+Unterguppen derselben Gruppe sind [...]stabil	schnittstabil<br>$$H := \bigcap_{i \in I} H_i \leq G$$			
+$\langle S \rangle \leq G$ ist eindeutig	\begin{enumerate}[label=\alph*)]<br>\item $S \subset \langle S \rangle$<br>\item $H \leq G$ und $S \subset H \implies \langle S \rangle \subset H$<br>\end{enumerate}<br>$$\langle S \rangle&nbsp; = \left\{\prod_{i=1}^k s_i | k \in \mathbb{N}_0, s_i \in S \cup S^{-} \right\}$$			
+$G$ endlich erzeugt	$$G = \langle g_1, \dots, g_n \rangle$$			
+$G$ zyklisch	$$G = \langle g \rangle$$<br>$$g^n := \begin{cases} 1, &amp; n=0 \\ g \cdot g^{n-1}, &amp; n&gt;0 \\ g \cdot g^{n+1}, &amp; n&lt;0 \end{cases}$$			
+Zyklische Gruppen sind [...]	abelsch			
+Homomorphismus	$$f(g \circ h) = f(g) \cdot f(h)$$			
+Monomorphismus	injektiver Homomorphismus, $G \hookrightarrow H$			
+Epimorphismus	surjektiver Homomorphismus, $G \twoheadrightarrow H$			
+Isomorphismus	bijektiver Homomorphismus, $G \simeq H$			
+Endomorphismus	Homomorphismus von $G$ in $G$			
+Automorphismus	bijektiver Endomorphismus			
+$\varphi(e_G) =$	$$e_H$$&nbsp;			
+$\varphi(g^{-1})$	$$(\varphi(g))^{-1}$$			
+Die Verkettung von Homomorphismen ist ein	Homomorphismus			
+Das Inverse eines Isomorphismus ist ein	Isomorphismus			
+$(\text{Aut}, \circ)$ bildet eine&nbsp;	Gruppe			
+Kern	$$\text{ker}(f) := \{g \in G | f(g) = 1\} \subset G`$$			
+Bild	$$\text{im}(f) := \{f(g) \in H | g \in G\} \subset H$$			
+exakte Sequenz	$$\text{ker}(f_i) = \text{im}(f_{i-1})$$			
+$\text{ker}(f)$ und $\text{im}(f)$ sind&nbsp;	Untergruppen	Dies gilt für explizit für Gruppenhomomorphismen, im Allgemeinen jedoch nicht für z.B. Ringhomomorphismen		
+$f$ Monomorphismus gdw	$$\text{ker}(f) = {1}$$			
+$f$ Epimorphismus gdw	$$\text{im}(f) = H$$			
+$\varphi_g$ für $(G, \circ)$	$$\varphi_g: (\mathbb{Z}, +) \to (G, \circ) \ \text{mit} \ \varphi_g(1) = g$$<br>ist eindeutig. $\varphi_g(m) = g^m$.			
+$\text{im}(\varphi_g)$	$$\langle g \rangle$$			
+$\forall g \in G \exists! m \in \mathbb{N}_0$ mit&nbsp;	$$g^k = 1 \iff k \in m\mathbb{Z}$$			
+$\text{ord}(g)$	$$\text{ord}(g) := |\langle g \rangle| = \begin{cases} m &amp; \text{falls ker}(\varphi_g) = m\mathbb{Z} \neq 0 \\ 0 &amp; \text{falls ker}(\varphi_g) = 0$$ \end{cases}$$			
+Banach space	complete normed Vector space			
+sup-norm	$$\lVert f \rVert_{C^0} := \sup_{t \in [a, b]} |f(t)|$$<br>$C^0$-norm			
+bounded	$$\lVert A x \rVert \leq c \lVert x \rVert$$			
+A linear map $A: X \to Y$ between normed vector spaces is continuous if and only if it is [...]	bounded			
+linear operator	linear map			
+operator Norm	$$\lVert \cdot \rVert_{L(V, W)}$$<br>$$\lVert A \rVert_{L(V, W)} := \sup_{\lVert x \rVert_V = 1} \lVert A x \rVert_W$$			
+If $Y$ is complete, then so is [...]	$$\mathcal{L}(X, Y)$$			
+$\mathcal{L}(X, X)$ with [...] is [...] if X is [...]	the operator norm, Banach space, Banach space			
+$X$ Banach space, $A \in \mathcal{L}(X)$ with $\lVert A \rVert &lt; 1$, then	$(\mathbb{1} + A)^{-1} \in \mathcal{L}(X)$ is bounded			
+$X, Y$ Banach spaces, $A \in \mathcal{L}(X, Y)$ has bounded inverse, then	$A + B$ has bounded inverse for sufficiently small $\lVert B \rVert$			
+$C^m$-norm	$$\lVert f \rVert_{C^m} := \sum_{|\alpha| \leq m} <br>\lVert \partial^\alpha f \rVert_{C^0}$$			
+Für $E[\psi]:= \frac{\langle \psi | \hat{H} | \psi \rangle}{\langle \psi | \psi \rangle}$ gilt $\delta E = 0$ gdw	$|\psi\rangle$ ist Eigenzustand von $\hat{H}$			
+$\sigma(Z)$ for discrete $Z$	$$\sigma(Z^{-1}(z_1), \dots, Z^{-1}(z_n))$$			
+$\mathbb{E}(X | \mathcal{G})$ for a disjoint decomposition of $\Omega$ where $\mathcal{G} = \sigma(A_1, ..., A_n)$	$$\sum_{i = 1}^n \frac{\mathbb{E}(X \mathbb{1}_{A_i})}{\mathbb{P}(A_i)} \mathbb{1}_{A_i}$$			
+$\text{Var}(X|\mathcal{G})$	$$\mathbb{E}((X - \mathbb{E}(X|\mathcal{G}))^2|\mathcal{G})$$			
+(conditional) variance decomposition	$$\text{Var}(X) = \mathbb{E}(\text{Var}(X|\mathcal{G})) + \text{Var}(\mathbb{E}(X|\mathcal{G}))$$			
+Banach algebra	additional product satisfying $$\lVert x y \rVert \leq \lVert x \rVert \cdot \lVert y \rVert$$			
+$C_b^m (\Omega)$	$$f \in C^m (\Omega), \lVert f \rVert_{C^m} &lt; \infty$$			
+$f_k \stackrel{C^m}{\to} f$	The partial derivatives of $f_k$ converge uniformly to the partial derivatives of $f$			
+$C^m_b (\Omega)$ with the $C^m$-norm is a&nbsp;	Banach space			
+$f_k \stackrel{C^\infty}{\to} f$	$\partial^\alpha f_k$ converges uniformly to $\partial^\alpha f$			
+$f_k \stackrel{C^m_{\text{loc}}}{\to} f$	$$f_k \stackrel{C^j (K)}{\to} f$$&nbsp;<br>for all $j \leq m$ and $K \subset \Omega$ compact			
+topological vector space	$(X, \mathcal{T})$ with continuous addition and scalar multiplication			
+norm equivalence&nbsp;	$$\frac{1}{c} \lVert f \rVert_0 \leq \lVert f \rVert_1 \leq c \lVert f \rVert_0$$			
+semi norm	scalar linearity and triangle inequality hold			
+locally convex space	vector space with the topology induced by&nbsp;<br>$$B^{\alpha}_R (x_0). \quad x_0 \in X, R&gt;0, \alpha \in I$$<br>where $(\lVert \cdot \rVert_\alpha)_{\alpha \in I}$ is a family of seminorms where $\lVert x \rVert_{\alpha} = 0$ for all $\alpha \in I$ implies $x = 0$			
+convergence in LCS	$$\lVert x - x_n \rVert_{\alpha} \to 0$$<br>for all $\alpha \in I$			
+open in LCS	there exists a finite $I_0 \subset I$ and $\epsilon_{\alpha}$ so that&nbsp;<br>$$\{ x \in X | \lVert x - x_0 \rVert_{\alpha} &lt; \epsilon_{\alpha} \ \text{for all} \ \alpha \in I_0\}$$<br>is contained in $U$			
+every LCS is a [...]	TVS			
+monotone convergence	$$\mathbb{E}(X_n | \mathcal{G}) \uparrow \mathbb{E}(X | \mathcal{G}) \ \text{a.s.}$$<br>for $0 \leq X_n \uparrow X$ a.s.			
+Fatou's lemma&nbsp;	$$\mathbb{E}(\liminf_n X_n | \mathcal{G}) \leq \liminf_n \mathbb{E}(X_n | \mathcal{G}) \quad \text{a.s.}$$<br>for $X_n \geq 0$&nbsp;			
+dominated convergence&nbsp;	$$\mathbb{E}(X_n | \mathcal{G}) \to \mathbb{E}(X | \mathcal{G}) \quad \text{a.s.}$$<br>if $X_n \to X$ and $Z \in L^1(\Omega, \mathcal{F}, \mathbb{P}), Z \geq |X|$ exists			
+Jensen's inequality	$$u(\mathbb{E}(X | \mathcal{G})) \leq \mathbb{E}(u(X) | \mathcal{G})$$<br>for $X \in L^1$ and convex $u(X) \in L^1$			
+Dynkin-system	\begin{enumerate}<br>\item $\Omega \in \mathcal{D}$<br>\item $A, B \in \mathcal{D}$ with $A \subset B$, then $B \setminus A \in \mathcal{D}$&nbsp;<br>\item $(A_n) \subset \mathcal{D}$ with $A_n \subset A_{n+1}$, then $\bigcup_n A_n \in \mathcal{D}$&nbsp;<br>\end{enumerate}			
+monotone class theorem	$\mathcal{E} \subset \mathcal{P}(\Omega)$ closed under finite intersection, $\mathcal{D}$ Dynkin system satisfying $\mathcal{E} \subset \mathcal{D} \subset \sigma(\mathcal{E})$, then $$\mathcal{D} = \sigma(\mathcal{E})$$			
+monotone class theorem - vector version	$\mathcal{E} \subset \mathcal{P}(\Omega)$ closed under finite intersection, $\mathcal{H}$ vector space of functions from $\Omega$ to $\mathbb{R}$ such that&nbsp;<br>\begin{itemize}<br>\item $\mathbb{1}_E \in \mathcal{H} \ \text{for all} \ E \in \mathcal{E}$<br>\item if $(f_n) \subset \mathcal{H}$ with $0 \leq f_1 \leq f_2 \leq \dots$ and $f := \lim_n f_n$ is bounded, then $f \in \mathcal{H}$<br>\end{itemize}<br>Then $\mathcal{H}$ contains all $\sigma(\mathcal{E})$-measurable functions.			
+$\mathbb{E}(X \mathbb{1}_G) = \mathbb{E}(Y \mathbb{1}_G)$ for all $G \in \mathcal{G}$ is equivalent to	\begin{itemize}<br>\item $\mathcal{E}(X \mathbb{1}_G) = \mathbb{E}(Y \mathbb{1}_G)$ for all $G \in \mathcal{E}$ if $\sigma(\mathcal{E}) = \mathcal{G}$<br>\item $\mathbb{E}(X Z) = \mathbb{E}(Y Z)$ for all bdd $G$-msb rv $Z$<br>\end{itemize}			
+$\mathbb{Z}/n\mathbb{Z}$	$$\{[0],[1],\dots,[n-1]\}$$			
+$gH$	$$\{gh | h \in H\}$$	Linksnebenklasse		
+$aH \cap bH \neq \varnothing$ or equivalently $\dots$	\begin{itemize}<br>\item $aH = bH$<br>\item $a \in bH$<br>\item $b^{-1} a \in H$<br>\end{itemize}			
+$G$ ist darstellbar als [...]	disjunkte Vereinigung von Linksnebenklassen	$G$ Gruppe		
+$G/H$	$$\{gH | g \in G \}$$	Menge aller Linksnebenklassen		
+Repräsentantesystem der Linksnebenklassen	$$R \to G/H, g \mapsto g H$$&nbsp;<br>ist eine Bijektion für $R \subset G$			
+$[G : H]$	$$|G/H| = |R|$$<br>Index von $H$ in $G$			
+Satz von Lagrange	$$|G| = [G : H] \cdot |H|$$<br>für $H \leq G$			
+Für $H \leq G$ ist die Ordnung von [...] ein Teiler von [...]	$$H, |G|$$			
+kleiner Fermat'scher Satz	$\text{ord}(g)$ ist Teiler von $|G|$			
+Jede Gruppe von Primzahlordnung ist [...]	zyklisch			
+$\mathcal{H}$ independent of $\sigma(\sigma(X), \mathcal{G})$, then $\mathbb{E}(X | \sigma(\mathcal{H}, \mathcal{G}) = \dots$	$$\mathbb{E}(X | \mathcal{G}) \ \text{a.s.}$$	Sheet 1, 3 c)<br><br>To prove, use the monotone class theorem.		
+If two random variables can be expressed as measurable functions of each other, they ...	generate the same $\sigma$-algebra			
+Partitionierung von $\hat{H}$	$$\hat{H} = \hat{H}_0 + \lambda \hat{H}'_1$$			
+Potenzreihenansatz bezüglich $\lambda$	\begin{align*}<br>E_n &amp;= E_n^{(0)} + \lambda \Delta \tilde{E}^{(1)}_n + \lambda^2 \Delta \tilde{E}_n^{(2)} + \dots \\<br>|n\rangle &amp;= |n^{(0)}\rangle + \lambda |\tilde{n}^{(1)}\rangle + \lambda^2 |\tilde{n}^{(2)}\rangle + \dots<br>\end{align*}			
+$\Delta \tilde{E}_n^{(1)}$	$$\langle n^{(0)} | \hat{H}'_1 | n^{(0)} \rangle$$	nicht entartete ungestörte Zustände		
+$|\tilde{n}^{(1)}\rangle$	$$\sum_{n \neq m} \frac{\langle m^{(0)} | \hat{H}'_1 | n^{(0)} \rangle}{\hat{E}^{(0)}_m - \hat{E}^{(0)}_n} | m^{(0)} \rangle$$	Die Korrektur erster Ordnung des Zustandsvektors<br><br>nicht entartete ungestörte Zustände		
+$|n^{(1)}\rangle$	$$|n^{(0)}\rangle + \lambda |\tilde{n}^{(1)}\rangle$$	Korrigierter Zustandsvektor mit Korrektur erster Ordnung<br><br>nicht entartete ungestörte Zustände		
+$N \trianglelefteq G$	$$gN = Ng \ \forall g \in G$$	Normalteiler von G		
+Zeitpropagationsoperator	$$|\psi(t)\rangle = \hat{U}(t,t_0) |\psi(t_0)\rangle$$			
+Mikroreversibilität	$$\hat{U}(t,t_0) \hat{U}(t_0,t) = \hat{I}$$			
+$\hat{U}(t,t_0)$ für $\hat{H}$ zeitunabhängig	$$e^{-\frac{i}{\hbar} \hat{H}(t-t_0)}$$	Folgt aus Def des Zeitpropagators und der Lösung der zeitabhängigen Schrödingergleichung		
+$\hat{A}_H$	$$\hat{U}^\dag(t,t_0) \hat{A} \hat{U}(t,t_0)$$	Operator im Heisenberg Bild		
+$|\psi_H\rangle$	$$\hat{U}^\dag(t,t_0)|\psi\rangle$$	Zustandsvektor im Heisenberg Bild. Der Erwartungswert bleibt dann erhalten.		
+Heisenberg-Gleichung	$$\frac{d}{dt} \hat{A}_H = \frac{i}{\hbar}[\hat{H}_H, \hat{A}_H] + \frac{\partial \hat{A}_H}{\partial t}$$			
+regular conditional distribution $\mathbb{P}^X$	\begin{enumerate}[label=\alph*)]<br>\item $B \mapsto \mathbb{P}^X(\omega; B)$ is a probability measure on $(E, \mathcal{E})$ for each $\omega$<br>\item $\mathbb{P}^X(\cdot; B) = \mathbb{P}(X\in B|\mathcal{G})$ for each $B$<br>\end{enumerate}			
+$\mathbb{P}(X\in B| \mathcal{G})$	$$\mathbb{E}(\mathbb{1}_B (X) | \mathcal{G})$$			
+$\mathbb{E}(f(X)|\mathcal{G})(\omega)$	$$\int_E f(x) \mathbb{P}^X(\omega, dx) \ \text{for} \ \mathbb{P}\text{-a.a.} \ \omega \in \Omega$$			
+Konjugationsabbildung	$$c_g: G \to G, x \mapsto gxg^{-1}$$			
+$N \trianglelefteq G$ gdw	\begin{enumerate}[label=\alph*)]<br>\item $\text{ker}(\varphi) = N$ für ein Gruppenhomomorphismus $\varphi: G \to H$<br>\item $p: G \to G/N, g \mapsto gN$ ist ein Gruppenhomomorphismus<br>\end{enumerate}			
+A regular conditional distribution of $X$ given $\mathcal{G}$ exists if ...	$(E, \mathcal{E})$ is a Borel space			
+Borel space $(E, \mathcal{E})$	There exists a Borel set $A$ and a bijection $\psi: E \to A$ such that $\psi, \psi^{-1}$ are measurable	E-B(A)-mb, B(A)-E-mb		
+Polish space	separable, completely metrizable topological space&nbsp;			
+Kuratowski's theorem	If $E$ ist a Polish space, then $(E, \mathcal{B}(E))$ is a Borel space			
+filtration	Increasing family of $\sigma$-algebras $(\mathcal{F}_n)_{n\in N_0}$			
+$(X_n)$ is adapted to $(\mathcal{F}_n)$	$X_n$ is $\mathcal{F}_n$ measurable			
+natural filtration of $(X_n)$&nbsp;	$$\mathcal{F}_n^X := \sigma(X_k | k \leq n)$$	smallest filtration where the process is adapted to the filtration		
+predictable process	$X_n$ is $\mathcal{F}_{n-1}$-measurable			
+filtered probability space&nbsp;	$$(\Omega, \mathcal{F}, (\mathcal{F}_n)_{n\in N_0}, \mathbb{P})$$			
+$\mathcal{F}_{\infty}$	$$\sigma(\bigcup_{n \in \mathbb{N}} \mathcal{F}_n)$$			
+martingale	\begin{enumerate}[label=(\roman*)]<br>\item $(X_n)_{n\in N_0}$ is adapted to $(\mathcal{F}_n)_{n \in N_0}$<br>\item $X_n \in L^1(\mathbb{P})$<br>\item $\mathbb{E}(X_n | \mathcal{F}_{n-1}) = X_{n-1}$<br>\end{enumerate}	(X_n) is called a martingale with respect to (F_n) and P<br><br>(wording)		
+submartingale	$$\mathbb{E}(X_n | \mathcal{F}_{n-1}) \geq X_{n-1}$$			
+supermartingale	$$\mathbb{E}(X_n | \mathcal{F}_{n-1}) \leq X_{n-1}$$			
+Basic properties of a martingale	\begin{enumerate}[label=\alph*)]<br>\item $\mathbb{E}(X_n | \mathcal{F}_m) = X_m$ for $m \leq n$<br>\item $\mathbb{E}(X_n) = \mathbb{E}(X_0)$<br>\item $Y_n := \sum_{k=1}^n H_k (X_k - X_{k-1})$, $Y_0 = 0$ where $H$ is a bounded, predictable process, is a martingale<br>\end{enumerate}			
+A LCS is metrizable if and only if ...	it's topology can be defined by a countable family of seminorms			
+Frechet space	An LCS which topology can be defined via a \textbf{complete} metric			
+continuous extensions of linear operators	&nbsp;A linear operator $A: X_0 \to Y$ into a Banach space $Y$ can be uniquely extended from a dense $X_0 \subset X$ to a normed vector space $X$.			
+dual space	$$X^* := \mathcal{L}(X, \mathbb{K})$$			
+transpose	$$A^* \in \mathcal{L}(Y^*, X^*), \ (A^* \lambda)(x) := \lambda (A x)$$			
+$\mathcal{T}: X \to X^{**}$	For all vec. spaces $X$ there exists a canonical bdd. op. $\mathcal{T}$ defined by<br>$$(\mathcal{T} x)(\lambda) := \lambda(x)$$			
+reflexive	$X$ Banach, $\mathcal{T}: X \to X^{**}$ isomorphism	X does not really have to be Banach, this definition makes sense for normed vector spaces		
+Hamel basis	maximal independent subset $\{e_{\alpha}\}_{\alpha \in I}$, i.e.<br>$$x = \sum_{\alpha \in I} c_{\alpha} e_{\alpha}$$<br>with finite nonzero $c_{\alpha}$ for any $x$	this definition works for any vector space		
+Hilbert space	complete inner product space $(H, \langle,\rangle)$			
+$W^\perp$	$$\{x \in H | \langle w, x \rangle = 0 \ \forall w \in W\}$$			
+$H = W \oplus W^\perp$ iff	$H$ Hilbert space, $W \subset H$ closed			
+closest point theorem	$H$ Banach. For all convex closed sets $K \subset H$, there exists a point closest to $K$ in $H \setminus K$			
+convex	sets:<br>$$\forall x,y \in K: tx + (1-t)y \in K \ \forall t \in [0,1]$$<br>functions:<br>$$\forall x,y \in K: f(tx + (1-t)y) \leq tf(x) + (1-t)f(y) \ \forall t \in [0,1]$$			
+strictly convex (normed vector space)	$$t x+(1-t)y \in \bar{B} \setminus \partial \bar{B} \ \forall t \in (0,1)$$			
+uniformly convex (normed vector space)	$$\forall \epsilon &gt; 0 \exists \delta &gt; 0 \ \text{s.t.} \ x, y \in \bar{B} \ \text{with} \ \lVert x - y \rVert \geq \epsilon \implies \text{dist}(\frac{x+y}{2}, \partial B) \geq \delta$$			
+Every inner product space is&nbsp;	uniformly convex			
+closest point theorem 2	For uniformly convex Banach space $X$ and closed convex set $K \subset X$ and point $x \in X \setminus K$, $\exists! y \in K$ closest to $x$.			
+orthonormal set	$$\forall v \in S: \lVert v \rVert = 1 \ \text{and} \ v, w \in S \ \text{with} \ v \neq w: \langle v, w \rangle = 0$$			
+Pythagorean theorem	$$\forall x \in H: x = \sum_{j=1}^n \langle e_j, x \rangle e_j + x' \ \text{for some} \ x' \in W^\perp$$			
+$\Lambda_x$	$$\Lambda_x: H \to \mathbb{K}, \Lambda_x (y) := \langle x, y \rangle$$<br>is a bounded linear functional	3.8		
+$W \subset H$ dense iff	$$W^\perp = \{0\}$$	H is a Hilbert space		
+Riesz representation theorem	In a Hilbert space, the map $H \to H^*, x \mapsto \Lambda_x := \langle x, \cdot \rangle$ is a real-linear isomorphism.			
+adjoint	$$\langle y, A x \rangle = \langle A^* y , x\rangle$$			
+orthonormal basis	orthonormal set such that $\text{Span}(S) = \mathcal{H}$	orthonormal set of a Hilbert space&nbsp;		
+An orthonormal set is a orthonormal basis iff&nbsp;	it is maximal			
+$$x = \sum_{\alpha \in I_x} \langle e_\alpha, x \rangle e_\alpha$$	Every $x$ has this representation with a countable $I_x$ where the sum converges absolutely			
+separable (metric space)	contains a countable dense subset			
+The basis of a Hilbert space is at most countable iff	$\mathcal{H}$ is separable			
+$|\Psi_W (t)\rangle$	$$\hat{U}^\dag_0 (t, t_0) |\Psi (t)\rangle$$			
+$\hat{A}_W$	$$\hat{U}^\dag_0 (t, t_0) \hat{A} \hat{U}_0 (t, t_0)$$			
+$\hat{U}_0 (t, t_0)$	$$e^{-\frac{i}{\hbar} \hat{H}_0 (t-t_0)}$$			
+Ehrenfest Theorem	$$\frac{d}{dt} \langle \hat{A} \rangle = \frac{i}{\hbar} \langle [\hat{H}, \hat{A}] \rangle + \frac{\partial}{\partial t} \langle \hat{A} \rangle$$			
+Nach dem Ehrenfest Theorem sind $\hat{A}$ Erhaltungsgrößen, wenn	$\hat{A}$ ist nicht explizit zeitabhängig und kommutiert mit $\hat{H}$<br>$$\frac{d}{dt} \langle \hat{A} \rangle = 0$$			
+Martingales under information reduction	Any $(\mathcal{F}_n)$ martingale is a $(\mathcal{G}_n)$ martingale if $\mathcal{G}_n \subset \mathcal{F}_n$ and $(X_n)$ is adapted to $(\mathcal{G}_n)$			
+Doob decomposition	Any submartingale $(X_n)$ can be decomposed into a martingale $(M_n)$ and a predictable increasing process $(A_n)$ where<br>$$X_n = X_0 + M_n + A_n$$			
+stopping time (with respect to $(\mathcal{F}_n)$)	$$\tau: \Omega \to \bar{\mathbb{N}}_0 \ \text{where} \ \{\tau \leq n\} \in \mathcal{F}_n$$			
+min/max of stopping times	$$\tau \wedge \sigma \ \text{and} \ \tau \vee \sigma \ \text{are stopping times}$$			
+characterization of a stopping time	$\tau$ is a stopping time iff $\{\tau = n\} \in \mathcal{F}_n$			
+$X^\tau_n (\omega)$	$$X_{n\wedge\tau(\omega)}(\omega)$$<br>which is a process adapted to $(\mathcal{F}_n)$			
+$X_\tau (\omega)$	$$X_{\tau(\omega)}(\omega)$$<br>which is a random variable&nbsp;			
+Optional stopping theorem	If $X$ is a (sub-/super-)martingale, $X^\tau$ is also a (sub-/super-)martingale			
+Expectance of bounded (super-)martingales and stopping times	$$\mathbb{E}(X_\tau) = \mathbb{E}(X_0)$$&nbsp;			
+Zeitordnungsoperator	$$\hat{\mathcal{T}}[\hat{A}(t) \hat{B}(t')] := \begin{cases} \hat{A}(t) \hat{B}(t') \ &amp;\text{für} \ t &gt; t' \\ \hat{B}(t') \hat{A}(t) \ &amp;\text{für} \ t' &gt; t \end{cases}$$&nbsp;			
+Dyson-Reihe für den Zeitentwicklungsoperator	$$\hat{U}(t, t_0) = \hat{\mathcal{T}}[e^{-\frac{i}{\hbar} \int_{t_0}^t dt' \hat{H}(t')}]$$			
+innerer Automorphismus	Elemente eines Normalteilers von $\text{Aut(G)}$			
+Zentrum	$$\{h \in G | g h = h g \ \forall g \in G\}$$			
+Quotient	$$G/N$$			
+Homomorphiesatz	$$\bar{f}: G/\text{ker}(f) \stackrel{\sim}{\to} \text{im}(f)$$		"<img src=""paste-7504e62be3fb9b0363d8c0bb57f77c3729a2553f.jpg"" width=""175"">"	
+$\text{SL}_n (\mathbb{R})$	$$\{A \in \text{GL}_n (\mathbb{R}) | \det A = 1\}$$			
+$\text{SO}_n (\mathbb{R})$	$$\{A \in \text{SL}_n (\mathbb{R}) | A \cdot&nbsp; A^T = 1\}$$			
+Erster Isomorphiesatz&nbsp;	$HN \leq G$ und&nbsp;<br>\begin{itemize}<br>\item $N \trianglelefteq HN$<br>\item $H \cap N \trianglelefteq H$<br>\item $H/H \cap N \simeq HN/N$ (Erweiterungsregel)<br>\end{itemize}			
+Zweiter Isomorphiesatz	Für $N, H \trianglelefteq G$, $N \subset H$ gilt&nbsp;<br>\begin{itemize}<br>\item $N \trianglelefteq H$&nbsp;<br>\item $H/N \trianglelefteq G/N$<br>\item $G/H \simeq (G/N)/(H/N)$ (Kürzungsregel)<br>\end{itemize}			
+Erweiterungsregel	$$H/H \cap N \simeq HN/N$$			
+Kürzungsregel	$$G/H \simeq (G/N)/(H/N)$$			
+normale Hülle	$$\langle S^G\rangle \trianglelefteq G$$			
+freie Gruppe	$$F_S := \{ \ \text{Wörter mit den Variablen aus} \ S \ \}$$			
+universelle Eigenschaft freier Gruppen	Für jede Abbildung $f: S \to G$ existiert eine Erweiterung zu einem Homomorphismus<br>$$\hat{f}: F_S \to G \ \text{mit} \ \hat{f}|_S = f$$			
+Gruppe erzeugt von $x_1, \dots, x_n$ modulo den Relationen $r_1, \dots, r_m$	$S = \{x_1, \dots, x_n \}, R = \{ r_1, \dots, r_m \} \subset F := F_S$<br>$$\langle x_1, \dots, x_n | r_1 = \dots = r_m = 1\rangle := F/ \langle R^F \rangle$$			
+Präsentation	Angabe von Erzeugern $x_1, \dots, x_n$ und Relationen $r_1, \dots, r_m$			
+Präsentation einer zyklischen Gruppe	$$\langle x | x^n = 1\rangle$$			
+Wirkung von $(G, \circ)$ auf $M$	$$G \times M \to M, \ (g, m) \mapsto g \cdot m$$&nbsp;<br>mit&nbsp;<br>\begin{enumerate}[label=\alph*)]<br>\item $e \cdot m = m$<br>\item $(g_1 \circ g_2) \cdot m = g_1 \circ (g_2 \circ m))$<br>\end{enumerate}			
+Martingale condition for bounded stopping times	$$\mathbb{E}(X_\tau) = \mathbb{E}(X_0) \ \text{for all bounded} \ \tau$$			
+$\mathcal{F_\tau}$	$$\{A \in \mathcal{F} | A \cap \{\tau \leq n\} \in \mathcal{F}_n \ \forall n \in \mathbb{N}_0\}$$			
+Basic properties of $\mathcal{F}_\tau$&nbsp;	\begin{enumerate}[label=\alph*)]<br>\item $\tau = n$, then $\mathcal{F}_\tau = \mathcal{F}_n$<br>\item $\sigma \leq \tau$, then $\mathcal{F}_\sigma \subset \mathcal{F}_\tau$<br>\item $\tau$ finite and $X$ adapted, then $X_\tau$ is $\mathcal{F}_\tau$-mb.<br>\end{enumerate}			
+closed martingale	$$X_n = \mathbb{E}(Y|\mathcal{F}_n) \ \text{for all} \ n \in \mathbb{N}_0$$			
+optional sampling theorem (unbounded $\tau, \sigma$)	$X$ closed by $Y$, $\sigma \leq \tau$ stopping times. Then<br>$$\mathbb{E}(X_\tau | \mathcal{F}_\sigma) = X_\sigma \ \text{a.s. and} \ \mathbb{E}(X_\tau) = \mathbb{E}(X_\infty) = \mathbb{E}(Y)$$			
+Linksabbildungen und Gruppenhomomorphismen	Es existiert eine Bijektion zwischen<br>$$\lambda: G \times M \to M \quad \text{und} \quad f: G \to \frak{S}_M := \{\text{bijektive Abbildungen} \ M \to M\}$$			
+treu	Der Homomorphismus<br>$$G \to \frak{S}_M, g \mapsto g \cdot m$$<br>ist injektiv<br><br>$e_G$ ist das einzige Element, welches alle $m \in M$ fixiert.			
+Isomorphien zu $\frak{S}_n$&nbsp;	Jede endliche Gruppe der Ordnung $n$ ist zu einer Untergruppe von $\frak{S}_n$ isomorph	symmetrische Gruppe		
+$\text{Stab}_G (m)$	$$G_m := \{g \in G| g \cdot m = m \}$$			
+frei&nbsp;	$$\text{Stab}_G (m) = \{e_G\} \ \text{für alle} \ m \in M$$			
+Orbit von $m$	$$G \cdot m$$			
+transitiv	$$\exists m \in M: G \cdot m = M$$			
+Einfache Aussagen über Stabilisatoren und Orbits	\begin{enumerate}[label=\alph*)]<br>\item $G/\text{Stab}_G (m) \to G \cdot m, g \mapsto g \cdot m$ ist eine Bijektion<br>\item $\text{Stab}(g \cdot m) = g \text{Stab}(m) g^{-1}$ für alle $g \in G, m \in M$<br>\item $G \cdot m_1 \cap G \cdot m_2 \neq \varnothing \iff G \cdot m_1 = G \cdot m_2$<br>\end{enumerate}			
+Bahnformel	$$|M| = \sum_{m \in R} |G \cdot m| \ \text{mit} \ |G \cdot m| = [G : \text{Stab}_G (m)]$$			
+$M/G$&nbsp;	Menge der Bahnen			
+$\text{Fix}(g)$&nbsp;	$$\{m \in M | g \in \text{Stab}_G (m)\}$$<br>Fixpunkte von $g$			
+Lemma von Burnside	$$|M/G| = \frac{1}{|G|} \sum_{g\in G} |\text{Fix}(g)|$$			
+weak convergence	$$x_n \rightharpoonup x \iff \forall \Lambda \in E^*, \Lambda(x_n) \to \Lambda(x)$$			
+weak topology	locally convex topology generated by $\{\lVert x \rVert_{\Lambda} := |\Lambda(x)|\}_{\Lambda \in E^*}$			
+weak $L^p$-convergence	$f_n$ is weakly $L^p$-convergent to $f$, iff<br>$$\int_X \langle g, f_n \rangle d\mu \to \int_X \langle g, f \rangle d\mu \ \forall g \in L^2(X)$$			
+weak$^*$-topology (on $E^*$)	locally convex topology generated by the seminorms $\{\lVert \Lambda \rVert_x := |\Lambda(x)|\}_{x\in E}$			
+Banach-Alaoglu theorem (separable case)	In $E$ a separable Banach space, every bdd seq in $E^*$ has a weak$^*$-conv sub seq			
+strong convergence out of weak convergence condition	$x_n \rightharpoonup x$ and $\lVert x_n \rVert \to \lVert x\rVert$, then $x_n \to x$			
+optional sampling theorem (bounded $\tau, \sigma$)	$X$ a martingale, then<br>$$\mathbb{E}(X_\tau | \mathcal{F}_\sigma) = X_\sigma \ \text{a.s.}$$			
+$P_{i \to f}(t)$	$$\langle i | \hat{P}_f | i \rangle$$			
+$\hat{P}_f$	$$|f\rangle \langle f |$$			
+$\hat{U}^{(n)} (t, t_0)$	$$\frac{1}{n!} (-\frac{i}{\hbar})^n \int_{t_0}^t d\tau_1 \int_{t_0}^t d\tau_2 \dots \int_{t_0}^t d\tau_n \hat{\mathcal{T}}[\hat{H}(\tau_1) \hat{H}(\tau_2) \dots \hat{H}(\tau_n)]$$			
+$|\psi_W^{(n)}(t)\rangle$	$$\hat{U}_W^{(n)} (t, t_0) | \varphi_i\rangle$$			
+$P_{i \to f}(t)$ in Näherung	$$|\sum_{j = 0}^\infty \mathcal{A}_{i \to f}^{(j)}|^2$$			
+$\mathcal{A}_{i \to f}^{(n)}(t)$	$$\langle \varphi_i | \psi_W^{(n)} (t) \rangle$$<br>Übergangsamplitude			
+$X_n^*$	$$\sup_{k \leq n} |X_k|$$			
+Doob's first martingale inequality	$$\mathbb{P}(X^*_n \geq \alpha) \leq \frac{\mathbb{E}|X_n|}{\alpha}$$			
+Doob's $L^p$-martingale inequality	$$\lVert X^*_n \rVert_p \leq \frac{p}{p-1} \lVert X_n \rVert_p$$			
+Hölder's inequality	$$\mathbb{E}|XY| \leq \lVert X \rVert_p \lVert Y \rVert_q$$			
+Doob's upcrossing inequality	$X_n$ submartingale&nbsp;<br>$$\mathbb{E}(U_n) \leq \frac{1}{b-a} \mathbb{E}[(X_n - a)^+]$$			
+Martingale convergence theorem	$X$ submartingale with $\sup_n \mathbb{E}(X^+_n) &lt; \infty$, then $\lim_n X_n =: X_\infty$ exists and is finite a.s. and $X_\infty \in L^1$			
+$(f * g)(x)$	$$\int_{\mathbb{R}^n} f(x-y)g(y)dy$$			
+$\partial^\alpha(f * g) = (\partial^\alpha f) * g$ iff	$f \in C_0^\infty(\mathbb{R}^n)$ and $g \in L_\text{loc}^1(\mathbb{R}^n)$			
+Young's inequality	$$\lVert f * g \rVert_{L^p} \leq \Vert f \rVert_{L^1} \cdot \lVert g \rVert_{L^p}$$			(functional analysis)
+approximate identity	is a seq of smooth functions $\rho_j: \mathbb{R} \to [0, \infty)$ s.t. for every $\varphi \in C_0(\mathbb{R}^n)$:<br>$$\int_{\mathbb{R}^n} \varphi(x) \rho_j(x) dx \stackrel{j \to \infty}{\longrightarrow} \varphi(0)$$			
+shrinking support	$$\forall \epsilon &gt; 0 \exists N \in \mathbb{N} \forall n \geq N: \text{supp}(\rho_j) \subset B_{\epsilon} (0)$$			
+characterization of approximate identities using shrinking support	a sequence of smooth functions with shrinking support is an approximate identity iff<br>$$\int_{\mathbb{R}^n} \rho_j dm \to 1 \ \text{as} \ j \to \infty$$			
+properties of $f_j$&nbsp;	\begin{enumerate}[label=\alph*)]<br>\item $f_j$ is smooth<br>\item $\lVert f_j \rVert_{L^p} \leq C \lVert f \rVert_{L^p}$<br>\item $f_j \stackrel{L^p(\mathbb{R}^n)}{\longrightarrow} f$<br>\end{enumerate}	Where f_j = f convoluted with rho_j		
+uniform integrability of $\mathcal{X}$	$$\lim_{c \to \infty} \sup_{X \in \mathcal{X}} \mathbb{E}(\mathbb{1}_{\{|X|\geq c\}} |X|) = 0$$			
+$\epsilon$-$\delta$-characterizations of uniform integrability	$\mathcal{X}$ is $L^1$ bounded (i.e. $\sup_{X \in \mathcal{X}} \mathbb{E}|X| &lt; \infty$) and <br>$$\forall \epsilon &gt; 0\exists \delta &gt; 0 \forall A \in \mathcal{F}: \mathbb{P}(A) &lt; \delta \implies \sup_{X\in \mathcal{X}} \mathbb{E}(|X|\mathbb{1}_A) &lt; \epsilon$$<br>iff $\mathcal{X}$ u.i.			(Stochastik II)
+criterion of de la Vallee Poussin	$\exists$ convex $G: \mathbb{R}_+ \to \mathbb{R}_+$ s.t.<br>$$\sup_{X \in \mathcal{X}} \mathbb{E}(G(|X|)) &lt; \infty \ \text{and} \ \lim_{x \to \infty} \frac{G(x)}{x} = + \infty$$<br>iff $\mathcal{X}$ u.i.			
+Vitali's convergence theorem	$(X_n)_{n \in \mathbb{N}_0} \subset L^1, X_\infty \in L^1$, TFAE:<br>\begin{enumerate}[label=(\roman*)]<br>\item $X_n \stackrel{L^1}{\longrightarrow} X_\infty$<br>\item $X_n \stackrel{p}{\longrightarrow} X_\infty$ and $(X_n)$ is u.i.<br>\end{enumerate}			
+$L^1$-convergence theorem for martingales	$X$ a u.i. submartingale, then $X_\infty := \lim_n X_n$ exists a.s., $X_\infty \in L^1$, $X_n \stackrel{L^1}{\longrightarrow} X_\infty$ and $\mathbb{E}(X_\infty|\mathcal{F}_n) \geq X_n \ \forall n$			
+Baker-Campbell-Haudorff Gleichung	$$e^{\hat{A}} \cdot e^{\hat{B}} = e^{\hat{A} + \hat{B} + \frac{1}{2} [\hat{A}, \hat{B}] + \mathcal{O}^3 + \dots}$$			
+Trotter Gleichung	$$e^{\hat{A} + \hat{B}} = \lim_n (e^\frac{\hat{A}}{n} e^\frac{\hat{B}}{n})^n$$			
+$k$-Zykel	$$\sigma(i_v) = \begin{cases} i_{v+1}, \ &amp; v&lt;k \\ i_1, \ &amp; v=k \end{cases}$$<br>$$\sigma(i) = i \ \forall i \not\in \{i_1, \dots, i_k\}$$<br>$$\sigma = (i_1 \ i_2 \ \dots \ i_k)$$			
+Träger&nbsp;	$$\text{Supp}(\sigma) := \{i_1, \dots, i_k\}$$			
+einfache Rechenregeln für Zyklen	\begin{enumerate}[label=\alph*)]<br>\item $(i_1 \ i_2 \ \dots \ i_k) = (i_1 \ i_2) \circ (i_2 \ i_3) \circ \dots \circ (i_{k-1} \ i_k)$<br>\item $(i_1 \ i_2 \ \dots \ i_k)^{-1} = (i_k \ i_{k-1} \ \dots \ i_2 \ i_1)$<br>\item $\tau \circ (i_1 \ i_2 \ \dots \ i_k) \circ \tau^{-1} = (\tau(i_1) \ \tau(i_2) \ \dots \ \tau(i_k))$<br>\item $\sigma, \tau \in \frak{S}_n$ disjunkt, dann $\sigma \circ \tau = \tau \circ \sigma$<br>\end{enumerate}			
+Konjugation eines Zykelprodukts	$$j_{\nu \mu} = \tau(i_{\nu \mu})$$			
+Satz über die Zykelzerlegung einer Permutation	Jede Permutation lässt sich bis auf Reihenfolge eindeutig in disjunkte nichttriviale Zykel zerlegen			
+Zykeltyp (von $\sigma$)	Tupel der Längen der Zykel der Zerlegung. Konventionell aufsteigend mit eingefügten Einsen.			
+Konjugationsklasse	$$x^G = \{g x g^{-1} | g \in G \}$$			
+Zentralisator	$$Z_G (x) = \{g \in G | g x g^{-1} = x \}$$			
+Konjugationsklassen von $\frak{S}_n$ und Partitionen	entsprechen sich bijektiv			
+Erzeuger von $\frak{A}_n$	3-Zyklen			
+einfache Gruppe	$$N \trianglelefteq G \implies N = {1} \ \text{oder} \ N = G$$			
+Die alternierende Gruppe ist für $n \geq 5$	einfach			
+alle 3-Zyklen sind&nbsp;	zueinander konjugiert			
+Kolmogorov's 0-1-law	$$\forall A \in \mathcal{T} := \bigcap_{n \in \mathbb{N}} \mathcal{T}_n: \mathbb{P}(A) \in \{0,1\}$$			
+backwards martingale	\begin{enumerate}[label=(\roman*)]<br>\item $X_{-n}$ is $\mathcal{F}_{-n}$-mb<br>\item $X_{-n} \in L^1$<br>\item $\mathbb{E}(X_{-n} | \mathcal{F}_{-n-1}) = X_{-n-1}$<br>\end{enumerate}			
+Backwards martingale convergence theorem	Any backwards martingale $(X_{-n})_{n\in \mathbb{N}_0}$ converges in $L^1$ to $X_{-\infty} \in L^1$			
+Kolmogorov's strong law of large numbers	$(X_n)_{n \in \mathbb{N}}$ iid and $\mathbb{E}|X_n| &lt; \infty$, then<br>$$\lim_{n \to \infty} \frac{S_n}{n} = \mathbb{E}(X_0)$$			
+Dichotomy for martingales with bounded increments	$\mathbb{E}(\sup_n |\Delta X_n|) &lt; \infty$, then<br>$$\mathbb{P}(\{\lim_n X_n \ \text{exists and is finite} \} \dot\cup \{\limsup_n X_n = +\infty, \liminf_n X_n = -\infty\}) = 1$$			
+$\mathbb{Q} \ll \mathbb{P}$	$\mathbb{Q}, \mathbb{P}$ on $(\Omega, \mathcal{F})$. $\mathbb{Q}$ is absolutely continuous with respect to $\mathbb{P}$, iff&nbsp;<br>$$\mathbb{P}(A) = 0 \implies \mathbb{Q}(A) = 0$$			
+$\epsilon$-$\delta$-characterization of absolute continuity	$$\forall \epsilon &gt; 0 \exists \delta &gt; 0: \mathbb{P}(A) &lt; \delta \implies \mathbb{Q}(A) &lt; \epsilon$$			
+Radon-Nikodym theorem	If $\mathbb{Q} \ll \mathbb{P}$, then a unique Radon-Nikodym density exists.			
+density of $\mathbb{Q}$ with respect to $\mathbb{P}$	$\mathbb{P}$-integrable non-negative $X =: \frac{d\mathbb{Q}}{d\mathbb{P}}$ s.t. $\mathbb{Q}(A) = \mathbb{E}^{\mathbb{P}}(X \mathbb{1}_A)$			
+Baye's formula	$$\mathbb{E}^{\mathbb{Q}}(Z|\mathcal{G}) = \frac{\mathbb{E}^{\mathbb{P}}(Z X | \mathcal{G})}{\mathbb{E}^{\mathbb{P}}(X | \mathcal{G})}$$<br>where $\mathbb{Q} \ll \mathbb{P}$ and $X$ is the Radon-Nikodym density			
+$p$-Gruppe	$$|G| = p^n \ \text{for} \ n \in \mathbb{N}$$			
+$p$-Untergruppe	Untergruppe, die eine $p$-Gruppe ist			
+$p$-Sylowgruppe (von $G$)	maximale $p$-Untergruppe			
+erster Satz von Sylow	$$p^k | |G| \implies \exists H \leq G: |H| = p^k$$			
+zweiter Satz von Sylow	\begin{enumerate}[label=\alph*)]<br>\item jede $p$-Untergruppe ist in einer $p$-Sylowgruppe enthalten<br>\item je zwei $p$-Sylowgruppen sind zueinander konjugiert<br>\end{enumerate}			
+Sylowgruppen als Normalteiler	Es sind äquivalent:<br>\begin{enumerate}[label=\alph*)]<br>\item $N$ ist Normalteiler<br>\item $N$ ist die einzige $p$-Sylowgruppe<br>\item $N = \{g\in G|\exists k \in \mathbb{N}_0: \text{ord}(g) = p^k\}$<br>\end{enumerate}			
+dritter Satz von Sylow	\begin{enumerate}[label=\alph*)]<br>\item $n_p (G) \equiv 1 \mod p$<br>\item $n_p (G) | |G|$<br>\end{enumerate}			
+Präsentation einer Gruppe mit Ordnung $pq$	$$\langle x, y | x^p = y^q = 1, yxy^{-1} = x^k \rangle \ \text{für ein} \ k \ \text{mit} \ k | (k^q -1)$$			
+Ring	$(R, +, \cdot)$, sodass&nbsp;<br>\begin{enumerate}[label=\alph*)]<br>\item $(R, +)$ ist eine abelsche Gruppe<br>\item $(R, \cdot)$ ist ein Monoid<br>\item Distributivgesetz gilt<br>\end{enumerate}			
+Einheitengruppe	$$R^\times = \{r \in R| \exists s \in R: rs = sr = 1\}$$			
+Schiefkörper	Ring mit $R^\times = R \setminus \{0\}$			
+Körper	kommutativer Schiefkörper			
+Nullteiler	$a$ heißt Nullteiler, falls $\exists b \in R \setminus \{0\}: a b=0 \vee b a = 0$			
+Integritätsring	kommutativer Ring ohne Nullteiler&nbsp;			
+Teilring	Teilmenge eines Rings, die selbst ein Ring ist			
+$R[x]$	$$\{(a_k)_{k \in \mathbb{N}_0} \in R^{\mathbb{N}_0} | \exists n \in \mathbb{N}_0 \forall k &gt; n: a_k = 0\}$$			
+Ringhomomorphismus	\begin{enumerate}[label=\alph*)]<br>\item $\phi(a + b) = \phi(a) + \phi(b)$<br>\item $\phi(a \cdot b) = \phi(a) \cdot \phi(b)$ und $\phi(1) = 1$<br>\end{enumerate}			
+universelle Eigenschaft von Polynomringen	$\phi: R \to S$ Homomorphismus von kommutativen Ringen und $s_1, \dots, s_n$ eine Auswahl aus $S$, dann existiert genau ein Ringhomomorphismus $\Phi: R[x_1, \dots, x_n] \to S$ mit&nbsp;<br>\begin{enumerate}[label=\alph*)]<br>\item $\Phi|_R = \phi$<br>\item $\Phi(x_i) = s_i$<br>\end{enumerate}			
+Linksideal	additive Untergruppe sodass $r \cdot a \in I \ \forall r\in R\forall a\in I$			
+Rechtsideal	additive Unterguppe, sodass $a \cdot r \in I \forall r \in R \forall a \in I$			
+Ideal	Rechtsideal und Linksideal			
+Nullideal	$$I = \{0\}$$			
+Einsideal	$$I = R$$			
+Charakterisierung von Idealen	\begin{enumerate}[label=\alph*)]<br>\item Kern eines Ringhomomorphismus<br>\item $p: R \to R/I, a \mapsto a + I$ ist ein Ringhomomorphismus<br>\end{enumerate}			
+Charakterisierung von Körpern als kommutative Ringe	$R$ besitzt kein nichttriviales echtes Ideal			
+Homomorphiesatz (für Ideale)	Jeder Ringhomomorphismus $\phi: R \to S$ induziert einen Isomorphismus<br>$$\bar{\phi}:&nbsp;R/I&nbsp;\stackrel{\sim}{\longrightarrow}&nbsp;\text{im}(\phi) \ \text{mit} \&nbsp;&nbsp;I := \text{ker}(\phi)$$			
+absolutely continuous (functions)	$$\forall \epsilon &gt; 0\forall \delta &gt; 0\forall a_1 \leq b_1 \leq \dots \leq a_n \leq b_n: \sum_{i=1}^n (b_n - a_n) &lt; \delta \implies \sum_{i=1}^n (F(b_n) - F(a_n)) &lt; \epsilon$$			
+fundamental theorem of calculus for the Lebesgue integral	For any $f$ on a compact $[a, b]$, TFAE:<br>\begin{enumerate}[label=(\arabic*)]<br>\item $f$ is absolutely continuous<br>\item $f$ is differentiable a.e., $f' \in L^1([a, b])$ and $f(x) = f(a) + \int_a^x f'(t) dt$<br>\end{enumerate}			
+Lebesgue point	$$\lim_{r \to 0^+} \frac{1}{m(B_r (x))} \int_{B_r (x)} |f(y) - f(x)| dy = 0$$			
+Lebesgue differentiation theorem	For any $f \in L^1_{\text{loc}}(\mathbb{R}^n)$, almost every point in $\mathbb{R}^n$ is a Lebesgue point of $f$.			
+Chebyshev's inequality	$$\mu(\{x \in X | g(x) &gt; t\}) \leq \frac{\lVert g \rVert_{L^1}}{t}$$			(functional analysis)
+maximal function	$$M f(x) := \sup_{r&gt;0} \frac{1}{m(B_r (x))} \int_{B_r (x)} |f| dm$$			
+weakly integrable	$$\exists C &gt; 0: \mu(\{x\in X||f(x)|&gt;t\}) \leq \frac{C}{t}$$			
+Hardy-Littlewood theorem	There exists a constant $C&gt;0$ dependent only on the dimension $n$ s.t. $\lVert M f \rVert_{L^1_{\text{weak}}} \leq C \lVert f \rVert_{L^1}$			
+Vitali's covering lemma	$$\bigcup_{i=1}^N B_{r_i} (x_i) \subset \bigcup_{j \in I} B_{3r_j} (x_j)$$			
+Radon-Nidkodym density	$f =: \frac{d\lambda}{d\mu}$ s.t.<br>$$\lambda(A) = \int_A f d\mu$$			(functional analysis)
+absolutely continuous (measures)	$$\mu(A) = 0 \implies \lambda(A) = 0$$			
+total variation	$$TV(f) := \sup \{ \sum_{i=1}^N |f(x_i) - f(x_{i-1})| | N &gt; 0, a &lt; x_1 &lt; \dots &lt; x_N = b\}$$			
+uniformly integrable&nbsp;	$$\forall \epsilon &gt; 0 \exists \delta &gt; 0 \forall f \in \mathcal{F} \forall mb. A \subset X: \mu(A) &lt; \delta \implies \int_A |f| d\mu &lt; \epsilon$$			functional analysis
+Vitali's convergence theorem	For a Lebesgue-measurable subset $X \subset \mathbb{R}$ with finite measure,&nbsp; if $(f_n)_{n \in \mathbb{N}}$ is a uniformly integrable collection of functions on $X$ such that $f_n \to f$ pointwise almost everywhere, then $f \in L^1 (X)$, and $\int_X f_n dm \to \int_X f dm$.			functional analysis
+fourier series of $f$	$$f(x) = \sum_{k \in \mathbb{Z}^n} e^{-2\pi i k \cdot x} \hat{f}_k (x)$$			
+$\mathbb{T}^n$	$$\mathbb{R}^n/\mathbb{Z}^n$$			
+$\ell^p(\mathbb{Z}^n)$	$$L^p(\mathbb{Z}^n, \nu)$$<br>and $\nu$ is the counting measure on $\mathbb{Z}^n$			
+Markov chain	$$\mathbb{P}(X_n \in B | \mathcal{F}_m) = \mathbb{P}(X_n \in B | X_m)$$			
+homogeneous Markov chain	$$\bar{\mathbb{P}}_l = \bar{\mathbb{P}}_k$$			
+initial distribution	$$\bar{\mu}(B) = \mathbb{P}(X_0 \in B)$$			
+probabilistic structure of a homogeneous Markov chain	$$\mathbb{E}(g(X_0, \dots, X_n)) = \int_E \dots \int_E g(x_0, \dots, x_n) \bar{P}(x_{n-1}; dx_n) \dots \bar{P}(x_0, dx_1) \bar{\mu}(dx_0)$$			
+$(p_{i j})$	$$:= \bar{P}(i, \{j\}) = \mathbb{P}(X_n = j | X_{n-1} = i)$$			
+starting condition lemma for Markov chains	A $(\mu, P)$-Markov chain conditioned on ${X_m = i}$ generates a $(\delta_i, P)$-Markov chain $(X_{n+m})_{n\in \mathbb{N}_0}$			
+simple transition probability formulas	\begin{enumerate}[label=(\roman*)]<br>\item $\mathbb{P}(X_n = j) = (\mu P^n)_j$<br>\item $\mathbb{P}(X_{m+n} = j | X_m = i) = p_{i j}^{(n)}$<br>\end{enumerate}			
+Chapman-Kolmogorov equation	$$\mathbb{P}(X_{m+n} = z | X_0 = x) = \sum_{y \in E} \mathbb{P}(X_m = y | X_0 = x) \mathbb{P}(X_n = z | X_0 = y)$$			
+$i \to j$	$$\mathbb{P}(X_n = j \ \text{for some} \ n \geq 0 | X_0 = i) &gt; 0$$			
+$i \leftrightarrow j$	$i$ communicates with $j$, $i \to j$ and $j \to i$&nbsp;			
+closed communicating class	$$i \in C \wedge i \to j \implies j \in C$$			
+absorbing state	$\{i\}$ is a closed communicating class			
+irreducible Markov chain	the state space is a closed communicating class			
+$\mathbb{P}_i (B)$&nbsp;	$$\mathbb{P}(B|X_0 = i)$$			
+$H^A$	$$\inf \{n\geq 0| X_n \in A\}$$			
+$h_i^A$	$$\mathbb{P}_i (H^A &lt; \infty)$$			
+$\mathscr{S}(\mathbb{Z}^n)$	The space of rapidly decreasing coefficients. $f \in \mathscr{S}(\mathbb{Z}^n)$, if&nbsp;<br>$$\forall \ \text{polynomial} \ P: \mathbb{R}^n \to \mathbb{R}: \mathbb{Z}^n \to V, k \mapsto P(k) f(k) \ \text{is bounded}$$&nbsp;			
+$\hat{f}_k$	$$\int_{\mathbb{T}^n} e^{-2\pi i k \cdot x} f(x) dx$$			
+$\mathscr{F} f$	$$(\mathscr{F} f)_k = \hat{f}_k$$			
+$\mathscr{F}^* g$	$$:= \check{g}(x) := \sum_{k \in \mathbb{Z}^n}&nbsp; e^{2\pi i k \cdot x} g_k$$			
+Parseval's identity	For every $f, g \in C^{\infty}(\mathbb{T}^n)$,<br>$$\langle \hat{f}, \hat{g} \rangle_{\ell^2} = \langle f, g \rangle_{L^2}$$			
+$\mathscr{F}$ and $\mathscr{F}^*$	$\mathscr{F}: L^2(\mathbb{T}^n) \to \ell^2(\mathbb{Z}^n)$ and $\mathscr{F}^*: \ell^2(\mathbb{Z}^n) \to L^2(\mathbb{T}^n)$ are unitary maps and inverse to each other			
+$\widehat{\partial^{\alpha} f}_k$	$$(2\pi i k)^{\alpha} \hat{f}_k$$			
+Fourier transform	$$(\mathscr{F} f)(p) := \hat{f}(p) := \int_{\mathbb{R}^n} e^{-2\pi i p \cdot x} f(x) dx$$			
+Fourier inverse transform	$$(\mathscr{F}^* g)(x) := \check{g}(x) := \int_{\mathbb{R}^n} e^{2\pi i p \cdot x} g(p) dp$$			
+Schwartz space	space of smooth and rapidly decreasing functions. $f \in \mathscr{S}(\mathbb{R}^n)$, if<br>$$\forall \alpha, \beta: x^{\alpha} \partial^{\beta} f \ \text{is bounded}$$			
+Plancherel's theorem	For every $f, g \in \mathscr{S}(\mathbb{R}^n)$, $\langle f, g \rangle_{L^2} = \langle \hat{f}, \hat{g} \rangle_{L^2}$.			
+Klein-Gordong-Gleichung	$$(\square + (\frac{m c}{\hbar})^2) \Psi(\vec{r}, t) = 0$$			
+Dirac'scher Hamiltonoperator	$$\hat{\mathbb{H}}_D = c \vec{\mathbb{\alpha}} \cdot \vec{p} + \mathbb{\beta} m c^2$$			
+zeitabhängige Dirac-Gleichung (für das freie Teilchen)	$$i \hbar \frac{\partial}{\partial t} \Psi = \hat{\mathbb{H}}_D \Psi$$			
+recurrent	$$\mathbb{P}_i (X_n = i \ \text{for infinitely many} \ n) = 1$$			
+transcient	$$\mathbb{P}_i (X_n = i \ \text{for infinitely many} \ n) = 0$$			
+$T_i^{(k)}$	$$\inf \{n &gt; T_i^{(k-1)} | X_n = i\}$$			
+Strong Markov property	Conditional on $\tau &lt; \infty$ and $X_{\tau} = i$, the process $(X_{\tau + n})_{n \in \mathbb{N}}$ is a $(\delta_i, P)$-Markov chain.			
+$\lVert f \rVert_{W^{m, p}}$	$$\sum_{|\alpha|\leq m} \lVert \partial^{\alpha} f \rVert_{L^p}$$			
+$\lVert f \rVert_{H^m}$	$$\lVert (1 + |p|^2)^{m/2} \hat{f} \rVert_{L^2}$$<br>and for fully periodic functions:<br>$$\lVert (1 + |k|^2)^{m/2} \hat{f} \rVert_{\ell^2}$$			
+$H^m (\mathbb{R}^n), H^m(\mathbb{T}^n)$	$$\{f \in L^2(\mathbb{R}^n) | \lVert f \rVert_{H^m} &lt; \infty\}$$<br>$$\{f \in L^2(\mathbb{T}^n) | \lVert f \rVert_{H^m} &lt; \infty\}$$			
+$\langle f, g \rangle_{H^m}$	$$\int_{\mathbb{R}^n} (1+|p|^2)^m \langle \hat{f}(p), \hat{g}(p) \rangle dp$$<br>and for fully periodic functions:<br>$$\sum_{k \in \mathbb{Z}^n} (1+|k|^2)^m \langle \hat{f}(k), \hat{g}(k) \rangle$$			
+continous inclusion $H^s(\mathbb{R}^n) \hookrightarrow C^m(\mathbb{R}^n)$	$H^s(\mathbb{R}^n) \to C^m(\mathbb{R}^n), f \mapsto \tilde{f}$ is a continuous bounded operator. This exists if&nbsp;<br>$$\lVert f \rVert_{C^m} \leq c \lVert f \rVert_{H^s}$$<br>for some constant $c$&nbsp;			
+Sobolov embedding theorem, case $p = 2$	Assume $n \in \mathbb{N}$ and $s &gt; 0$ satisfy $2s &gt; n$. Then there exists a continuous inclusion<br>$$H^{s+m}(\mathbb{R}^n) \hookrightarrow C^m(\mathbb{R}^n) \quad \text{and} \quad H^{s+m}(\mathbb{T}^n) \hookrightarrow C^m(\mathbb{T})$$<br>for every integer $m \geq 0$.			
+compact operator	it maps every compact set in $X$ onto a precompact set in $Y$<br><br>or equivalently<br><br>for every bounded sequence in $X$, $Ax_{n_k}$ has a convergent subsequence in $Y$			
+Rellich-Kondrachov for $p=2$	For every $t&gt;s\geq 0$, the natural inclusion $H^t (\mathbb{R}^n) \hookrightarrow H^s (\mathbb{R}^n)$ is compact.			
+Primideal	$$a b \in I \implies a \in I \vee b \in I$$			
+maximales Ideal	$$\nexists J: I \subsetneq J \subsetneq R$$			
+Charakterisierung der Struktur von $R/I$ durch Ideale	\begin{enumerate}[label=\alph*)]<br>\item $R/I$ Integritätsring $\iff$ $I$ Primideal<br>\item $R/I$ Körper $\iff$ $I$ maximales Ideal<br>\end{enumerate}			
+multiplikative Teilmenge	$$1 \in S \wedge ab \in S \forall a, b \in S$$<br>$S \subset R$&nbsp;			
+Lokalisierung von $R$ nach $S$	$$S^{-1} R := (R \times S)/\sim$$<br>wobei $\sim$ definiert ist durch<br>$$(r_1, s_1) \sim (r_2, s_2) :\iff \exists s \in S: s \cdot (r_1 s_2 - r_2 s_1) = 0$$<br>Elemente sind definiert durch&nbsp;<br>$$\frac{r}{s} := [(r, s) \ \text{modulo} \ \sim]$$<br>Addition und Multiplikation machen $S^{-1} R$ zu einem Ring			
+Quotientenkörper	$R$ Integritätsring, dann ist $R\setminus \{0\}$ ein Untermonoid.<br>$$\text{Quot}(R) := S^{-1} R \quad \text{für} \quad S = R\setminus \{0\}$$			
+Aussagen über die Lokalisierung von $R$ in $S$	\begin{enumerate}[label=\alph*)]<br>\item Die Lokalisierungsabbildung $f: R \to S^{-1} R, a \mapsto \frac{a}{1}$ ist ein Homomorphismus von Ringen mit $f(S) \subset (S^{-1} R)^{\times}$<br>\item Jeder Homomorphismus $g: R \to T$ in einen Ring $T$ mit $g(R) \subset T^{\times}$ faktorisiert eindeutig über die Lokalisierungsabbildung<br>\end{enumerate}			
+$b$ ist Teiler von $a$	$$\exists c \in R: a = b c$$			
+$b$ ist assoziiert zu $a$&nbsp;	$$\exists c \in R^{\times}: a = bc$$			
+convergent sequences of compact operators	converge to a compact operator			
+$p \in R$ prim	$$p = a b \implies p | a \vee p | b$$			
+$p \in R$ irreduzibel&nbsp;	$$p = a b \implies a \in R^{\times} \vee b \in R^{\times}$$			
+faktorieller Ring	$$\forall a \in R \setminus (R^{\times} \cup \{0\}) \exists p_1, \dots, p_n \ \text{prim}: a = p_1 \dots p_n$$			
+$\text{ggT}(a_1, \dots, a_n)$	$$:= \prod_{p \in \mathscr{P}} p^{m_p} \quad \text{mit} \quad m_p := \min \{m_p (a_i) | 1 \leq i \leq n\}$$			
+$\text{kgV}(a_1, ..., a_n)$	$$:= \prod_{p \in \mathscr{P}} p^{n_p} \quad \text{mit} \quad n_p := \max \{m_p (a_i) | 1 \leq i \leq n \}$$			
+primitives Polynom	$$\text{ggT}(a_0, \dots, a_n) = 1$$			
+Inhalt des Polynoms	$c(f) \in K^{\times} \setminus R^{\times}$, sodass $f(x) = c(f) \cdot f^*(x)$			
