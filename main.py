@@ -1,78 +1,7 @@
+import utils
+import textokens
 import manim as mn
 
-class MultipleTabsError(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-class DoesNotEncapsulateError(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-class NonMathTexTypeError(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-def endsWith(literal,text):
-    if len(text) < len(literal):
-        return False
-    elif text[-len(literal):] == literal:
-        return True
-    else:
-        return False
-
-def startsWith(literal, text):
-    if len(text) < len(literal):
-        return False
-    elif text[0:len(literal)] == literal:
-        return True
-    else:
-        return False
-
-def encapsulates(literal, text):
-    if startsWith(literal, text) and endsWith(literal, text):
-        return True
-    else:
-        return False
-
-def truncate(literal, text):
-    if encapsulates(literal, text):
-        return text[len(literal), -len(literal)]
-    else:
-        raise DoesNotEncapsulateError("Can't trucate what's not there.")
-
-def removeAllOccurrences(literal, mylist):
-    for entry in mylist:
-        if entry == literal:
-            mylist.remove(literal)
-    return mylist
-
-def generate_tokens_from_non_display_math(text):
-    tokens = []
-    starts_with_math = True if text[0] == '$' else False
-    partition = text.split('$')
-    partition = removeAllOccurrences('', partition)
-    partition = [element.replace('<br>', '') for element in partition]
-    for i in range(len(partition)):
-        if starts_with_math and i % 2 == 0 or not starts_with_math and i % 2 == 1:
-            tokens.append((partition[i], 1))
-        else:
-            tokens.append((partition[i], 0))
-    return tokens
-
-def generate_tokens(front, back):
-    tokens = []
-    # generate tokens from front
-    tokens = tokens + generate_tokens_from_non_display_math(front)
-    # generate tokens from back
-    starts_with_display_math = True if back[0:2] == "$$" else False
-    display_math_partition = back.split("$$")
-    display_math_partition = removeAllOccurrences('', display_math_partition)
-    for i in range(len(display_math_partition)):
-        if starts_with_display_math and i % 2 == 0 or not starts_with_display_math and i % 2 == 1:
-            tokens.append((display_math_partition[i], 2))
-        else:
-            tokens = tokens + generate_tokens_from_non_display_math(display_math_partition[i])
-    return tokens
 
 def generate_tex_objects(tokens):
     tex_objects = []
@@ -132,7 +61,7 @@ def compute_run_time(vgroup):
             elif type(obj) == mn.MathTex:
                 run_time += len(obj.submobjects) * 0.1
             else: 
-                raise NonMathTexTypeError("This object should be of type Tex or MathTex.")
+                raise utils.NonMathTexTypeError("This object should be of type Tex or MathTex.")
     return run_time
 
 class AnkiCard(mn.Scene):
@@ -154,7 +83,7 @@ class AnkiCard(mn.Scene):
     TODO: Improve the tokenizer to tokenize every word instead of transitions 
     from/to math mode. Even tokenize math mode objects further?
 
-    TODO: Center display math vgroups using setx
+    Center display math vgroups using set_x
     """
     def construct(self):
         line = r"Markov chain	$$\mathbb{P}(X_n \in B | \mathcal{F}_m) = \mathbb{P}(X_n \in B | X_m)$$"
@@ -163,7 +92,7 @@ class AnkiCard(mn.Scene):
             line = line.replace("&nbsp;", '')
             # Seperate heading (card front) from body (card back)
             fields = line.split('\t')
-            fields = removeAllOccurrences('', fields)
+            fields = utils.removeAllOccurrences('', fields)
             fields.append('')
             front = fields[0]
             back = fields[1]
@@ -175,7 +104,7 @@ class AnkiCard(mn.Scene):
             1: inline math
             2: display math
             """
-            tokens = generate_tokens(front, back)
+            tokens = textokens.generate_tokens(front, back)
             tex_objects = generate_tex_objects(tokens)
             """
             A grouping is a tuple containing a list of tex objects and a 
