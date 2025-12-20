@@ -11,10 +11,18 @@ and the second entry contains an integer, where
 """
 
 def generate_tokens_from_non_display_math(text):
+    """
+    Turns a string into tokens of type 0 and 1. This assumes that
+    no random '$' characters are contained in the text or inline math,
+    so splitting at '$' generates the correct partition.
+    """
     tokens = []
     starts_with_math = True if text[0] == '$' else False
     partition = text.split('$')
     partition = utils.removeAllOccurrences('', partition)
+    """
+    These are inserted after display math by anki and I don't think they are useful.
+    """
     partition = [element.replace('<br>', '') for element in partition]
     for i in range(len(partition)):
         if starts_with_math and i % 2 == 0 or not starts_with_math and i % 2 == 1:
@@ -31,6 +39,11 @@ def generate_tokens(front, back):
     tokens = tokens + generate_tokens_from_non_display_math(front)
     """
     Generate tokens from back.
+
+    First the display math is split from the non display math.
+    This assumes that no random '$$' substring is contained inside
+    any math or non math substring, so splitting at '$$' generates
+    the correct partition.
     """
     starts_with_display_math = True if back[0:2] == "$$" else False
     display_math_partition = back.split("$$")
@@ -39,5 +52,8 @@ def generate_tokens(front, back):
         if starts_with_display_math and i % 2 == 0 or not starts_with_display_math and i % 2 == 1:
             tokens.append((display_math_partition[i], 2))
         else:
+            """
+            Non display math is tokenized further since it still contains text and inline math.
+            """
             tokens = tokens + generate_tokens_from_non_display_math(display_math_partition[i])
     return tokens

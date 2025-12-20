@@ -4,22 +4,29 @@ import manim as mn
 
 
 def generate_tex_objects(tokens):
+    """
+    Takes tokenlist and return list of tex objects.
+    """
     tex_objects = []
     for token in tokens:
         if token[1] == 0:
             tex_objects.append(mn.Tex(token[0]))
-        elif token[1] == 1:
-            tex_objects.append(mn.MathTex(token[0]))
-        elif token[1] == 2:
-            # TODO: handle display math to be actual display math
+        elif token[1] == 1 or token[1] == 2:
             tex_objects.append(mn.MathTex(token[0]))
     return tex_objects
 
 def total_width(tex_objects):
+    """
+    Sums the width of a list of tex objects.
+    """
     return sum([obj.width for obj in tex_objects])
 
 def generate_groupings(tokens, tex_objects):
     """
+    Takes a list of tokens and a list of tex objects and returns a list of groupings.
+    A grouping is a tuple containing a list of tex objects and a boolean flagging
+    display math. Display math groupings by design consist of just one tex object.
+
     In gerenal we check for empty list before adding the current grouping to groupings.
     """
     groupings = []
@@ -50,6 +57,11 @@ def generate_groupings(tokens, tex_objects):
     return groupings
 
 def compute_run_time(vgroup):
+    """
+    Takes a vgroup object and returns the write animations runtime.
+
+    The vgroup is assumed to contain vgroups which contain Tex and MathTex objects.
+    """
     run_time = 0
     for subvgroup in vgroup:
         for obj in subvgroup:
@@ -115,7 +127,6 @@ class AnkiCard(mn.Scene):
             Each groupings content is then turned into a vgroup. So here we have tuples
             containing a vgroup and again a boolean to flag display math.
             """
-            print(f"LOG: {groupings}")
             vgroup_tuples = [(mn.VGroup(*grouping[0]).arrange(mn.RIGHT, buff=0.4), grouping[1]) for grouping in groupings]
             """
             Actual list of vgroups.
