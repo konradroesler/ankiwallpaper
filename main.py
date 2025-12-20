@@ -44,14 +44,14 @@ def removeAllOccurrences(literal, mylist):
     for entry in mylist:
         if entry == literal:
             mylist.remove(literal)
-    return mylist 
+    return mylist
 
 def generate_tokens_from_non_display_math(text):
     tokens = []
     starts_with_math = True if text[0] == '$' else False
     partition = text.split('$')
     partition = removeAllOccurrences('', partition)
-    partition = removeAllOccurrences('<br>', partition)
+    partition = [element.replace('<br>', '') for element in partition]
     for i in range(len(partition)):
         if starts_with_math and i % 2 == 0 or not starts_with_math and i % 2 == 1:
             tokens.append((partition[i], 1))
@@ -90,16 +90,28 @@ def total_width(tex_objects):
     return sum([obj.width for obj in tex_objects])
 
 def generate_groupings(tokens, tex_objects):
+    """
+    In gerenal we check for empty list before adding the current grouping to groupings.
+    """
     groupings = []
     current_grouping = []
     for i in range(len(tokens)): 
         if tokens[i][1] != 2 and total_width(current_grouping) + tex_objects[i].width < 8:
             current_grouping.append(tex_objects[i])
         elif tokens[i][1] != 2 and total_width(current_grouping) + tex_objects[i].width >= 8:
-            groupings.append((current_grouping, False))
+            """
+            The case where the current grouping is empty but tex_objects[i] has width greater than 8
+            needs to be better dealt with. Right now I just explicitly prevent the current grouping to
+            be added to groupings by checking for an empty list and then add tex_objects[i] to the 
+            current grouping. I think this is a ugly.
+            """
+            if current_grouping != []:
+                groupings.append((current_grouping, False))
             current_grouping = [tex_objects[i]]
         elif tokens[i][1] == 2:
-            # relevant if two tokens of type 2 occur in succession
+            """ 
+            If two tokens of type 2 (display math) occur in succession.
+            """
             if current_grouping != []:
                 groupings.append((current_grouping, False))
                 current_grouping = []
