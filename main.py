@@ -92,15 +92,16 @@ def generate_groupings(tokens, tex_objects):
         if tokens[i][1] != 2 and total_width(current_grouping) + tex_objects[i].width < 8:
             current_grouping.append(tex_objects[i])
         elif tokens[i][1] != 2 and total_width(current_grouping) + tex_objects[i].width >= 8:
-            groupings.append(current_grouping)
+            groupings.append((current_grouping, False))
             current_grouping = [tex_objects[i]]
         elif tokens[i][1] == 2:
-            # relevant if two tokens of type 2 in succession occur
+            # relevant if two tokens of type 2 occur in succession
             if current_grouping != []:
-                groupings.append(current_grouping)
-            groupings.append([tex_objects[i]])
+                groupings.append((current_grouping, False))
+                current_grouping = []
+            groupings.append(([tex_objects[i]], True))
     if current_grouping != []:
-        groupings.append(current_grouping)
+        groupings.append((current_grouping, False))
     return groupings
 
 class AnkiCard(mn.Scene):
@@ -125,7 +126,8 @@ class AnkiCard(mn.Scene):
     TODO: Center display math vgroups using setx
     """
     def construct(self):
-        line = r"Markov chain	$\mathbb{P}(X_n \in B | \mathcal{F}_m) = \mathbb{P}(X_n \in B | X_m)$"
+        line = r"Markov chain	$$\mathbb{P}(X_n \in B | \mathcal{F}_m) = \mathbb{P}(X_n \in B | X_m)$$"
+        line = r"Lokalisierung von $R$ nach $S$	$$S^{-1} R := (R \times S)/\sim$$<br>wobei $\sim$ definiert ist durch<br>$$(r_1, s_1) \sim (r_2, s_2) :\iff \exists s \in S: s \cdot (r_1 s_2 - r_2 s_1) = 0$$<br>Elemente sind definiert durch&nbsp;<br>$$\frac{r}{s} := [(r, s) \ \text{modulo} \ \sim]$$<br>Addition und Multiplikation machen $S^{-1} R$ zu einem Ring		"
         if "paste" not in line:
             line = line.replace("&nbsp;", '')
             # Seperate heading (card front) from body (card back)
@@ -144,12 +146,31 @@ class AnkiCard(mn.Scene):
             """
             tokens = generate_tokens(front, back)
             tex_objects = generate_tex_objects(tokens)
+            """
+            A grouping is a tuple containing a list of tex objects and a 
+            boolean used to flag display math, which later needs to be centered.
+            """
             groupings = generate_groupings(tokens, tex_objects)
-            vgroups = [mn.VGroup(*grouping).arrange(mn.RIGHT, buff=0.4) for grouping in groupings]
+            """
+            Each groupings content is then turned into a vgroup. So here we have tuples
+            containing a vgroup and again a boolean to flag display math.
+            """
+            print(f"LOG: {groupings}")
+            vgroup_tuples = [(mn.VGroup(*grouping[0]).arrange(mn.RIGHT, buff=0.4), grouping[1]) for grouping in groupings]
+            """
+            Actual list of vgroups.
+            """
+            vgroups = [group[0] for group in vgroup_tuples]
             # The * operator unpacks the list
             group = mn.VGroup(*vgroups).arrange(
                     mn.DOWN,
                     aligned_edge=mn.LEFT,
                     buff=0.4
             )
-            self.play(mn.Write(group))
+            """
+            Move display math to the center of the screen.
+            """
+            for i in range(len(vgroups)):
+                if vgroup_tuples[i][1]:
+                    group[i].set_x(0)
+            self.play(mn.Write(group), run_time=5)
