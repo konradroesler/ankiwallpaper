@@ -1,8 +1,9 @@
 import utils
 import textokens
 import manim as mn
+from typing import Tuple
 
-def generate_tex_objects(tokens):
+def generate_tex_objects(tokens: list) -> list[mn.MathTex]:
     """
     Takes tokenlist and return list of tex objects.
     """
@@ -14,13 +15,13 @@ def generate_tex_objects(tokens):
             tex_objects.append(mn.MathTex(token[0]))
     return tex_objects
 
-def total_width(tex_objects):
+def total_width(tex_objects: list[mn.MathTex]) -> float:
     """
     Sums the width of a list of tex objects.
     """
     return sum([obj.width for obj in tex_objects])
 
-def generate_groupings(tokens, tex_objects):
+def generate_groupings(tokens: list[Tuple[str, int]], tex_objects: list[mn.MathTex]) -> list[Tuple[list[mn.MathTex], bool]]:
     """
     Takes a list of tokens and a list of tex objects and returns a list of groupings.
     A grouping is a tuple containing a list of tex objects and a boolean flagging
@@ -55,7 +56,7 @@ def generate_groupings(tokens, tex_objects):
         groupings.append((current_grouping, False))
     return groupings
 
-def compute_run_time(vgroup):
+def compute_run_time(vgroup: mn.VGroup) -> float:
     """
     Takes a vgroup object and returns the write animations runtime.
 
@@ -75,7 +76,7 @@ def compute_run_time(vgroup):
                 raise utils.NonMathTexTypeError("This object should be of type Tex or MathTex.")
     return run_time
 
-def generate_group(line) -> mn.VGroup:
+def generate_group(line: str) -> mn.VGroup:
     """
     &nbsp; might acutally need to be addressed when 
     improving tokenization, but I don't know.

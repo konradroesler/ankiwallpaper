@@ -1,4 +1,5 @@
 import utils
+from typing import Tuple
 
 """
 The general idea of the tokization process is to input a string
@@ -12,7 +13,7 @@ The only difference between tokens of type 1 and tokens of type 2 is
 that tokens of type 2 get centered when generating the scene.
 """
 
-def generate_tokens_from_non_display_math(text):
+def generate_tokens_from_non_display_math(text: str) -> list[Tuple[str, int]]:
     """
     Turns a string into tokens of type 0 and 1. This assumes that
     no random '$' characters are contained in the text or inline math,
@@ -33,7 +34,7 @@ def generate_tokens_from_non_display_math(text):
             tokens.append((partition[i], 0))
     return tokens
 
-def generate_tokens(front, back):
+def generate_tokens(front: str, back: str) -> list[Tuple[str, int]]:
     tokens = []
     """
     Generate tokens from front.

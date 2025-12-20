@@ -13,7 +13,7 @@ class NonMathTexTypeError(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-def ends_with(literal,text):
+def ends_with(literal: str,text: str) -> bool:
     """
     Wether text ends with literal.
     """
@@ -24,7 +24,7 @@ def ends_with(literal,text):
     else:
         return False
 
-def starts_with(literal, text):
+def starts_with(literal: str, text: str) -> bool:
     """
     Wether text starts with literal. 
     """
@@ -35,7 +35,7 @@ def starts_with(literal, text):
     else:
         return False
 
-def encapsulates(literal, text):
+def encapsulates(literal: str, text: str) -> bool:
     """
     Wether text starts and ends with literal.
     """
@@ -44,17 +44,17 @@ def encapsulates(literal, text):
     else:
         return False
 
-def truncate(literal, text):
+def truncate(literal: str, text: str) -> str:
     """
     Returns modified text where literal is removed
     from the front and back.
     """
     if encapsulates(literal, text):
-        return text[len(literal), -len(literal)]
+        return text[len(literal): -len(literal)]
     else:
         raise DoesNotEncapsulateError("Can't trucate what's not there.")
 
-def removeAllOccurrences(literal, mylist):
+def removeAllOccurrences(literal: str, mylist: list[str]) -> list[str]:
     """
     Remove all (exact) occurences of literal in mylist.
     """
@@ -67,7 +67,7 @@ def removeAllOccurrences(literal, mylist):
 Honestly some of these aren't used.
 """
 
-def occurrs_in(mylist, literal):
+def occurrs_in(mylist: list[str], literal: str) -> bool:
     """
     Wether the string literal is contained 
     in any string entry of mylist.
@@ -77,7 +77,7 @@ def occurrs_in(mylist, literal):
             return True
     return False
 
-def is_any_empty(mylist):
+def is_any_empty(mylist: list[str]) -> bool:
     """
     Wether any entry of mylist is an emptry string.
     """
@@ -87,7 +87,7 @@ def is_any_empty(mylist):
     else:
         return False
 
-def remove_empty(mylist):
+def remove_empty(mylist: list[str]) -> list[str]:
     """
     Return new list where all empty string 
     entries in mylist are removed.
@@ -98,7 +98,11 @@ def remove_empty(mylist):
             new_list.append(item)
     return new_list
 
-def get_lines():
+def get_lines() -> list[str]:
+    """
+    Return parsed list of line strings of 
+    my anki collection in plain text.
+    """
     with open("Lernen.txt") as anki_file: 
         anki_text = anki_file.read()
         lines = anki_text.split('\n') 
@@ -107,4 +111,8 @@ def get_lines():
             if "paste" not in line:
                 new_lines.append(line)
         lines = remove_empty(new_lines)
+    """
+    Leaving out the first two might
+    be totally case specific.
+    """
     return lines[2:]
