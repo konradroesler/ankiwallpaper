@@ -8,6 +8,10 @@ class DoesNotEncapsulateError(Exception):
     def __init__(self, message):
         super().__init__(message)
 
+class NonMathTexTypeError(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 def endsWith(literal,text):
     if len(text) < len(literal):
         return False
@@ -104,6 +108,21 @@ def generate_groupings(tokens, tex_objects):
         groupings.append((current_grouping, False))
     return groupings
 
+def compute_run_time(vgroup):
+    run_time = 0
+    for subvgroup in vgroup:
+        for obj in subvgroup:
+            if type(obj) == mn.Tex:
+                """
+                The Tex.tex_string attribute is a manim community addon.
+                """
+                run_time += len(obj.tex_string) * 0.05
+            elif type(obj) == mn.MathTex:
+                run_time += len(obj.submobjects) * 0.1
+            else: 
+                raise NonMathTexTypeError("This object should be of type Tex or MathTex.")
+    return run_time
+
 class AnkiCard(mn.Scene):
     """
     Convert a plaintext string containing the content of 
@@ -173,4 +192,6 @@ class AnkiCard(mn.Scene):
             for i in range(len(vgroups)):
                 if vgroup_tuples[i][1]:
                     group[i].set_x(0)
-            self.play(mn.Write(group), run_time=5)
+
+            run_time = compute_run_time(group)
+            self.play(mn.Write(group), run_time=run_time)
