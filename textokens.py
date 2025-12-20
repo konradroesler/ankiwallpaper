@@ -8,6 +8,8 @@ and the second entry contains an integer, where
 0: actual text, later a Tex object;
 1: inline math, later a MathTex object;
 2: display math, later a MathTex object aligned to x = 0.
+The only difference between tokens of type 1 and tokens of type 2 is 
+that tokens of type 2 get centered when generating the scene.
 """
 
 def generate_tokens_from_non_display_math(text):

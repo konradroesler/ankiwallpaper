@@ -76,7 +76,57 @@ def compute_run_time(vgroup):
                 raise utils.NonMathTexTypeError("This object should be of type Tex or MathTex.")
     return run_time
 
-class AnkiCard(mn.Scene):
+def generate_group(line) -> mn.VGroup:
+    """
+    &nbsp; might acutally need to be addressed when 
+    improving tokenization, but I don't know.
+    """
+    line = line.replace("&nbsp;", '')
+    # Seperate heading (card front) from body (card back)
+    fields = line.split('\t')
+    fields = utils.removeAllOccurrences('', fields)
+    fields.append('')
+    front = fields[0]
+    back = fields[1]
+
+    """
+    A token is a tuple containing a string ready to be turned
+    into Tex and an integer between 0 and 2 determining if its 
+    0: text
+    1: inline math
+    2: display math
+    """
+    tokens = textokens.generate_tokens(front, back)
+    tex_objects = generate_tex_objects(tokens)
+    """
+    A grouping is a tuple containing a list of tex objects and a 
+    boolean used to flag display math, which later needs to be centered.
+    """
+    groupings = generate_groupings(tokens, tex_objects)
+    """
+    Each groupings content is then turned into a vgroup. So here we have tuples
+    containing a vgroup and again a boolean to flag display math.
+    """
+    vgroup_tuples = [(mn.VGroup(*grouping[0]).arrange(mn.RIGHT, buff=0.4), grouping[1]) for grouping in groupings]
+    """
+    Actual list of vgroups.
+    """
+    vgroups = [group[0] for group in vgroup_tuples]
+    # The * operator unpacks the list
+    group = mn.VGroup(*vgroups).arrange(
+            mn.DOWN,
+            aligned_edge=mn.LEFT,
+            buff=0.4
+    )
+    """
+    Move display math to the center of the screen.
+    """
+    for i in range(len(vgroups)):
+        if vgroup_tuples[i][1]:
+            group[i].set_x(0)
+    return group
+
+class WriteAnimation(mn.Scene):
     """
     Convert a plaintext string containing the content of 
     an anki card into an animated wallpaper format (mp4).
@@ -98,52 +148,22 @@ class AnkiCard(mn.Scene):
     Center display math vgroups using set_x
     """
     def construct(self):
-        line = r"Markov chain	$$\mathbb{P}(X_n \in B | \mathcal{F}_m) = \mathbb{P}(X_n \in B | X_m)$$"
         line = r"Lokalisierung von $R$ nach $S$	$$S^{-1} R := (R \times S)/\sim$$<br>wobei $\sim$ definiert ist durch<br>$$(r_1, s_1) \sim (r_2, s_2) :\iff \exists s \in S: s \cdot (r_1 s_2 - r_2 s_1) = 0$$<br>Elemente sind definiert durch&nbsp;<br>$$\frac{r}{s} := [(r, s) \ \text{modulo} \ \sim]$$<br>Addition und Multiplikation machen $S^{-1} R$ zu einem Ring		"
         if "paste" not in line:
-            line = line.replace("&nbsp;", '')
-            # Seperate heading (card front) from body (card back)
-            fields = line.split('\t')
-            fields = utils.removeAllOccurrences('', fields)
-            fields.append('')
-            front = fields[0]
-            back = fields[1]
-
-            """
-            A token is a tuple containing a string ready to be turned
-            into Tex and an integer between 0 and 2 determining if its 
-            0: text
-            1: inline math
-            2: display math
-            """
-            tokens = textokens.generate_tokens(front, back)
-            tex_objects = generate_tex_objects(tokens)
-            """
-            A grouping is a tuple containing a list of tex objects and a 
-            boolean used to flag display math, which later needs to be centered.
-            """
-            groupings = generate_groupings(tokens, tex_objects)
-            """
-            Each groupings content is then turned into a vgroup. So here we have tuples
-            containing a vgroup and again a boolean to flag display math.
-            """
-            vgroup_tuples = [(mn.VGroup(*grouping[0]).arrange(mn.RIGHT, buff=0.4), grouping[1]) for grouping in groupings]
-            """
-            Actual list of vgroups.
-            """
-            vgroups = [group[0] for group in vgroup_tuples]
-            # The * operator unpacks the list
-            group = mn.VGroup(*vgroups).arrange(
-                    mn.DOWN,
-                    aligned_edge=mn.LEFT,
-                    buff=0.4
-            )
-            """
-            Move display math to the center of the screen.
-            """
-            for i in range(len(vgroups)):
-                if vgroup_tuples[i][1]:
-                    group[i].set_x(0)
-
+            group = generate_group(line)
             run_time = compute_run_time(group)
             self.play(mn.Write(group), run_time=run_time)
+
+class Image(mn.Scene):
+    def construct(self):
+        line = r"Lokalisierung von $R$ nach $S$	$$S^{-1} R := (R \times S)/\sim$$<br>wobei $\sim$ definiert ist durch<br>$$(r_1, s_1) \sim (r_2, s_2) :\iff \exists s \in S: s \cdot (r_1 s_2 - r_2 s_1) = 0$$<br>Elemente sind definiert durch&nbsp;<br>$$\frac{r}{s} := [(r, s) \ \text{modulo} \ \sim]$$<br>Addition und Multiplikation machen $S^{-1} R$ zu einem Ring		"
+        if "paste" not in line:
+            group = generate_group(line)
+            self.add(group)
+
+class FadeoutAnimation(mn.Scene):
+    def construct(self):
+        line = r"Lokalisierung von $R$ nach $S$	$$S^{-1} R := (R \times S)/\sim$$<br>wobei $\sim$ definiert ist durch<br>$$(r_1, s_1) \sim (r_2, s_2) :\iff \exists s \in S: s \cdot (r_1 s_2 - r_2 s_1) = 0$$<br>Elemente sind definiert durch&nbsp;<br>$$\frac{r}{s} := [(r, s) \ \text{modulo} \ \sim]$$<br>Addition und Multiplikation machen $S^{-1} R$ zu einem Ring		"
+        if "paste" not in line:
+            group = generate_group(line)
+            self.play(mn.FadeOut(group), run_time=5)
