@@ -62,3 +62,38 @@ def removeAllOccurrences(literal, mylist):
         if entry == literal:
             mylist.remove(literal)
     return mylist
+
+"""
+Honestly some of these aren't used.
+"""
+
+def occurrs_in(mylist, literal):
+    """
+    Wether the string literal is contained 
+    in any string entry of mylist.
+    """
+    for item in mylist:
+        if literal in item:
+            return True
+    return False
+
+def is_any_empty(mylist):
+    """
+    Wether any entry of mylist is an emptry string.
+    """
+    for item in mylist:
+        if item == '':
+            return True
+    else:
+        return False
+
+def remove_empty(mylist):
+    """
+    Return new list where all empty string 
+    entries in mylist are removed.
+    """
+    new_list = []
+    for item in mylist:
+        if item != '':
+            new_list.append(item)
+    return new_list
