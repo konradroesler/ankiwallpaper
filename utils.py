@@ -97,3 +97,14 @@ def remove_empty(mylist):
         if item != '':
             new_list.append(item)
     return new_list
+
+def get_lines():
+    with open("Lernen.txt") as anki_file: 
+        anki_text = anki_file.read()
+        lines = anki_text.split('\n') 
+        new_lines = []
+        for line in lines:
+            if "paste" not in line:
+                new_lines.append(line)
+        lines = remove_empty(new_lines)
+    return lines[2:]

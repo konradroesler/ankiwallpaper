@@ -1,3 +1,4 @@
+import utils
 import subprocess
 
 def if_wpaperd_supported_video():
@@ -54,16 +55,18 @@ def if_wpaperd_supported_video():
     ])
 
 if __name__ == "__main__":
-    subprocess.run([
-        "manim", 
-        "--quality", "h",
-        "--resolution", "1920,1080",
-        "--config_file", "manim.cfg",
-        "--media_dir", "./out",
-        "scenes.py", "Image"
-    ])
-    """
-    subprocess.run([
-        "mv", "-f", f"./out/images/scenes/image{i}.png", "./image_collection"
-    ])
-    """
+    lines = utils.get_lines()
+    for i in range(len(lines)):
+        print(lines[i])
+        subprocess.run([
+            "manim", 
+            "--quality", "h",
+            "--resolution", "1920,1080",
+            "--config_file", "manim.cfg",
+            "--media_dir", "./out",
+            "--output_file", f"image{i}",
+            "images.py", f"Image{i}"
+        ])
+        subprocess.run([
+            "mv", "-f", f"./out/images/scenes/image{i}.png", "./image_collection"
+        ])

@@ -1,11 +1,10 @@
 import manim as mn
+import groups
 
-class AnkiCard(mn.Scene):
+
+class Image0(mn.Scene):
     def construct(self):
-        tex_objects = [mn.Tex("abc") for _ in range(12)]
-        group = mn.VGroup(*tex_objects).arrange(
-            mn.DOWN,
-            buff=0.4,
-            aligned_edge=mn.LEFT
-        )
+        line = r"Raileigh-Ritzsches Variationsprinzip	$$\mathcal{E}_0 \leq \frac{\langle \Psi | \hat{H} | \Psi \rangle}{\langle \Psi | \Psi \rangle}$$			"
+        group = groups.generate_group(line)
         self.add(group)
+
