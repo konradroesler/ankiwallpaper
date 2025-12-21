@@ -1,5 +1,5 @@
-import groups
 import manim as mn
+import ankiwallpaper as aw
 
 class WriteAnimation(mn.Scene):
     """
@@ -24,18 +24,18 @@ class WriteAnimation(mn.Scene):
     """
     def construct(self):
         line = "abc"
-        group = groups.generate_group(line)
-        run_time = groups.compute_run_time(group)
+        group = aw.generate_group(line)
+        run_time = aw.compute_run_time(group)
         self.play(mn.Write(group), run_time=run_time)
 
 class Image(mn.Scene):
     def construct(self):
         line = "abc"
-        group = groups.generate_group(line)
+        group = aw.generate_group(line)
         self.add(group)
 
 class FadeoutAnimation(mn.Scene):
     def construct(self):
         line = "abc" 
-        group = groups.generate_group(line)
+        group = aw.generate_group(line)
         self.play(mn.FadeOut(group), run_time=5)

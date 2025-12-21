@@ -68,5 +68,5 @@ if __name__ == "__main__":
             "images.py", f"Image{i}"
         ])
         subprocess.run([
-            "mv", "-f", f"./out/images/scenes/image{i}.png", "./image_collection"
+            "mv", "-f", f"./out/images/images/image{i}.png", "./image_collection"
         ])
