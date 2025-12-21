@@ -16,6 +16,17 @@ Improved tokenization respects latex environments such as enumerate.
 
 """
 
+class VGroupToken:
+    def __init__(self, content: mn.VGroup, is_display_math: bool):
+        self.content = content
+        self.is_display_math = is_display_math
+
+    def __str__(self):
+        return f"VGroupToken({self.content.__str__()}, {self.is_display_math})"
+
+    def __repl__(self):
+        return f"VGroupToken({self.content.__str__()}, {self.is_display_math})"
+
 class TexToken:
     def __init__(self, content: mn.MathTex, content_type: int):
         self.content = content
@@ -31,6 +42,7 @@ class TexToken:
             return f"Token({self.content.submobjects}, {self.content_type})"
         else:
             raise utils.NonMathTexTypeError("This object should be of type Tex or MathTex.")
+
     def __repr__(self):
         if type(self.content) == mn.Tex:
             """

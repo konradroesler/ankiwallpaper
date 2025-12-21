@@ -2,20 +2,19 @@ import manim as mn
 import src.utils as utils
 import src.aw_tokens as aw_tokens 
 import src.constants as constants
-from src.aw_tokens import StringToken, TexToken
-from typing import Tuple
+from src.aw_tokens import StringToken, TexToken, VGroupToken
 
-def generate_textokens(strtokens: list[StringToken]) -> list[TexToken]:
+def generate_tex_tokens(str_tokens: list[StringToken]) -> list[TexToken]:
     """
     Takes tokenlist and return list of tex objects.
     """
-    textokens = []
-    for token in strtokens:
+    tex_tokens = []
+    for token in str_tokens:
         if token.content_type == 0:
-            textokens.append(TexToken(mn.Tex(token.content), token.content_type))
+            tex_tokens.append(TexToken(mn.Tex(token.content), token.content_type))
         elif token.content_type == 1 or token.content_type == 2:
-            textokens.append(TexToken(mn.MathTex(token.content), token.content_type))
-    return textokens 
+            tex_tokens.append(TexToken(mn.MathTex(token.content), token.content_type))
+    return tex_tokens 
 
 def compute_total_width(tex_objects: list[mn.MathTex]) -> float:
     """
@@ -23,7 +22,19 @@ def compute_total_width(tex_objects: list[mn.MathTex]) -> float:
     """
     return sum([obj.width for obj in tex_objects])
 
-def generate_groupings(textokens: list[TexToken]) -> list[Tuple[list[mn.MathTex], bool]]:
+class Grouping:
+    def __init__(self, content: list[mn.MathTex], is_display_math: bool, is_indented: bool):
+        self.content = content
+        self.is_display_math = is_display_math
+        self.is_indented = is_indented
+
+    def __str__(self):
+        return f"Grouping({self.content.__str__()}, {self.is_display_math}, {self.is_indented})"
+
+    def __repl__(self):
+        return f"Grouping({self.content.__str__()}, {self.is_display_math}, {self.is_indented})"
+
+def generate_groupings(textokens: list[TexToken]) -> list[Grouping]:
     """
     Takes a list of tokens and a list of tex objects and returns a list of groupings.
     A grouping is a tuple containing a list of tex objects and a boolean flagging
@@ -44,18 +55,18 @@ def generate_groupings(textokens: list[TexToken]) -> list[Tuple[list[mn.MathTex]
             current grouping. I think this is a ugly.
             """
             if current_grouping != []:
-                groupings.append((current_grouping, False))
+                groupings.append(Grouping(current_grouping, is_display_math=False, is_indented=False))
             current_grouping = [token.content]
         elif token.content_type == 2:
             """ 
             If two tokens of type 2 (display math) occur in succession.
             """
             if current_grouping != []:
-                groupings.append((current_grouping, False))
+                groupings.append(Grouping(current_grouping, is_display_math=False, is_indented=False))
                 current_grouping = []
-            groupings.append(([token.content], True))
+            groupings.append(Grouping([token.content], is_display_math=True, is_indented=False))
     if current_grouping != []:
-        groupings.append((current_grouping, False))
+        groupings.append(Grouping(current_grouping, is_display_math=False, is_indented=False))
     return groupings
 
 def compute_run_time(vgroup: mn.VGroup) -> float:
@@ -82,25 +93,25 @@ def generate_vgroup(line: str) -> mn.VGroup:
     """
     Generate tokens from the anki cards string representation.
     """
-    strtokens = aw_tokens.generate_tokens(line)
+    str_tokens = aw_tokens.generate_tokens(line)
     """
     Generate tex_objects
     """
-    textokens = generate_textokens(strtokens)
+    tex_tokens = generate_tex_tokens(str_tokens)
     """
     A grouping is a tuple containing a list of tex objects and a 
     boolean used to flag display math, which later needs to be centered.
     """
-    groupings = generate_groupings(textokens)
+    groupings = generate_groupings(tex_tokens)
     """
     Each groupings content is then turned into a vgroup. So here we have tuples
     containing a vgroup and again a boolean to flag display math.
     """
-    vgroup_tuples = [(mn.VGroup(*grouping[0]).arrange(mn.RIGHT, buff=0.4), grouping[1]) for grouping in groupings]
+    vgroup_tokens = [VGroupToken(mn.VGroup(*grouping.content).arrange(mn.RIGHT, buff=0.4), grouping.is_display_math) for grouping in groupings]
     """
     Actual list of vgroups.
     """
-    vgroups = [group[0] for group in vgroup_tuples]
+    vgroups = [token.content for token in vgroup_tokens]
     # The * operator unpacks the list
     group = mn.VGroup(*vgroups).arrange(
             mn.DOWN,
@@ -111,6 +122,6 @@ def generate_vgroup(line: str) -> mn.VGroup:
     Move display math to the center of the screen.
     """
     for i in range(len(vgroups)):
-        if vgroup_tuples[i][1]:
+        if vgroup_tokens[i].is_display_math:
             group[i].set_x(0)
     return group
