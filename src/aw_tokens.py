@@ -86,33 +86,16 @@ def generate_tokens_from_non_display_math(text: str) -> list[StringToken]:
             tokens.append(StringToken(partition[i], 0))
     return tokens
 
-def generate_tokens(line: str) -> list[StringToken]:
+def generate_tokens(text: str) -> list[StringToken]:
     tokens = []
     """
-    &nbsp; might acutally need to be addressed when 
-    improving tokenization, but I don't know.
-    """
-    line = line.replace("&nbsp;", '')
-    # Seperate heading (card front) from body (card back)
-    fields = line.split('\t')
-    fields = utils.removeAllOccurrences('', fields)
-    fields.append('')
-    front = fields[0]
-    back = fields[1]
-    """
-    Generate tokens from front.
-    """
-    tokens = tokens + generate_tokens_from_non_display_math(front)
-    """
-    Generate tokens from back.
-
     First the display math is split from the non display math.
     This assumes that no random '$$' substring is contained inside
     any math or non math substring, so splitting at '$$' generates
     the correct partition.
     """
-    starts_with_display_math = True if back[0:2] == "$$" else False
-    display_math_partition = back.split("$$")
+    starts_with_display_math = True if text[0:2] == "$$" else False
+    display_math_partition = text.split("$$")
     display_math_partition = utils.removeAllOccurrences('', display_math_partition)
     for i in range(len(display_math_partition)):
         if starts_with_display_math and i % 2 == 0 or not starts_with_display_math and i % 2 == 1:

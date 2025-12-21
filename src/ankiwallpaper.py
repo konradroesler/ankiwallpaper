@@ -89,11 +89,11 @@ def compute_run_time(vgroup: mn.VGroup) -> float:
                 raise utils.NonMathTexTypeError("This object should be of type Tex or MathTex.")
     return run_time
 
-def generate_vgroup(line: str) -> mn.VGroup:
+def generate_vgroups_and_vgroup_tokens(text: str):
     """
     Generate tokens from the anki cards string representation.
     """
-    str_tokens = aw_tokens.generate_tokens(line)
+    str_tokens = aw_tokens.generate_tokens(text)
     """
     Generate tex_objects
     """
@@ -112,6 +112,26 @@ def generate_vgroup(line: str) -> mn.VGroup:
     Actual list of vgroups.
     """
     vgroups = [token.content for token in vgroup_tokens]
+    
+    return vgroup_tokens, vgroups
+
+def generate_vgroup(line: str) -> mn.VGroup:
+    """
+    &nbsp; might acutally need to be addressed when 
+    improving tokenization, but I don't know.
+    """
+    line = line.replace("&nbsp;", '')
+    # Seperate heading (card front) from body (card back)
+    fields = line.split('\t')
+    fields = utils.removeAllOccurrences('', fields)
+    fields.append('')
+    front = fields[0]
+    back = fields[1]
+
+    front_vgroup_tokens, front_vgroups = generate_vgroups_and_vgroup_tokens(front)
+    back_vgroup_tokens, back_vgroups = generate_vgroups_and_vgroup_tokens(back)
+
+    vgroup_tokens, vgroups = front_vgroup_tokens + back_vgroup_tokens, front_vgroups + back_vgroups
     # The * operator unpacks the list
     group = mn.VGroup(*vgroups).arrange(
             mn.DOWN,
