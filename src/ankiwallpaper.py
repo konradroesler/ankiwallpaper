@@ -1,29 +1,29 @@
 import manim as mn
 import src.utils as utils
-import src.textokens as textokens
+import src.aw_tokens as aw_tokens 
 import src.constants as constants
-from src.textokens import Token
+from src.aw_tokens import StringToken, TexToken
 from typing import Tuple
 
-def generate_tex_objects(tokens: list[Token]) -> list[mn.MathTex]:
+def generate_textokens(strtokens: list[StringToken]) -> list[TexToken]:
     """
     Takes tokenlist and return list of tex objects.
     """
-    tex_objects = []
-    for token in tokens:
+    textokens = []
+    for token in strtokens:
         if token.content_type == 0:
-            tex_objects.append(mn.Tex(token.content))
+            textokens.append(TexToken(mn.Tex(token.content), token.content_type))
         elif token.content_type == 1 or token.content_type == 2:
-            tex_objects.append(mn.MathTex(token.content))
-    return tex_objects
+            textokens.append(TexToken(mn.MathTex(token.content), token.content_type))
+    return textokens 
 
-def total_width(tex_objects: list[mn.MathTex]) -> float:
+def compute_total_width(tex_objects: list[mn.MathTex]) -> float:
     """
     Sums the width of a list of tex objects.
     """
     return sum([obj.width for obj in tex_objects])
 
-def generate_groupings(tokens: list[Token], tex_objects: list[mn.MathTex]) -> list[Tuple[list[mn.MathTex], bool]]:
+def generate_groupings(textokens: list[TexToken]) -> list[Tuple[list[mn.MathTex], bool]]:
     """
     Takes a list of tokens and a list of tex objects and returns a list of groupings.
     A grouping is a tuple containing a list of tex objects and a boolean flagging
@@ -33,10 +33,10 @@ def generate_groupings(tokens: list[Token], tex_objects: list[mn.MathTex]) -> li
     """
     groupings = []
     current_grouping = []
-    for i in range(len(tokens)): 
-        if tokens[i].content_type != 2 and total_width(current_grouping) + tex_objects[i].width < constants.MAX_WIDTH:
-            current_grouping.append(tex_objects[i])
-        elif tokens[i].content_type != 2 and total_width(current_grouping) + tex_objects[i].width >= constants.MAX_WIDTH:
+    for token in textokens:
+        if token.content_type != 2 and compute_total_width(current_grouping) + token.content.width < constants.MAX_WIDTH:
+            current_grouping.append(token.content)
+        elif token.content_type != 2 and compute_total_width(current_grouping) + token.content.width >= constants.MAX_WIDTH:
             """
             The case where the current grouping is empty but tex_objects[i] has width greater than MAX_WIDTH
             needs to be better dealt with. Right now I just explicitly prevent the current grouping to
@@ -45,15 +45,15 @@ def generate_groupings(tokens: list[Token], tex_objects: list[mn.MathTex]) -> li
             """
             if current_grouping != []:
                 groupings.append((current_grouping, False))
-            current_grouping = [tex_objects[i]]
-        elif tokens[i].content_type == 2:
+            current_grouping = [token.content]
+        elif token.content_type == 2:
             """ 
             If two tokens of type 2 (display math) occur in succession.
             """
             if current_grouping != []:
                 groupings.append((current_grouping, False))
                 current_grouping = []
-            groupings.append(([tex_objects[i]], True))
+            groupings.append(([token.content], True))
     if current_grouping != []:
         groupings.append((current_grouping, False))
     return groupings
@@ -82,16 +82,16 @@ def generate_vgroup(line: str) -> mn.VGroup:
     """
     Generate tokens from the anki cards string representation.
     """
-    tokens = textokens.generate_tokens(line)
+    strtokens = aw_tokens.generate_tokens(line)
     """
     Generate tex_objects
     """
-    tex_objects = generate_tex_objects(tokens)
+    textokens = generate_textokens(strtokens)
     """
     A grouping is a tuple containing a list of tex objects and a 
     boolean used to flag display math, which later needs to be centered.
     """
-    groupings = generate_groupings(tokens, tex_objects)
+    groupings = generate_groupings(textokens)
     """
     Each groupings content is then turned into a vgroup. So here we have tuples
     containing a vgroup and again a boolean to flag display math.
