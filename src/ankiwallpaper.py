@@ -1,18 +1,20 @@
 import manim as mn
 import src.utils as utils
 import src.textokens as textokens
+import src.constants as constants
+from src.textokens import Token
 from typing import Tuple
 
-def generate_tex_objects(tokens: list) -> list[mn.MathTex]:
+def generate_tex_objects(tokens: list[Token]) -> list[mn.MathTex]:
     """
     Takes tokenlist and return list of tex objects.
     """
     tex_objects = []
     for token in tokens:
-        if token[1] == 0:
-            tex_objects.append(mn.Tex(token[0]))
-        elif token[1] == 1 or token[1] == 2:
-            tex_objects.append(mn.MathTex(token[0]))
+        if token.content_type == 0:
+            tex_objects.append(mn.Tex(token.content))
+        elif token.content_type == 1 or token.content_type == 2:
+            tex_objects.append(mn.MathTex(token.content))
     return tex_objects
 
 def total_width(tex_objects: list[mn.MathTex]) -> float:
@@ -21,7 +23,7 @@ def total_width(tex_objects: list[mn.MathTex]) -> float:
     """
     return sum([obj.width for obj in tex_objects])
 
-def generate_groupings(tokens: list[Tuple[str, int]], tex_objects: list[mn.MathTex]) -> list[Tuple[list[mn.MathTex], bool]]:
+def generate_groupings(tokens: list[Token], tex_objects: list[mn.MathTex]) -> list[Tuple[list[mn.MathTex], bool]]:
     """
     Takes a list of tokens and a list of tex objects and returns a list of groupings.
     A grouping is a tuple containing a list of tex objects and a boolean flagging
@@ -32,11 +34,11 @@ def generate_groupings(tokens: list[Tuple[str, int]], tex_objects: list[mn.MathT
     groupings = []
     current_grouping = []
     for i in range(len(tokens)): 
-        if tokens[i][1] != 2 and total_width(current_grouping) + tex_objects[i].width < 8:
+        if tokens[i].content_type != 2 and total_width(current_grouping) + tex_objects[i].width < constants.MAX_WIDTH:
             current_grouping.append(tex_objects[i])
-        elif tokens[i][1] != 2 and total_width(current_grouping) + tex_objects[i].width >= 8:
+        elif tokens[i].content_type != 2 and total_width(current_grouping) + tex_objects[i].width >= constants.MAX_WIDTH:
             """
-            The case where the current grouping is empty but tex_objects[i] has width greater than 8
+            The case where the current grouping is empty but tex_objects[i] has width greater than MAX_WIDTH
             needs to be better dealt with. Right now I just explicitly prevent the current grouping to
             be added to groupings by checking for an empty list and then add tex_objects[i] to the 
             current grouping. I think this is a ugly.
@@ -44,7 +46,7 @@ def generate_groupings(tokens: list[Tuple[str, int]], tex_objects: list[mn.MathT
             if current_grouping != []:
                 groupings.append((current_grouping, False))
             current_grouping = [tex_objects[i]]
-        elif tokens[i][1] == 2:
+        elif tokens[i].content_type == 2:
             """ 
             If two tokens of type 2 (display math) occur in succession.
             """
@@ -78,25 +80,12 @@ def compute_run_time(vgroup: mn.VGroup) -> float:
 
 def generate_vgroup(line: str) -> mn.VGroup:
     """
-    &nbsp; might acutally need to be addressed when 
-    improving tokenization, but I don't know.
+    Generate tokens from the anki cards string representation.
     """
-    line = line.replace("&nbsp;", '')
-    # Seperate heading (card front) from body (card back)
-    fields = line.split('\t')
-    fields = utils.removeAllOccurrences('', fields)
-    fields.append('')
-    front = fields[0]
-    back = fields[1]
-
+    tokens = textokens.generate_tokens(line)
     """
-    A token is a tuple containing a string ready to be turned
-    into Tex and an integer between 0 and 2 determining if its 
-    0: text
-    1: inline math
-    2: display math
+    Generate tex_objects
     """
-    tokens = textokens.generate_tokens(front, back)
     tex_objects = generate_tex_objects(tokens)
     """
     A grouping is a tuple containing a list of tex objects and a 

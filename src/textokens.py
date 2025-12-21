@@ -16,7 +16,16 @@ Improved tokenization respects latex environments such as enumerate.
 
 """
 
-def generate_tokens_from_non_display_math(text: str) -> list[Tuple[str, int]]:
+class Token:
+    def __init__(self, content: str, content_type: int):
+        self.content = content
+        self.content_type = content_type
+    def __str__(self):
+        return f"Token({self.content}, {self.content_type})"
+    def __repr__(self):
+        return f"Token({self.content}, {self.content_type})"
+
+def generate_tokens_from_non_display_math(text: str) -> list[Token]:
     """
     Turns a string into tokens of type 0 and 1. This assumes that
     no random '$' characters are contained in the text or inline math,
@@ -32,13 +41,24 @@ def generate_tokens_from_non_display_math(text: str) -> list[Tuple[str, int]]:
     partition = [element.replace('<br>', '') for element in partition]
     for i in range(len(partition)):
         if starts_with_math and i % 2 == 0 or not starts_with_math and i % 2 == 1:
-            tokens.append((partition[i], 1))
+            tokens.append(Token(partition[i], 1))
         else:
-            tokens.append((partition[i], 0))
+            tokens.append(Token(partition[i], 0))
     return tokens
 
-def generate_tokens(front: str, back: str) -> list[Tuple[str, int]]:
+def generate_tokens(line: str) -> list[Token]:
     tokens = []
+    """
+    &nbsp; might acutally need to be addressed when 
+    improving tokenization, but I don't know.
+    """
+    line = line.replace("&nbsp;", '')
+    # Seperate heading (card front) from body (card back)
+    fields = line.split('\t')
+    fields = utils.removeAllOccurrences('', fields)
+    fields.append('')
+    front = fields[0]
+    back = fields[1]
     """
     Generate tokens from front.
     """
@@ -56,7 +76,7 @@ def generate_tokens(front: str, back: str) -> list[Tuple[str, int]]:
     display_math_partition = utils.removeAllOccurrences('', display_math_partition)
     for i in range(len(display_math_partition)):
         if starts_with_display_math and i % 2 == 0 or not starts_with_display_math and i % 2 == 1:
-            tokens.append((display_math_partition[i], 2))
+            tokens.append(Token(display_math_partition[i], 2))
         else:
             """
             Non display math is tokenized further since it still contains text and inline math.
