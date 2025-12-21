@@ -11,6 +11,9 @@ and the second entry contains an integer, where
 2: display math, later a MathTex object aligned to x = 0.
 The only difference between tokens of type 1 and tokens of type 2 is 
 that tokens of type 2 get centered when generating the scene.
+
+Improved tokenization respects latex environments such as enumerate.
+
 """
 
 def generate_tokens_from_non_display_math(text: str) -> list[Tuple[str, int]]:

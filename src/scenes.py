@@ -24,18 +24,18 @@ class WriteAnimation(mn.Scene):
     """
     def construct(self):
         line = "abc"
-        group = aw.generate_group(line)
+        group = aw.generate_vgroup(line)
         run_time = aw.compute_run_time(group)
         self.play(mn.Write(group), run_time=run_time)
 
 class Image(mn.Scene):
     def construct(self):
         line = "abc"
-        group = aw.generate_group(line)
+        group = aw.generate_vgroup(line)
         self.add(group)
 
 class FadeoutAnimation(mn.Scene):
     def construct(self):
         line = "abc" 
-        group = aw.generate_group(line)
+        group = aw.generate_vgroup(line)
         self.play(mn.FadeOut(group), run_time=5)

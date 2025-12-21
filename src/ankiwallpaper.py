@@ -76,7 +76,7 @@ def compute_run_time(vgroup: mn.VGroup) -> float:
                 raise utils.NonMathTexTypeError("This object should be of type Tex or MathTex.")
     return run_time
 
-def generate_group(line: str) -> mn.VGroup:
+def generate_vgroup(line: str) -> mn.VGroup:
     """
     &nbsp; might acutally need to be addressed when 
     improving tokenization, but I don't know.
