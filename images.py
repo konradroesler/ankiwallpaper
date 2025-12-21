@@ -1,5 +1,5 @@
 import manim as mn
-import ankiwallpaper as aw
+import src.ankiwallpaper as aw
 
 class Image0(mn.Scene):
     def construct(self):

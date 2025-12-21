@@ -1,4 +1,4 @@
-import utils
+import src.utils as utils
 
 if __name__ == "__main__":
     with open("images.py", 'a') as image_file:

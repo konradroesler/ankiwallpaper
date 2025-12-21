@@ -1,5 +1,5 @@
-import utils
 import subprocess
+import src.utils as utils
 
 def if_wpaperd_supported_video():
     """

@@ -1,6 +1,6 @@
-import utils
-import textokens
 import manim as mn
+import src.utils as utils
+import src.textokens as textokens
 from typing import Tuple
 
 def generate_tex_objects(tokens: list) -> list[mn.MathTex]:
