@@ -1,0 +1,176 @@
+import manim as mn
+import src.utils as utils
+import src.aw_tokens as aw_tokens
+import src.constants as constants
+from src.aw_tokens import StringToken, TexToken, VGroupToken
+
+
+def generate_tex_tokens(str_tokens: list[StringToken]) -> list[TexToken]:
+    """
+    Takes tokenlist and return list of tex objects.
+    """
+    tex_tokens = []
+    for token in str_tokens:
+        print(token.content)
+        if token.content_type == 0:
+            tex_tokens.append(
+                TexToken(
+                    mn.Tex(token.content),
+                    content_type=token.content_type,
+                    environment=token.environment,
+                )
+            )
+        elif token.content_type == 1 or token.content_type == 2:
+            print(token.content)
+            tex_tokens.append(
+                TexToken(
+                    mn.MathTex(token.content, tex_template=constants.TEX_TEMPLATE),
+                    content_type=token.content_type,
+                    environment=token.environment,
+                )
+            )
+    return tex_tokens
+
+
+def compute_total_width(tex_objects: list[mn.MathTex]) -> float:
+    """
+    Sums the width of a list of tex objects.
+    """
+    return sum([obj.width for obj in tex_objects])
+
+
+class Grouping:
+    def __init__(
+        self, content: list[mn.MathTex], is_display_math: bool, environment: str
+    ):
+        self.content = content
+        self.is_display_math = is_display_math
+        self.environment = environment
+
+    def __str__(self):
+        return f"Grouping({self.content.__str__()}, {self.is_display_math}, {self.environment})"
+
+    def __repl__(self):
+        return f"Grouping({self.content.__str__()}, {self.is_display_math}, {self.environment})"
+
+
+def generate_groupings(textokens: list[TexToken]) -> list[Grouping]:
+    """
+    Takes a list of tokens and a list of tex objects and returns a list of groupings.
+    A grouping is a tuple containing a list of tex objects and a boolean flagging
+    display math. Display math groupings by design consist of just one tex object.
+
+    In gerenal we check for empty list before adding the current grouping to groupings.
+    """
+    groupings = []
+    current_grouping = []
+    for token in textokens:
+        if (
+            token.content_type != 2
+            and compute_total_width(current_grouping) + token.content.width
+            < constants.MAX_WIDTH
+        ):
+            current_grouping.append(token.content)
+        elif (
+            token.content_type != 2
+            and compute_total_width(current_grouping) + token.content.width
+            >= constants.MAX_WIDTH
+        ):
+            """
+            The case where the current grouping is empty but tex_objects[i] has width greater than MAX_WIDTH
+            needs to be better dealt with. Right now I just explicitly prevent the current grouping to
+            be added to groupings by checking for an empty list and then add tex_objects[i] to the
+            current grouping. I think this is a ugly.
+            """
+            if current_grouping != []:
+                groupings.append(
+                    Grouping(
+                        current_grouping, is_display_math=False, environment="none"
+                    )
+                )
+            current_grouping = [token.content]
+        elif token.content_type == 2:
+            """
+            If two tokens of type 2 (display math) occur in succession.
+            """
+            if current_grouping != []:
+                groupings.append(
+                    Grouping(
+                        current_grouping, is_display_math=False, environment="none"
+                    )
+                )
+                current_grouping = []
+            groupings.append(
+                Grouping([token.content], is_display_math=True, environment="none")
+            )
+    if current_grouping != []:
+        groupings.append(
+            Grouping(current_grouping, is_display_math=False, environment="none")
+        )
+    return groupings
+
+
+def generate_vgroups_and_vgroup_tokens(text: str):
+    """
+    Generate tokens from the anki cards string representation.
+    """
+    str_tokens = aw_tokens.tex_environment_split(text)
+    """
+    Generate tex_objects
+    """
+    tex_tokens = generate_tex_tokens(str_tokens)
+    """
+    Generate groupings.
+    """
+    groupings = generate_groupings(tex_tokens)
+    """
+    Each groupings content is then turned into a vgroup. So here we have tuples
+    containing a vgroup and again a boolean to flag display math.
+    """
+    vgroup_tokens = [
+        VGroupToken(
+            mn.VGroup(*grouping.content).arrange(mn.RIGHT, buff=0.4),
+            is_display_math=grouping.is_display_math,
+            environment=grouping.environment,
+        )
+        for grouping in groupings
+    ]
+    """
+    Actual list of vgroups.
+    """
+    vgroups = [token.content for token in vgroup_tokens]
+
+    return vgroup_tokens, vgroups
+
+
+def generate_vgroup(line: str) -> mn.VGroup:
+    """
+    &nbsp; might acutally need to be addressed when
+    improving tokenization, but I don't know.
+    """
+    line = line.replace("&nbsp;", "")
+    # Seperate heading (card front) from body (card back)
+    fields = line.split("\t")
+    fields = utils.removeAllOccurrences("", fields)
+    fields.append("")
+    front = fields[0]
+    back = fields[1]
+
+    front_vgroup_tokens, front_vgroups = generate_vgroups_and_vgroup_tokens(front)
+    back_vgroup_tokens, back_vgroups = generate_vgroups_and_vgroup_tokens(back)
+
+    hspacer = mn.VGroup(mn.Line(mn.LEFT * 4, mn.RIGHT * 4, stroke_width=2))
+    hspacer_token = VGroupToken(hspacer, is_display_math=False, environment="none")
+    vgroup_tokens, vgroups = (
+        front_vgroup_tokens + [hspacer_token] + back_vgroup_tokens,
+        front_vgroups + [hspacer] + back_vgroups,
+    )
+    # The * operator unpacks the list
+    group = mn.VGroup(*vgroups).arrange(mn.DOWN, aligned_edge=mn.LEFT, buff=0.4)
+    """
+    Move display math to the center of the screen.
+    """
+    for i in range(len(vgroups)):
+        if vgroup_tokens[i].is_display_math:
+            group[i].set_x(0)
+    return group
