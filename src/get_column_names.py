@@ -8,7 +8,7 @@ DB_PATH = r"/home/konrad/.local/share/Anki2/User 1/collection.anki2"
 
 connection = sqlite3.connect(DB_PATH)
 connection.row_factory = sqlite3.Row
-cursor = connection.execute("select * from bar")
+cursor = connection.execute("select * from notetypes")
 # instead of cursor.description:
 row = cursor.fetchone()
 names = row.keys()

@@ -1,7 +1,16 @@
 import sqlite3
 import hashlib
+import json
 import html
 import re
+
+
+def lprint(*args):
+    print(f"--- LOG START ---")
+    for arg in args:
+        print(arg)
+    print(f"---  LOG END  ---")
+
 
 DB_PATH = r"/home/konrad/.local/share/Anki2/User 1/collection.anki2"
 
@@ -31,9 +40,16 @@ def latex_to_svg_filename(latex_code, preamble=PREAMBLE):
 conn = sqlite3.connect(DB_PATH)
 cur = conn.cursor()
 
-# Get the field names from the 'notetypes' table
-cur.execute("SELECT id, fldnames FROM notetypes")
-notetype_fields = {row[0]: row[1].split("\x1f") for row in cur.fetchall()}
+# Query id, name, config from notetypes
+cur.execute("SELECT id, name, config FROM notetypes")
+
+# Build a mapping: notetype_id -> list of field names
+notetype_fields = {}
+for nt_id, name, config_json in cur.fetchall():
+    lprint(nt_id, name, config_json)
+    config = json.loads(config_json.decode("utf-8", "ignore"))  # Parse the JSON
+    fields = [f["name"] for f in config["flds"]]  # Extract field names
+    notetype_fields[nt_id] = fields
 
 # Query notes
 cur.execute("SELECT id, mid, flds FROM notes")
