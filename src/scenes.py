@@ -1,5 +1,29 @@
 import manim as mn
 import ankiwallpaper as aw
+from utils import NonMathTexTypeError
+
+
+def compute_run_time(vgroup: mn.VGroup) -> float:
+    """
+    Takes a vgroup object and returns the write animations runtime.
+
+    The vgroup is assumed to contain vgroups which contain Tex and MathTex objects.
+    """
+    run_time = 0
+    for subvgroup in vgroup:
+        for obj in subvgroup:
+            if type(obj) == mn.Tex:
+                """
+                The Tex.tex_string attribute is a manim community addon.
+                """
+                run_time += len(obj.tex_string) * 0.05
+            elif type(obj) == mn.MathTex:
+                run_time += len(obj.submobjects) * 0.1
+            else:
+                raise NonMathTexTypeError(
+                    "This object should be of type Tex or MathTex."
+                )
+    return run_time
 
 
 class WriteAnimation(mn.Scene):
@@ -27,7 +51,7 @@ class WriteAnimation(mn.Scene):
     def construct(self):
         line = "abc"
         group = aw.generate_vgroup(line)
-        run_time = aw.compute_run_time(group)
+        run_time = compute_run_time(group)
         self.play(mn.Write(group), run_time=run_time)
 
 

@@ -11,6 +11,7 @@ def generate_tex_tokens(str_tokens: list[StringToken]) -> list[TexToken]:
     """
     tex_tokens = []
     for token in str_tokens:
+        print(token.content)
         if token.content_type == 0:
             tex_tokens.append(
                 TexToken(
@@ -20,9 +21,10 @@ def generate_tex_tokens(str_tokens: list[StringToken]) -> list[TexToken]:
                 )
             )
         elif token.content_type == 1 or token.content_type == 2:
+            print(token.content)
             tex_tokens.append(
                 TexToken(
-                    mn.MathTex(token.content),
+                    mn.MathTex(token.content, tex_template=constants.TEX_TEMPLATE),
                     content_type=token.content_type,
                     environment=token.environment,
                 )
@@ -108,29 +110,6 @@ def generate_groupings(textokens: list[TexToken]) -> list[Grouping]:
     return groupings
 
 
-def compute_run_time(vgroup: mn.VGroup) -> float:
-    """
-    Takes a vgroup object and returns the write animations runtime.
-
-    The vgroup is assumed to contain vgroups which contain Tex and MathTex objects.
-    """
-    run_time = 0
-    for subvgroup in vgroup:
-        for obj in subvgroup:
-            if type(obj) == mn.Tex:
-                """
-                The Tex.tex_string attribute is a manim community addon.
-                """
-                run_time += len(obj.tex_string) * 0.05
-            elif type(obj) == mn.MathTex:
-                run_time += len(obj.submobjects) * 0.1
-            else:
-                raise utils.NonMathTexTypeError(
-                    "This object should be of type Tex or MathTex."
-                )
-    return run_time
-
-
 def generate_vgroups_and_vgroup_tokens(text: str):
     """
     Generate tokens from the anki cards string representation.
@@ -141,8 +120,7 @@ def generate_vgroups_and_vgroup_tokens(text: str):
     """
     tex_tokens = generate_tex_tokens(str_tokens)
     """
-    A grouping is a tuple containing a list of tex objects and a 
-    boolean used to flag display math, which later needs to be centered.
+    Generate groupings.
     """
     groupings = generate_groupings(tex_tokens)
     """

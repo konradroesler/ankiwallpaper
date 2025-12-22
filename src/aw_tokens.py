@@ -162,10 +162,18 @@ def get_type_of_environment(env_string: str) -> str:
 def clean_tokens(tokens: list[StringToken]) -> list[StringToken]:
     """
     Removes tabs and &nbsp; from any token content.
+    Removes empty tokens.
     """
     new_tokens = []
     for token in tokens:
         token.content = token.content.replace("\t", "").replace(r"&nbsp;", "")
+        """
+        Experimental
+        """
+        token.content = token.content.replace(r"\\", "")
+        token.content = token.content.replace(r"\mathbb{1}", r"\mathbf{1}")
+        if token.content.replace(" ", "") != "":
+            new_tokens.append(token)
     return new_tokens
 
 
@@ -184,6 +192,8 @@ def insert_enumerate_numbering(tokens: list[StringToken]) -> list[StringToken]:
             elif "alph" in token.content:
                 numbering = "alph"
             elif "arabic" in token.content:
+                numbering = "arabic"
+            else:
                 numbering = "arabic"
             token.content = re.sub(r"\[label=[a-z\(\)\*\\]+\]", "", token.content)
         else:
