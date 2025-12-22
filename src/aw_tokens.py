@@ -17,6 +17,7 @@ Improved tokenization respects latex environments such as enumerate.
 
 """
 
+
 class VGroupToken:
     def __init__(self, content: mn.VGroup, is_display_math: bool, environment: str):
         self.content = content
@@ -28,6 +29,7 @@ class VGroupToken:
 
     def __repl__(self):
         return f"VGroupToken({self.content.__str__()}, {self.is_display_math}, {self.environment})"
+
 
 class TexToken:
     def __init__(self, content: mn.MathTex, content_type: int, environment: str):
@@ -44,7 +46,9 @@ class TexToken:
         elif type(self.content) == mn.MathTex:
             return f"Token({self.content.submobjects}, {self.content_type}, {self.environment})"
         else:
-            raise utils.NonMathTexTypeError("This object should be of type Tex or MathTex.")
+            raise utils.NonMathTexTypeError(
+                "This object should be of type Tex or MathTex."
+            )
 
     def __repr__(self):
         if type(self.content) == mn.Tex:
@@ -55,7 +59,10 @@ class TexToken:
         elif type(self.content) == mn.MathTex:
             return f"Token({self.content.submobjects}, {self.content_type}, {self.environment})"
         else:
-            raise utils.NonMathTexTypeError("This object should be of type Tex or MathTex.")
+            raise utils.NonMathTexTypeError(
+                "This object should be of type Tex or MathTex."
+            )
+
 
 class StringToken:
     def __init__(self, content: str, content_type: int, environment: str):
@@ -69,26 +76,34 @@ class StringToken:
     def __repr__(self):
         return f"Token({self.content}, {self.content_type}, {self.environment})"
 
-def generate_tokens_from_non_display_math(text: str, environment: str) -> list[StringToken]:
+
+def generate_tokens_from_non_display_math(
+    text: str, environment: str
+) -> list[StringToken]:
     """
     Turns a string into tokens of type 0 and 1. This assumes that
     no random '$' characters are contained in the text or inline math,
     so splitting at '$' generates the correct partition.
     """
     tokens = []
-    starts_with_math = True if text[0] == '$' else False
-    partition = text.split('$')
-    partition = utils.removeAllOccurrences('', partition)
+    starts_with_math = True if text[0] == "$" else False
+    partition = text.split("$")
+    partition = utils.removeAllOccurrences("", partition)
     """
     These are inserted after display math by anki and I don't think they are useful.
     """
-    partition = [element.replace('<br>', '') for element in partition]
+    partition = [element.replace("<br>", "") for element in partition]
     for i in range(len(partition)):
         if starts_with_math and i % 2 == 0 or not starts_with_math and i % 2 == 1:
-            tokens.append(StringToken(partition[i], content_type=1, environment=environment))
+            tokens.append(
+                StringToken(partition[i], content_type=1, environment=environment)
+            )
         else:
-            tokens.append(StringToken(partition[i], content_type=0, environment=environment))
+            tokens.append(
+                StringToken(partition[i], content_type=0, environment=environment)
+            )
     return tokens
+
 
 def generate_tokens(text: str, environment: str) -> list[StringToken]:
     tokens = []
@@ -100,33 +115,49 @@ def generate_tokens(text: str, environment: str) -> list[StringToken]:
     """
     starts_with_display_math = True if text[0:2] == "$$" else False
     display_math_partition = text.split("$$")
-    display_math_partition = utils.removeAllOccurrences('', display_math_partition)
+    display_math_partition = utils.removeAllOccurrences("", display_math_partition)
     for i in range(len(display_math_partition)):
-        if starts_with_display_math and i % 2 == 0 or not starts_with_display_math and i % 2 == 1:
-            tokens.append(StringToken(display_math_partition[i], content_type=2, environment=environment))
+        if (
+            starts_with_display_math
+            and i % 2 == 0
+            or not starts_with_display_math
+            and i % 2 == 1
+        ):
+            tokens.append(
+                StringToken(
+                    display_math_partition[i], content_type=2, environment=environment
+                )
+            )
         else:
             """
             Non display math is tokenized further since it still contains text and inline math.
             """
-            tokens = tokens + generate_tokens_from_non_display_math(display_math_partition[i], environment=environment)
+            tokens = tokens + generate_tokens_from_non_display_math(
+                display_math_partition[i], environment=environment
+            )
     return tokens
+
 
 def get_environment_substrings(text: str) -> list[str]:
     r"""
-    Return a list of all environment substring of 
+    Return a list of all environment substring of
     form \begin{...} or \end{...}.
     """
     regex = r"(\\begin\{[a-z]+\}|\\end\{[a-z]+\})"
     substrings = re.findall(regex, text)
     return substrings
 
+
 def get_type_of_environment(env_string: str) -> str:
     r"""
     Takes a environment_substring of form \begin{...} or \end{...}
     and return the ... part.
     """
-    env_string = env_string.replace(r'\begin{', '').replace(r'\end{', '').replace(r'}', '')
+    env_string = (
+        env_string.replace(r"\begin{", "").replace(r"\end{", "").replace(r"}", "")
+    )
     return env_string
+
 
 def clean_tokens(tokens: list[StringToken]) -> list[StringToken]:
     """
@@ -134,16 +165,17 @@ def clean_tokens(tokens: list[StringToken]) -> list[StringToken]:
     """
     new_tokens = []
     for token in tokens:
-        token.content = token.content.replace('\t', '').replace(r"&nbsp;", '')
+        token.content = token.content.replace("\t", "").replace(r"&nbsp;", "")
     return new_tokens
+
 
 def insert_enumerate_numbering(tokens: list[StringToken]) -> list[StringToken]:
     r"""
-    This removes the [label=...] remnants from enumerate environments and 
+    This removes the [label=...] remnants from enumerate environments and
     substitutes the \item substring for the proper numbering.
     """
     new_tokens = []
-    numbering = ''
+    numbering = ""
     number = 1
     for token in tokens:
         if token.environment == "enumerate":
@@ -153,13 +185,15 @@ def insert_enumerate_numbering(tokens: list[StringToken]) -> list[StringToken]:
                 numbering = "alph"
             elif "arabic" in token.content:
                 numbering = "arabic"
-            token.content = re.sub(r'\[label=[a-z\(\)\*\\]+\]', '', token.content) 
+            token.content = re.sub(r"\[label=[a-z\(\)\*\\]+\]", "", token.content)
         else:
             numbering = "none"
         if r"\item" in token.content:
             match numbering:
                 case "roman":
-                    token.content = token.content.replace(r"\item", "(" + "i" * number + ")")
+                    token.content = token.content.replace(
+                        r"\item", "(" + "i" * number + ")"
+                    )
                     number += 1
                 case "alph":
                     char = chr(96 + number)
@@ -172,6 +206,7 @@ def insert_enumerate_numbering(tokens: list[StringToken]) -> list[StringToken]:
                     pass
         new_tokens.append(token)
     return new_tokens
+
 
 def tex_environment_split(text: str) -> list[StringToken]:
     r"""
@@ -191,7 +226,7 @@ def tex_environment_split(text: str) -> list[StringToken]:
         """
         splitting = text.split(env_string, 1)
         if "begin" in env_string:
-            tokens = tokens + generate_tokens(splitting[0], environment='none')
+            tokens = tokens + generate_tokens(splitting[0], environment="none")
             text = splitting[1]
         elif "end" in env_string:
             env_type = get_type_of_environment(env_string)
@@ -200,8 +235,8 @@ def tex_environment_split(text: str) -> list[StringToken]:
     r"""
     Text after the last \end{...}.
     """
-    tokens = tokens + generate_tokens(text, environment='none')
-    
+    tokens = tokens + generate_tokens(text, environment="none")
+
     tokens = clean_tokens(tokens)
 
     tokens = insert_enumerate_numbering(tokens)
