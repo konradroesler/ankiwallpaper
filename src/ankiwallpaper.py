@@ -131,7 +131,9 @@ def generate_vgroup(line: str) -> mn.VGroup:
     front_vgroup_tokens, front_vgroups = generate_vgroups_and_vgroup_tokens(front)
     back_vgroup_tokens, back_vgroups = generate_vgroups_and_vgroup_tokens(back)
 
-    vgroup_tokens, vgroups = front_vgroup_tokens + back_vgroup_tokens, front_vgroups + back_vgroups
+    hspacer = mn.VGroup(mn.Line(mn.LEFT*4, mn.RIGHT*4, stroke_width=2))
+    hspacer_token =  VGroupToken(hspacer, is_display_math=False)
+    vgroup_tokens, vgroups = front_vgroup_tokens + [hspacer_token] + back_vgroup_tokens, front_vgroups + [hspacer] + back_vgroups
     # The * operator unpacks the list
     group = mn.VGroup(*vgroups).arrange(
             mn.DOWN,
