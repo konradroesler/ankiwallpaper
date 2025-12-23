@@ -7,7 +7,7 @@ if __name__ == "__main__":
     import os
     import xml.etree.ElementTree as ET
 
-    directory_path = "./svgs"
+    directory_path = "./../svgs"
     directory = os.fsencode(directory_path)
 
     for file in os.listdir(directory):

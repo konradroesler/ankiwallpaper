@@ -1,3 +1,0 @@
-#!/bin/zsh
-# Copies all svg files from your anki collection to the svgs directory.
-for f in ~/.local/share/Anki2/User\ 1/collection.media/*.svg; do cp "$f" "./svgs"; done
