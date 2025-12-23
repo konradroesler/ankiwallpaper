@@ -152,54 +152,37 @@ def parse_svg_file(file):
     return ids
 
 
-def get_sym_from_id(id: str) -> str:
+def get_symbols_from_id(id: str) -> list[str]:
     """
     Takes an id and returns the associated symbol.
     """
+    keys = []
     for key in alphabet.keys():
         if id in alphabet[key]:
-            return key
-    return ""
+            keys.append(key)
+    return keys
 
 
-def get_id_from_sym(sym: str) -> list[str]:
-    """
-    Takes a symbol and returns a list of associated ids.
-    """
-    return alphabet[sym]
-
-
-def translate_from_ids(ids: list[str]) -> list[str]:
+def translate_from_ids(ids: list[str]) -> list[list[str]]:
     """
     Takes a list of ids and return a list of symbols
     associated with each id.
     """
     symbols = []
     for id in ids:
-        sym = get_sym_from_id(id)
-        if sym != "":
-            symbols.append(sym)
+        sym_list = get_symbols_from_id(id)
+        if sym_list != []:
+            symbols.append(sym_list)
     """
     This is a special case because my card template adds 
     two points at the end.
     """
-    if len(symbols) >= 2 and symbols[-1] == "." and symbols[-2] == ".":
+    if len(symbols) >= 2 and symbols[-1] == ["."] and symbols[-2] == ["."]:
         symbols = symbols[:-2]
     return symbols
 
 
-def translate_to_ids(symbols: list[str]) -> list[str]:
-    """
-    Takes a list of symbols and returns a list of lists
-    of ids associated with each symbol.
-    """
-    ids = []
-    for sym in symbols:
-        ids.append(get_id_from_sym(sym))
-    return []
-
-
-def matches(symbols: list[str], text: str) -> bool:
+def matches(symbols: list[list[str]], text: str) -> bool:
     """
     This takes a symbol list and a text and returns True if all
     symbols in that list occurr in text in that specific order.
@@ -207,15 +190,14 @@ def matches(symbols: list[str], text: str) -> bool:
     symbols_left = symbols.copy()
 
     for char in text:
-        print(f"char: {char}, sym: {symbols_left[0]}")
-        if char == symbols_left[0]:
+        if char in symbols_left[0]:
             symbols_left.pop(0)
         if symbols_left == []:
             return True
     return False
 
 
-def get_matching_note(symbols: list[str], notes: list[Note]) -> Tuple[str, str]:
+def get_matching_note(symbols: list[list[str]], notes: list[Note]) -> Tuple[str, str]:
     """
     The heart of the search process.
     This should return the uid of the matching note and the field, so front or back.
@@ -257,6 +239,6 @@ if __name__ == "__main__":
         with open(path, "r") as file:
             ids = parse_svg_file(file)
             symbols = translate_from_ids(ids)
-            print(symbols)
             matching_note = get_matching_note(symbols, notes)
+            print(matching_note)
             break

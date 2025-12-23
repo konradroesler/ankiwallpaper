@@ -20,3 +20,7 @@ Some notes addressing implementation details unique to my way of creating anki c
 Note that I have edited the latex card template so that two dots are added to the end of every card. This was done so display math is centered properly.
 
 Note that the following card structure is assumed: 3 content fields, front, back and course. The caveat here is that the course field is added to the front of the card, meaning that when searching the right note, the front and course fields actually have to be added together. I should refactor my own cards, delete the course field and instead define a macro in the preamble which is then used in the actual front field of the note to fix this.
+
+### Implementation concepts
+
+A finicky thing is that in the alphabet, one symbol (key) can have multiple ids (its value is a list of ids) and also one id can be element of multiple dict entries. So when the symbols are generated, its all lists, meaning we are searching for one of the symbols in the list. The current implementation is not clean.
