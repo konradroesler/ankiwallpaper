@@ -19,22 +19,36 @@ class Note:
         self.back = back
 
 
+def get_note(text: str) -> Note:
+    """
+    Takes a string representation of
+    a note and return a Note object.
+    """
+    fields = text.split("\t")
+    uid = fields[0]
+    deck = fields[1]
+    front = fields[2] + fields[6]
+    back = fields[3]
+    return Note(uid, deck, front, back)
+
+
 def get_notes() -> list[Note]:
     """
-    Returns a list of notes.
+    Returns a list of notes read from
+    a (hardcoded) file.
     """
     notes = []
     with open("Lernen.txt", "r") as text_file:
         lines = text_file.readlines()
         for line in lines:
-            fields = line.split("\t")
-            if len(fields) == 1:
+            """
+            Skip lines which are not
+            acutal notes.
+            """
+            if "\t" not in line:
                 continue
-            uid = fields[0]
-            deck = fields[1]
-            front = fields[2] + fields[6]
-            back = fields[3]
-            notes.append(Note(uid, deck, front, back))
+            note = get_note(line)
+            notes.append(note)
     return notes
 
 
@@ -99,16 +113,28 @@ def preprocess_numbering(text: str) -> str:
     return accum
 
 
-def preprocess_notes(notes: list[Note]):
+def preprocess_note(note: Note) -> Note:
     r"""
-    Takes a list of notes and returns a list of notes
-    where each \item has been substituted for the correct
-    numbering.
+    \implies is substituted for =, because the svg
+    composites it of a = and \rightarrow
+    """
+    note.front = note.front.replace(r"\implies", "=")
+    note.back = note.back.replace(r"\implies", "=")
+    r"""
+    Substitues \item for the correct numbering.
+    """
+    note.back = preprocess_numbering(note.back)
+    return note
 
+
+def preprocess_notes(notes: list[Note]) -> list[Note]:
+    """
+    Takes a list of notes and returns
+    a processed list of notes.
     """
     new_notes = []
     for note in notes:
-        note.back = preprocess_numbering(note.back)
+        note = preprocess_note(note)
         new_notes.append(note)
     return new_notes
 
@@ -191,7 +217,7 @@ def generate_symbol_filter(ids: list[str]) -> list[list[str]]:
     return symbol_filter
 
 
-def matches(symbol_filter: list[list[str]], text: str) -> bool:
+def filter_runs_through(symbol_filter: list[list[str]], text: str) -> bool:
     """
     This takes a symbol filter and a text and returns True if
     that symbol filter runs through succesfully, meaning that
@@ -205,9 +231,42 @@ def matches(symbol_filter: list[list[str]], text: str) -> bool:
     symbols_left = symbol_filter.copy()
 
     for char in text:
+        print(f"char: {char}, syms: {symbols_left[0]}")
         if char in symbols_left[0]:
             symbols_left.pop(0)
         if symbols_left == []:
+            return True
+    return False
+
+
+def doublecheck(symbol_filter: list[list[str]], text: str) -> bool:
+    """
+    Does the negative check, meaning that of all symbols, if a
+    symbol is not included in the symbol filter, it cannot show
+    up in the text. Not quite, since text included latex code which
+    is not actually rendered. Given latex code, I need to find out
+    which characters are actually rendered.
+    """
+    symbols = []
+    for entry in symbol_filter:
+        for sym in entry:
+            if sym not in symbols:
+                symbols.append(sym)
+    """
+    Uppercase letter rule: all uppercase letters are renderd.
+    """
+    for i in range(65, 91):
+        if chr(i) not in symbols and chr(i) in text:
+            return False
+    return True
+
+
+def matches(symbol_filter: list[list[str]], text: str) -> bool:
+    """
+    Should return True if the svg matches the text.
+    """
+    if filter_runs_through(symbol_filter, text):
+        if doublecheck(symbol_filter, text):
             return True
     return False
 
@@ -257,6 +316,7 @@ if __name__ == "__main__":
     notes = get_notes()
     notes = preprocess_notes(notes)
     for path in paths:
+        print(path)
         with open(path, "r") as file:
             ids = parse_svg_file(file)
             symbol_filter = generate_symbol_filter(ids)
