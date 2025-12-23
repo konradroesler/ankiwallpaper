@@ -38,11 +38,78 @@ def get_notes() -> list[Note]:
     return notes
 
 
-def preprocess_notes(notes: list[Note]):
+def to_roman(count: int) -> str:
+    """
+    Takes an integer up to 10 and returns its
+    representation as a roman numeral.
+    """
+    romans = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "iix", "ix", "x"]
+    result = "(" + romans[count - 1] + ")"
+    return result
 
+
+def generate_numbering(count: int, numbering: str) -> str:
+    """
+    Returns the correct string representation of
+    count in the given numbering.
+    """
+    match numbering:
+        case "alph":
+            return chr(ord("a") - 1 + count)
+        case "roman":
+            return to_roman(count)
+        case _:
+            return str(count) + ")"
+
+
+def preprocess_numbering(text: str) -> str:
+    r"""
+    Takes text and returns the processed text.
+
+    It works like this: we go through the text and each time
+    we meet a \begin{...}[label=...], we set the numbering
+    accordingly and also start at 1.
+
+    This assumes that there are no nested environments.
+    """
+    accum = ""
+    numbering = ""
+    count = 0
+    counting = False
+    partition = text.split(r"\item")
+    for part in partition:
+        if counting:
+            count += 1
+        if r"\end{numbering}" in part:
+            counting = False
+        if r"\begin{enumerate}" in part:
+            counting = True
+            count = 0
+            if r"\alph*)" in part:
+                numbering = "alph"
+            elif r"(\roman*)" in part:
+                numbering = "roman"
+            else:
+                numbering = "arabic"
+        accum = (
+            accum + generate_numbering(count, numbering) + part
+            if part != partition[0]
+            else accum + part
+        )
+    return accum
+
+
+def preprocess_notes(notes: list[Note]):
+    r"""
+    Takes a list of notes and returns a list of notes
+    where each \item has been substituted for the correct
+    numbering.
+
+    """
     new_notes = []
     for note in notes:
-        pass
+        note.back = preprocess_numbering(note.back)
+        new_notes.append(note)
     return new_notes
 
 

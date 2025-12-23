@@ -11,6 +11,7 @@ Note the following conflict: since the ids are in range 0-122, multiple symbols 
 Note also that the mapping: id -> symbol is not injective.
 
 Note that the plaintext notes still contain ```\begin{enumerate}``` and ```\item```, while the svgs contain ```(i), (ii)``` etc., for this reason all note get preprocessed.
+Note also that the preprocessing stage assumes that there are no nested environments.
 
 ### Implementation notes
 

@@ -147,4 +147,4 @@ if __name__ == "__main__":
         "Y",
     ]
     text = r"$\mathcal{G}$ sub-$\sigma$-field, $X \geq 0$ or $X \in L^1$. Then $Y \geq 0$ or $Y \in L^1$ with<br>\begin{enumerate}[label=(\roman*)]<br>&nbsp; &nbsp; \item $Y$ is $\mathcal{G}$-measurable<br>&nbsp; &nbsp; \item $\mathbb{E}(Y \mathbb{1}_G) = \mathbb{E}(X \mathbb{1}_G) \ \forall G \in \mathcal{G}$<br>\end{enumerate}<br>is called (a version of) the conditional expectation of $X$ given $\mathcal{G}$. <br><br>Notation: $\mathbb{E}(X | \mathcal{G}) := Y$"
-    print(matches(symbols, text))
+    print(matches(symbols, preprocess_numbering(text)))
