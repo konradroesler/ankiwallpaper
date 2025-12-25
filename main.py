@@ -122,6 +122,8 @@ def preprocess_note(note: Note) -> Note:
     parsing the svg, so they are converted to normal
     ascii symbols. This should work since they have the
     same id.
+    When the inline and display math id's differ from each other,
+    both replacement symbols get inserted.
 
     \implies is substituted for =), they have the same id
     \lVert and \rVert is substituted for k, they have the same id
@@ -136,7 +138,28 @@ def preprocess_note(note: Note) -> Note:
         .replace(r"\rVert", "k")
         .replace(r"\exists", "9")
         .replace(r"\forall", "8")
-        .replace(r"\in", "2")
+        .replace(r"\rightarrow", "!")
+        .replace(r"\langle", "h")
+        .replace(r"\rangle", "i")
+        .replace(r"\dots", "...")
+        .replace(r"\iff", "()")
+        .replace(r"\prod", "QY")
+        .replace(r"\hookrightarrow", ",!")
+        .replace(r"\sum", "PX")
+        .replace(r"\infty", "1")
+        .replace(r"\setminus", "n")
+        .replace(r"\bigcup", "S[")
+        .replace(r"\mapsto", "7!")
+        .replace(r"\omega", "!")
+        .replace(r"\int", "RZ")
+        .replace(r"\in ", "2")
+        .replace(r"\rightharpoonup", "*")
+        .replace(r"\longrightarrow", "-!")
+        .replace(r"\subsetneq", "(")
+        .replace(r"\\bigcap", "T\\")
+        .replace(r"&gt;", ">")
+        .replace(r"&lt;", "<")
+        .replace("\\|", "k")
     )
     note.back = (
         note.back.replace(r"\implies", "=)")
@@ -145,7 +168,28 @@ def preprocess_note(note: Note) -> Note:
         .replace(r"\rVert", "k")
         .replace(r"\exists", "9")
         .replace(r"\forall", "8")
-        .replace(r"\in", "2")
+        .replace(r"\rightarrow", "!")
+        .replace(r"\langle", "h")
+        .replace(r"\rangle", "i")
+        .replace(r"\dots", "...")
+        .replace(r"\iff", "()")
+        .replace(r"\prod", "QY")
+        .replace(r"\hookrightarrow", ",!")
+        .replace(r"\sum", "PX")
+        .replace(r"\infty", "1")
+        .replace(r"\setminus", "n")
+        .replace(r"\bigcup", "S[")
+        .replace(r"\mapsto", "7!")
+        .replace(r"\omega", "!")
+        .replace(r"\int", "RZ")
+        .replace(r"\in ", "2")
+        .replace(r"\rightharpoonup", "*")
+        .replace(r"\longrightarrow", "-!")
+        .replace(r"\subsetneq", "(")
+        .replace(r"\\bigcap", "T\\")
+        .replace(r"&gt;", ">")
+        .replace(r"&lt;", "<")
+        .replace("\\|", "k")
     )
     r"""
     Substitues \item for the correct numbering.
@@ -258,12 +302,23 @@ def filter_runs_through(symbol_filter: list[list[str]], text: str) -> bool:
     symbols_left = symbol_filter.copy()
 
     for char in text:
-        print(f"char: {char}, syms: {symbols_left[0]}")
+        # print(f"char: {char}, syms: {symbols_left[0]}")
         if char in symbols_left[0]:
             symbols_left.pop(0)
         if symbols_left == []:
             return True
     return False
+
+
+def get_uppercase_in_latex_commands(text: str) -> list[str]:
+    uppercase_letters = []
+    found = re.findall(r"\\[A-Za-z]+", text)
+    for find in found:
+        upper = re.findall(r"[A-Z]", find)
+        for letter in upper:
+            if letter not in uppercase_letters:
+                uppercase_letters.append(letter)
+    return uppercase_letters
 
 
 def doublecheck(symbol_filter: list[list[str]], text: str) -> bool:
@@ -281,9 +336,16 @@ def doublecheck(symbol_filter: list[list[str]], text: str) -> bool:
                 symbols.append(sym)
     """
     Uppercase letter rule: all uppercase letters are renderd.
+
+    Unless they are contained in a latex command. Namely greek
+    uppercase letters like \\Omega or \\lVert.
     """
     for i in range(65, 91):
-        if chr(i) not in symbols and chr(i) in text:
+        if (
+            chr(i) not in symbols
+            and chr(i) in text
+            and chr(i) not in get_uppercase_in_latex_commands(text)
+        ):
             print("Wrong letter: " + chr(i))
             return False
     return True
