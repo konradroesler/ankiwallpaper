@@ -1,11 +1,12 @@
 from main import *
 
 if __name__ == "__main__":
-    svg_path = "./svgs/latex-91c84c9f824066de398267b925ba83ec1d780280.svg"
-    text = r'"u$]#zd:}I3"	Lernen::Algebra und Funktionentheorie::2. Ringe und Polynome::2.5 Faktorielle Ringe und das Lemma von Gauss	$p \in R$ prim	$$p = a b \implies p | a \vee p | b$$				'
+    svg_path = "./svgs/latex-13215cc961e4066c236a0f80fe04154251cd50ff.svg"
+    text = r"l1u(ZQE3FW	Lernen::Theo IV::6. Näherungsmethoden für stationäre Probleme::6.2 Zeitunabhängige Störungstheorie	$|n^{(1)}\rangle$	$$|n^{(0)}\rangle + \lambda |\tilde{n}^{(1)}\rangle$$	Korrigierter Zustandsvektor mit Korrektur erster Ordnung<br><br>nicht entartete ungestörte Zustände			"
     note = get_note(text)
     note = preprocess_note(note)
+    print(note)
     with open(svg_path, "r") as file:
         ids = parse_svg_file(file)
         symbol_filter = generate_symbol_filter(ids)
-        print(matches(symbol_filter, text))
+        print(matches(symbol_filter, note.front))

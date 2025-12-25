@@ -18,6 +18,9 @@ class Note:
         self.front = front
         self.back = back
 
+    def __str__(self):
+        return f"\nNote(\n\nUID:\n{self.uid}, \n\nDECK:\n{self.deck}, \n\nFRONT:\n{self.front}, \n\nBACK\n{self.back}\n\n)"
+
 
 def get_note(text: str) -> Note:
     """
@@ -115,11 +118,35 @@ def preprocess_numbering(text: str) -> str:
 
 def preprocess_note(note: Note) -> Note:
     r"""
-    \implies is substituted for =, because the svg
-    composites it of a = and \rightarrow
+    Some math symbols are interpreted incorrectly when
+    parsing the svg, so they are converted to normal
+    ascii symbols. This should work since they have the
+    same id.
+
+    \implies is substituted for =), they have the same id
+    \lVert and \rVert is substituted for k, they have the same id
+    \exists is substituted for 9, they have the same id
+    \forall is substituted for 8, they have the same id
+    \in is substituted for 2, they have the same id
     """
-    note.front = note.front.replace(r"\implies", "=")
-    note.back = note.back.replace(r"\implies", "=")
+    note.front = (
+        note.front.replace(r"\implies", "=)")
+        .replace(r"\to ", "!")
+        .replace(r"\lVert", "k")
+        .replace(r"\rVert", "k")
+        .replace(r"\exists", "9")
+        .replace(r"\forall", "8")
+        .replace(r"\in", "2")
+    )
+    note.back = (
+        note.back.replace(r"\implies", "=)")
+        .replace(r"\to ", "!")
+        .replace(r"\lVert", "k")
+        .replace(r"\rVert", "k")
+        .replace(r"\exists", "9")
+        .replace(r"\forall", "8")
+        .replace(r"\in", "2")
+    )
     r"""
     Substitues \item for the correct numbering.
     """
@@ -257,6 +284,7 @@ def doublecheck(symbol_filter: list[list[str]], text: str) -> bool:
     """
     for i in range(65, 91):
         if chr(i) not in symbols and chr(i) in text:
+            print("Wrong letter: " + chr(i))
             return False
     return True
 
@@ -266,6 +294,7 @@ def matches(symbol_filter: list[list[str]], text: str) -> bool:
     Should return True if the svg matches the text.
     """
     if filter_runs_through(symbol_filter, text):
+        print("filter ran through")
         if doublecheck(symbol_filter, text):
             return True
     return False
