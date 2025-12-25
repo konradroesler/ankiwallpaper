@@ -116,7 +116,7 @@ def preprocess_numbering(text: str) -> str:
     return accum
 
 
-def preprocess_note(note: Note) -> Note:
+def apply_exchange_rules(text: str) -> str:
     r"""
     Some math symbols are interpreted incorrectly when
     parsing the svg, so they are converted to normal
@@ -131,8 +131,8 @@ def preprocess_note(note: Note) -> Note:
     \forall is substituted for 8, they have the same id
     \in is substituted for 2, they have the same id
     """
-    note.front = (
-        note.front.replace(r"\implies", "=)")
+    text = (
+        text.replace(r"\implies", "=)")
         .replace(r"\to ", "!")
         .replace(r"\lVert", "k")
         .replace(r"\rVert", "k")
@@ -161,36 +161,18 @@ def preprocess_note(note: Note) -> Note:
         .replace(r"&lt;", "<")
         .replace("\\|", "k")
     )
-    note.back = (
-        note.back.replace(r"\implies", "=)")
-        .replace(r"\to ", "!")
-        .replace(r"\lVert", "k")
-        .replace(r"\rVert", "k")
-        .replace(r"\exists", "9")
-        .replace(r"\forall", "8")
-        .replace(r"\rightarrow", "!")
-        .replace(r"\langle", "h")
-        .replace(r"\rangle", "i")
-        .replace(r"\dots", "...")
-        .replace(r"\iff", "()")
-        .replace(r"\prod", "QY")
-        .replace(r"\hookrightarrow", ",!")
-        .replace(r"\sum", "PX")
-        .replace(r"\infty", "1")
-        .replace(r"\setminus", "n")
-        .replace(r"\bigcup", "S[")
-        .replace(r"\mapsto", "7!")
-        .replace(r"\omega", "!")
-        .replace(r"\int", "RZ")
-        .replace(r"\in ", "2")
-        .replace(r"\rightharpoonup", "*")
-        .replace(r"\longrightarrow", "-!")
-        .replace(r"\subsetneq", "(")
-        .replace(r"\\bigcap", "T\\")
-        .replace(r"&gt;", ">")
-        .replace(r"&lt;", "<")
-        .replace("\\|", "k")
-    )
+    return text
+
+
+def preprocess_note(note: Note) -> Note:
+    """
+    Takes a Note and returns a Note where front and
+    back fields have been parsed so that
+    1. A lot of math symbols are exchanged for ascii symbols.
+    2. The correct numbering is inserted.
+    """
+    note.front = apply_exchange_rules(note.front)
+    note.back = apply_exchange_rules(note.back)
     r"""
     Substitues \item for the correct numbering.
     """
@@ -311,6 +293,10 @@ def filter_runs_through(symbol_filter: list[list[str]], text: str) -> bool:
 
 
 def get_uppercase_in_latex_commands(text: str) -> list[str]:
+    """
+    Takes a string and returns all uppercase letters which
+    occurr in some latex command like \\Omega or \\lVert.
+    """
     uppercase_letters = []
     found = re.findall(r"\\[A-Za-z]+", text)
     for find in found:
@@ -319,6 +305,23 @@ def get_uppercase_in_latex_commands(text: str) -> list[str]:
             if letter not in uppercase_letters:
                 uppercase_letters.append(letter)
     return uppercase_letters
+
+
+def uppercase_letter_rule(symbols: list[str], text: str) -> bool:
+    """
+    Uppercase letter rule: all uppercase letters are rendered
+    unless they are contained in a latex command. Namely greek
+    uppercase letters like \\Omega or \\lVert.
+    """
+    for i in range(65, 91):
+        if (
+            chr(i) not in symbols
+            and chr(i) in text
+            and chr(i) not in get_uppercase_in_latex_commands(text)
+        ):
+            print("Wrong letter: " + chr(i))
+            return False
+    return True
 
 
 def doublecheck(symbol_filter: list[list[str]], text: str) -> bool:
@@ -334,21 +337,10 @@ def doublecheck(symbol_filter: list[list[str]], text: str) -> bool:
         for sym in entry:
             if sym not in symbols:
                 symbols.append(sym)
-    """
-    Uppercase letter rule: all uppercase letters are renderd.
 
-    Unless they are contained in a latex command. Namely greek
-    uppercase letters like \\Omega or \\lVert.
-    """
-    for i in range(65, 91):
-        if (
-            chr(i) not in symbols
-            and chr(i) in text
-            and chr(i) not in get_uppercase_in_latex_commands(text)
-        ):
-            print("Wrong letter: " + chr(i))
-            return False
-    return True
+    if uppercase_letter_rule(symbols, text):
+        return True
+    return False
 
 
 def matches(symbol_filter: list[list[str]], text: str) -> bool:
