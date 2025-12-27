@@ -72,7 +72,7 @@ def generate_numbering(count: int, numbering: str) -> str:
     """
     match numbering:
         case "alph":
-            return chr(ord("a") - 1 + count)
+            return chr(ord("a") - 1 + count) + ")"
         case "roman":
             return to_roman(count)
         case _:
@@ -134,8 +134,10 @@ def apply_exchange_rules(text: str) -> str:
     text = (
         text.replace(r"\implies", "=)")
         .replace(r"\to ", "!")
+        .replace(r"\to}", "!")
         .replace(r"\lVert", "k")
         .replace(r"\rVert", "k")
+        .replace(r"\Vert", "k")
         .replace(r"\exists", "9")
         .replace(r"\forall", "8")
         .replace(r"\rightarrow", "!")
@@ -160,6 +162,12 @@ def apply_exchange_rules(text: str) -> str:
         .replace(r"&gt;", ">")
         .replace(r"&lt;", "<")
         .replace("\\|", "k")
+        .replace("ö", "o")
+        .replace("Ö", "O")
+        .replace("ü", "u")
+        .replace("Ü", "U")
+        .replace("ä", "a")
+        .replace("Ä", "A")
     )
     return text
 
@@ -284,7 +292,7 @@ def filter_runs_through(symbol_filter: list[list[str]], text: str) -> bool:
     symbols_left = symbol_filter.copy()
 
     for char in text:
-        # print(f"char: {char}, syms: {symbols_left[0]}")
+        print(f"char: {char}, syms: {symbols_left[0]}")
         if char in symbols_left[0]:
             symbols_left.pop(0)
         if symbols_left == []:
