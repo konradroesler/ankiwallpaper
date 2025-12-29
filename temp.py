@@ -21,6 +21,7 @@ def get_all_regex_matches():
             for find in found:
                 if find not in result:
                     result.append(find)
+        return result
 
 
 class Subperscript:
@@ -30,7 +31,7 @@ class Subperscript:
         self.sub = sub
 
 
-def get_all_supberscript_expressions():
+def get_all_subperscript_expressions():
     """
     Finds all patterns consisting of form
     \\command_subscript^superscript or
@@ -46,6 +47,10 @@ def get_all_supberscript_expressions():
             caret_flag = False
             underscore_flag = False
 
+            cmd = ""
+            sup = ""
+            sub = ""
+
             for i in range(len(line)):
                 if line[i] == "{":
                     current_depth += 1
@@ -57,8 +62,16 @@ def get_all_supberscript_expressions():
                         start = i
                         command_flag = True
                     if line[i] == "_" and command_flag:
+                        if caret_flag:
+                            sup = line[start + len(cmd) : i]
+                        else:
+                            cmd = line[start:i]
                         underscore_flag = True
                     if line[i] == "^" and command_flag:
+                        if underscore_flag:
+                            sub = line[start + len(cmd) : i]
+                        else:
+                            cmd = line[start:i]
                         caret_flag = True
                     if line[i] == " ":
                         if command_flag and caret_flag and underscore_flag:
@@ -156,4 +169,5 @@ def reorder_subperscript(text: str) -> str:
     return text
 
 
-print(get_all_supberscript_expressions())
+print(get_all_regex_matches())
+print(get_all_subperscript_expressions())

@@ -1,6 +1,7 @@
 import os
 import re
 from typing import Tuple
+from src.constants import VICTORY_MSG
 from src.alphabet import alphabet
 
 
@@ -413,3 +414,4 @@ if __name__ == "__main__":
             symbol_filter = generate_symbol_filter(ids)
             matching_note = get_matching_note(symbol_filter, notes)
             print(matching_note)
+    print(VICTORY_MSG)

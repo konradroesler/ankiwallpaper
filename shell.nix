@@ -6,6 +6,10 @@ pkgs.mkShell {
   packages = [
     pkgs.nodejs_20
     pkgs.chromium
+
+		(pkgs.python3.withPackages (ps: [
+			ps.regex
+		]))
   ];
 
   # Chromium runtime deps Puppeteer expects
