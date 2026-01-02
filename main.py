@@ -1,6 +1,8 @@
 import os
 import re
+import shutil
 from typing import Tuple
+from pathlib import Path
 from src.constants import VICTORY_MSG
 from src.alphabet import alphabet
 
@@ -328,7 +330,7 @@ def uppercase_letter_rule(symbols: list[str], text: str) -> bool:
             and chr(i) in text
             and chr(i) not in get_uppercase_in_latex_commands(text)
         ):
-            print("Wrong letter: " + chr(i))
+            # print("Wrong letter: " + chr(i))
             return False
     return True
 
@@ -357,7 +359,7 @@ def matches(symbol_filter: list[list[str]], text: str) -> bool:
     Should return True if the svg matches the text.
     """
     if filter_runs_through(symbol_filter, text):
-        print("filter ran through")
+        # print("filter ran through")
         if doublecheck(symbol_filter, text):
             return True
     return False
@@ -420,13 +422,21 @@ if __name__ == "__main__":
     notes = preprocess_notes(notes)
     not_found_count = 0
     for path in paths:
-        print(path)
+        # print(path)
         with open(path, "r") as file:
             ids = parse_svg_file(file)
             symbol_filter = generate_symbol_filter(ids)
             matching_note = get_matching_note(symbol_filter, notes)
-            print(matching_note)
             if matching_note == ("None", "None"):
                 not_found_count += 1
+            else:
+                hex_id = matching_note[0].encode("ascii").hex()
+                side = matching_note[1]
+                new_path = f"./notes/{hex_id}"
+                dir_path = Path(new_path)
+                dir_path.mkdir(parents=True, exist_ok=True)
+                shutil.copy(path, f"{new_path}/{side}.svg")
+                print(matching_note)
+
     print(f"Not found count: {not_found_count}")
     print(VICTORY_MSG)
