@@ -27,7 +27,6 @@ def get_terms1_candidates(text: str) -> list[str]:
             for j in range(i, len(text)):
                 if text[j] == "}":
                     candidates.append(text[i : j + 1])
-
     return candidates
 
 

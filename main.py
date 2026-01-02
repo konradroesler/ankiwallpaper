@@ -229,6 +229,7 @@ def parse_svg_file(file) -> list[str]:
         if "use" in line:
             hrefs = re.findall(r'href="#g[0-9]{1}-[0-9]+"', line)
             if len(hrefs) != 1:
+                continue
                 raise ValueError("There should be exactly one href.")
             href = hrefs[0]
             split = href.split("-")
@@ -289,11 +290,10 @@ def filter_runs_through(symbol_filter: list[list[str]], text: str) -> bool:
     symbol, and have that choosen sequence of symbols be
     contained in the text the order specified by the filter.
     """
-
     symbols_left = symbol_filter.copy()
 
     for char in text:
-        print(f"char: {char}, syms: {symbols_left[0]}")
+        # print(f"char: {char}, syms: {symbols_left[0]}")
         if char in symbols_left[0]:
             symbols_left.pop(0)
         if symbols_left == []:
@@ -365,6 +365,16 @@ def matches(symbol_filter: list[list[str]], text: str) -> bool:
 
 def get_matching_note(symbols: list[list[str]], notes: list[Note]) -> Tuple[str, str]:
     """
+    If the symbol filter is empty, then the svg
+    which that symbol filter was generated from
+    must have been empty. In the end, all unique
+    note id's where the front or back is missing
+    is filled with an emtpy svg or something like
+    that.
+    """
+    if len(symbols) == 0:
+        return ("Empty", "Empty")
+    """
     The heart of the search process.
     This should return the uid of the matching note and the field, so front or back.
     """
@@ -373,7 +383,8 @@ def get_matching_note(symbols: list[list[str]], notes: list[Note]) -> Tuple[str,
             return (note.uid, "front")
         elif matches(symbols, note.back):
             return (note.uid, "back")
-    raise ValueError("This svg does not match any field, but it should!")
+    return ("None", "None")
+    # raise ValueError("This svg does not match any field, but it should!")
 
 
 if __name__ == "__main__":
@@ -407,6 +418,7 @@ if __name__ == "__main__":
     paths = get_svg_file_paths()
     notes = get_notes()
     notes = preprocess_notes(notes)
+    not_found_count = 0
     for path in paths:
         print(path)
         with open(path, "r") as file:
@@ -414,4 +426,7 @@ if __name__ == "__main__":
             symbol_filter = generate_symbol_filter(ids)
             matching_note = get_matching_note(symbol_filter, notes)
             print(matching_note)
+            if matching_note == ("None", "None"):
+                not_found_count += 1
+    print(f"Not found count: {not_found_count}")
     print(VICTORY_MSG)
