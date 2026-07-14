@@ -12,7 +12,7 @@ The general anatomy of a flashcard is simple. Each card has a 'front' and a 'bac
 
 Now the objective can be stated concisely:
 
->>> For every flashcard, create a png which shows the full view of that flash card.
+> For every flashcard, create a png which shows the full view of that flash card.
 
 ### Challenges and solutions
 
@@ -40,18 +40,16 @@ When I originally did this project I did not have access to a strong LLM. When I
 
 # Developers notes
 
-### Notes
+A use tag in any svg represents exactly one symbol.
 
-Note that a use tag in any svg represents exactly one symbol.
+Not all symbols are recorded inside the alphabet dict.
 
-Note that not all symbols are recorded inside the alphabet dict.
+Since the ids are in range 0-122, multiple symbols might be assigned the same id by this parser. However, this seems to behave quite nicely, since ```\mathbb{E}``` is assigned the same id as E.
 
-Note the following conflict: since the ids are in range 0-122, multiple symbols might be assigned the same id by this parser. However, this seems to behave quite nicely, since ```\mathbb{E}``` is assigned the same id as E.
+The mapping: id -> symbol is not injective.
 
-Note also that the mapping: id -> symbol is not injective.
-
-Note that the plaintext notes still contain ```\begin{enumerate}``` and ```\item```, while the svgs contain ```(i), (ii)``` etc., for this reason all note get preprocessed.
-Note also that the preprocessing stage assumes that there are no nested environments.
+The plaintext notes still contain ```\begin{enumerate}``` and ```\item```, while the svgs contain ```(i), (ii)``` etc., for this reason all note get preprocessed.
+The preprocessing stage assumes that there are no nested environments.
 
 ### Implementation notes
 
