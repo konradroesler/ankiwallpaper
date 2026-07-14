@@ -12,7 +12,7 @@ The general anatomy of a flashcard is simple. Each card has a 'front' and a 'bac
 
 Now the objective can be stated concisely:
 
-> For every flashcard, create a png which shows the full view of that flash card.
+*For every flashcard, create a png which shows the full view of that flash card.*
 
 ### Challenges and solutions
 
