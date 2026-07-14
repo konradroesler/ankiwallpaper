@@ -38,6 +38,6 @@ pkgs.mkShell {
   shellHook = ''
     export PUPPETEER_SKIP_DOWNLOAD=true
     export PUPPETEER_EXECUTABLE_PATH=${pkgs.chromium}/bin/chromium
-    echo "Puppeteer ready ✔"
+    echo "Puppeteer ready"
   '';
 }
