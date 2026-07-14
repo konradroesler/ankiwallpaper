@@ -23,7 +23,7 @@ import puppeteer from "puppeteer";
 
         await page.screenshot({
         
-          path: "./images/6f6c422f753076402f2d.png",
+          path: "./images/495f526a74542b335531.png",
         
           clip: { x: 0, y: 0, width: WIDTH, height: HEIGHT }
         });
