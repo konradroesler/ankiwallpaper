@@ -3,7 +3,6 @@ import re
 import shutil
 from typing import Tuple
 from pathlib import Path
-from src.constants import VICTORY_MSG
 from src.alphabet import alphabet
 
 
@@ -439,4 +438,3 @@ if __name__ == "__main__":
                 print(matching_note)
 
     print(f"Not found count: {not_found_count}")
-    print(VICTORY_MSG)
