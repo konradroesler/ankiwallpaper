@@ -1,5 +1,7 @@
 # Anki Wallpapers
 
+> Disclaimer: As of this commit, all code (apart from shell.nix :p) is written by me without the use of LLM's and dates back to christmas break of 2025.
+
 This CLI application is a collection of scripts written in order to convert a large number of svg files containing rendered LaTeX into png's.
 
 ### Motivation
@@ -18,7 +20,7 @@ Now the objective can be stated concisely:
 
 This turned out to be tricky... The way anki stores flashcards which contain LaTeX is by storing every snippet of rendered LaTeX (delimited by `[latex] ... [\latex]` tags) as a seperate svg file in a collective media directory. Since each card has a unique identifier, you could imagine each svg would be stored in a way you could easily tell which card it belongs to, e.g. the name of the svg file contains the uid, but this is not the case. Instead Anki the files name is a hash generated in a way I can't trace back the inputs.
 
-So, out of a large collection of svg's we now need to match two svg's to the same card and label them 'front' and 'back' respectively, given only...
+So, out of a large collection of svg's we now need to match two svg's to the same card and label them 'front' and 'back' respectively, given only:
 
 1. a `.txt` file of all cards, including uid, front text, back text. Each line in the file represents one card and the fields are seperated via tabs.
 2. Anki's media folder containing all svg's
