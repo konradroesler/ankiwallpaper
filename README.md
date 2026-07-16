@@ -4,8 +4,7 @@
 
 This CLI application is a collection of scripts written in order to convert a large number of svg files containing rendered LaTeX into png's.
 
-![desktop view](https://github.com/konradroesler/ankiwallpaper/tree/main/screenshots/desktop.png?raw=true)
-![anki view](https://github.com/konradroesler/ankiwallpaper/tree/main/screenshots/anki.png?raw=true)
+![desktop](/screenshots/desktop.png)
 
 ### Motivation
 
