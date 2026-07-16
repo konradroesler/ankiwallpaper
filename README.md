@@ -4,6 +4,9 @@
 
 This CLI application is a collection of scripts written in order to convert a large number of svg files containing rendered LaTeX into png's.
 
+![desktop view](https://github.com/konradroesler/ankiwallpapers/screenshots/desktop.png?raw=true)
+![anki view](https://github.com/konradroesler/ankiwallpapers/screenshots/anki.png?raw=true)
+
 ### Motivation
 
 I use anki's LaTeX plugin to study for my math courses in university. I then had the idea to create background images for my personal pc from these Anki cards and display them at random, so every time I'd look at my background I'd see a different card.
