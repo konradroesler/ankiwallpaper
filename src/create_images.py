@@ -88,8 +88,8 @@ if __name__ == "__main__":
         <div class="canvas">
         """
               + f"""
-          <img src="/home/konrad/.local/share/Anki2/User 1/collection.media/{front_svg_name}" />
-          <img src="/home/konrad/.local/share/Anki2/User 1/collection.media/{back_svg_name}" />
+          <img src="./svgs/{front_svg_name}" />
+          <img src="./svgs/{back_svg_name}" />
           """
               + """
         </div>
