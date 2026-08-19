@@ -17,3 +17,32 @@ Now the objective can be stated concisely:
 **For every flashcard, create a png which shows the full view of that flash card.**
 
 Anki stores the front and back as separate svg's by computing a hash value from the fields contents. We can replicate the way the hash is computed by looking at `rslib/src/latex.rs` in the Anki GitHub repostory. After we found the matching svg's, we copy them here, change their font to be white and use puppeteer to open a browser, stack two matching svg's and save a screenshot in `images/` programatically for every pair.
+
+# Usage 
+
+This exact solution will only work for my exact card template: 
+
+Front: 
+```
+[latex]{{Front}}[/latex]
+```
+
+Back:
+```
+{{FrontSide}}
+
+<hr id=answer>
+
+[latex]{{Back}}\phantom\\\\.\hfill.[/latex]
+```
+
+You'll have to change some paths, namely the one pointing to your anki collection in `scripts/copy_media.sh`. You might also have to change the shebang lines.
+
+You can then do:
+```
+mkdir svgs
+mkdir images
+./scripts/copy_media
+python src/svgedit.py
+python create_images.py
+```
