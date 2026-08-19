@@ -33,6 +33,7 @@ pkgs.mkShell {
     pango
     systemd
     xorg.libxcb
+    anki
   ];
 
   shellHook = ''
