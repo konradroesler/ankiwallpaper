@@ -23,12 +23,12 @@ Anki stores the front and back as separate svg's by computing a hash value from 
 This exact solution will only work for my exact card template: 
 
 Front: 
-```
+```html
 [latex]{{Front}}[/latex]
 ```
 
 Back:
-```
+```html
 {{FrontSide}}
 
 <hr id=answer>
@@ -39,7 +39,7 @@ Back:
 You'll have to change some paths, namely the one pointing to your anki collection in `scripts/copy_media.sh`. You might also have to change the shebang lines.
 
 You can then do:
-```
+```bash
 mkdir svgs
 mkdir images
 ./scripts/copy_media
