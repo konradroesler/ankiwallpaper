@@ -18,11 +18,11 @@ Now the objective can be stated concisely:
 
 Anki stores the front and back as separate svg's by computing a hash value from the fields contents. We can replicate the way the hash is computed by looking at `rslib/src/latex.rs` in the Anki GitHub repostory. After we found the matching svg's, we copy them here, change their font to be white and use puppeteer to open a browser, stack two matching svg's and save a screenshot in `images/` programatically for every pair.
 
-# Usage 
+# Usage
 
-This exact solution will only work for my exact card template: 
+This exact solution will only work for my exact card template:
 
-Front: 
+Front:
 ```html
 [latex]{{Front}}[/latex]
 ```
@@ -46,3 +46,5 @@ mkdir images
 python src/svgedit.py
 python create_images.py
 ```
+
+Lastly you'll have to point your wallpaperdaemon to the `images/` directory.
